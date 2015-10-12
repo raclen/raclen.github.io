@@ -24,7 +24,7 @@
             </ul>
         </article>
     </div>
-    <a href="/chat.html" class="chat">在线聊天</a>
+    <a href="chat.html" class="chat">在线聊天</a>
 </div>
 <script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
 <script>
@@ -48,7 +48,7 @@
                 section.remove();
                 for (var i = 0, len = data.length; i < len; i++) {
                     var id = data[i].href.replace(/\D/g, '');
-                    $('#ul-list').append('<li><a href="/item.html?id=' + id + '">' + data[i].title + '</a></li>');
+                    $('#ul-list').append('<li><a href="item.html?id=' + id + '">' + data[i].title + '</a></li>');
                 }
                 var step = 0;
                 setInterval(function () {
