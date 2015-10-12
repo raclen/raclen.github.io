@@ -79,6 +79,7 @@
     position: absolute;
     z-index: 0;
     box-shadow: inset 1px 0 3px #111;
+    background: #111;
 }
 
 .sidebar img {
