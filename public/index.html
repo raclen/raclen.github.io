@@ -13,8 +13,20 @@
 </head>
 <body>
 <div class="page home">
+    <div class="sidebar">
+        <img id="menu-bg" src="img/bg-wenzhang.png">
+        <ul>
+            <li><a href="">每日一文</a></li>
+            <li><a href="">人生智慧</a></li>
+            <li><a href="">精选散文</a></li>
+            <li><a href="">在线聊天</a></li>
+            <li><a href="">意见反馈</a></li>
+        </ul>
 
+    </div>
+<div class="main">
     <header>
+        <span class="menu">≡</span>
         <h1>清晨好文章</h1>
     </header>
     <div class="content-wrap">
@@ -24,12 +36,15 @@
             </ul>
         </article>
     </div>
-    <a href="chat.html" class="chat">在线聊天</a>
+    <a href="/chat.html" class="chat">在线聊天</a>
+</div>
+
 </div>
 <script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
 <script>
     var section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
     function showhometitle(p) {
+        //var baseUrl='';
         var baseUrl='http://raclen-wenzhang.coding.io';
         var homeUrl =baseUrl+ '/home';
         $.ajax({
@@ -64,7 +79,21 @@
         })
     }
     showhometitle(0);
+    $('.menu').on('click',function(){
+        $('.main').addClass('opend');
+        $('.sidebar').addClass('animate');
+    });
 
+    $('.main').on('touchstart',function(e){
+        if( $('.main').hasClass('opend')){
+            $('.main').removeClass('opend');
+            $('.sidebar').removeClass('animate');
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+
+    })
 </script>
 </body>
 </html>
