@@ -22,6 +22,7 @@
             <div class="entry">
                 <p id="author"> 亦舒 </p>
                     <!--内容-->
+                <div id="article_text"></div>
             </div>
             <!-- .entry /-->
 
@@ -66,6 +67,7 @@
         },
         getwenzhang:function(id,h){
             var _this=this;
+            //var baseUrl='';
             var baseUrl='http://raclen-wenzhang.coding.io';
             $.ajax({
                 url: baseUrl+'/contents',
@@ -87,7 +89,7 @@
                     _this.section.remove();
                     $('#name').text(data.titile)
                     $('#author').text(data.author);
-                    $('#author').after(data.content);
+                    $('#article_text').html(data.content);
                     document.body.scrollTop=0;
 
                 }
