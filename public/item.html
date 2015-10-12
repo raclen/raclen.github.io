@@ -66,8 +66,9 @@
         },
         getwenzhang:function(id,h){
             var _this=this;
+            var baseUrl='http://raclen-wenzhang.coding.io/';
             $.ajax({
-                url: '/contents',
+                url: baseUrl+'/contents',
                 type: 'GET',
                 data: {
                     articleid: id,
