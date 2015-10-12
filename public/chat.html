@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"
+          name="viewport">
+    <title>多人聊天室</title>
+    <link rel="stylesheet" href="css/resest.css"/>
+    <link rel="stylesheet" href="css/chat.css"/>
+    <script src="js/socket.io.min.js"></script>
+</head>
+<body>
+<div id="loginbox">
+    <div class="page-1">
+        <p>输入一个独一无二的昵称</p>
+        <input type="text" placeholder="输入昵称" id="username" name="username"/>
+        <a href="javascript:void(0);" id="go">GO</a>
+    </div>
+</div>
+<div id="chatbox">
+    <div class="header">
+        <span>welcome online chat</span>
+        <span class="r-span"><span id="showusername"></span> |
+            <a href="/index.html">退出</a>
+        </span>
+    </div>
+    <div id="message" class="message">
+        <div id="onlinecount" class="content">
+        </div>
+    </div>
+    <div class="bottom-box">
+        <div class="left">
+            <input type="text" maxlength="140" placeholder="请输入聊天内容" id="content" name="content">
+        </div>
+        <div class="right">
+            <a href="javascript:void(0);" id="mjr_send" class="action-a">发送</a>
+        </div>
+
+    </div>
+</div>
+<script src="js/client.js"></script>
+</body>
+</html>

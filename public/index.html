@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>清晨好文章</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="MobileOptimized">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="css/resest.css"/>
+    <link rel="stylesheet" href="css/article.css"/>
+</head>
+<body>
+<div class="page home">
+
+    <header>
+        <h1>清晨好文章</h1>
+    </header>
+    <div class="content-wrap">
+        <article class="item-list item_1">
+            <ul id="ul-list">
+
+            </ul>
+        </article>
+    </div>
+    <a href="/chat.html" class="chat">在线聊天</a>
+</div>
+<script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
+<script>
+    var section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
+    function showhometitle(p) {
+        var homeUrl = '/home';
+        $.ajax({
+            url: homeUrl,
+            type: 'GET',
+            data: {
+                page: p
+            },
+            dataType: 'jsonp',
+            beforeSend: function () {
+                $('body').prepend(section);
+
+            },
+            success: function (data) {
+                // console.log(data)
+                section.remove();
+                for (var i = 0, len = data.length; i < len; i++) {
+                    var id = data[i].href.replace(/\D/g, '');
+                    $('#ul-list').append('<li><a href="/item.html?id=' + id + '">' + data[i].title + '</a></li>');
+                }
+                var step = 0;
+                setInterval(function () {
+                    var li = $('#ul-list li');
+                    if (step == li.length) {
+                        step = 0;
+                    }
+                    li.removeClass('ani');
+                    li.eq(step).addClass('ani');
+                    step++;
+                }, 3000)
+            }
+        })
+    }
+    showhometitle(0);
+
+</script>
+</body>
+</html>

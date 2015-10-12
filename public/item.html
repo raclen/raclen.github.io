@@ -1,0 +1,103 @@
+<html>
+<head>
+    <title>清晨好文章</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="MobileOptimized">
+    <meta name="viewport" content="width=320,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <link rel="stylesheet" href="css/resest.css"/>
+    <link rel="stylesheet" href="css/article.css"/>
+</head>
+<body>
+<div class="page item">
+    <div class="container">
+
+        <div class="post-inner">
+            <h1 class="name post-title entry-title" itemprop="itemReviewed" itemscope="">
+                <span itemprop="name" id="name">外遇</span>
+            </h1>
+            <div class="clear"></div>
+
+            <div class="entry">
+                <p id="author"> 亦舒 </p>
+                    <!--内容-->
+            </div>
+            <!-- .entry /-->
+
+
+        </div>
+        <div class="random_box">
+            <a id="random" class="random_article" href="javascript:void(0)" >随机文章</a>
+        </div>
+    </div>
+    <a href="/index.html" class="goback"><img src="img/Arrow-Left.png" alt="返回"/></a>
+</div>
+
+<script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
+<script>
+    var item={
+        tools:{
+            params:function(uri){
+                var ret = {},
+                        seg = uri.substring(uri.indexOf('?') + 1, uri.length).split('&'),
+                        len = seg.length, i = 0, s;
+                for (; i < len; i++) {
+                    if (!seg[i]) {
+                        continue;
+                    }
+                    s = seg[i].split('=');
+                    ret[s[0]] = s[1];
+                }
+                return ret;
+            }
+        },
+        init:function(){
+            var _this=this;
+            var resparams=this.tools.params(window.location.href);
+            //文章ID
+            var articleid = resparams.id;
+            var hosturl='ihx';
+            this.section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
+            this.getwenzhang(articleid,hosturl);
+            $('#random').on('click',function(){
+                _this.getwenzhang('','meiriyiwen');
+            })
+        },
+        getwenzhang:function(id,h){
+            var _this=this;
+            $.ajax({
+                url: '/contents',
+                type: 'GET',
+                data: {
+                    articleid: id,
+                    hostUrl:h
+                },
+                dataType: 'jsonp',
+                beforeSend: function () {
+                    $('body').prepend(_this.section);
+                },
+                success: function (data) {
+                    //console.log(data)
+                    if(data.statusCode!=='0000'){
+                        alert(data.message);
+                        return;
+                    }
+                    _this.section.remove();
+                    $('#name').text(data.titile)
+                    $('#author').text(data.author);
+                    $('#author').after(data.content);
+                    document.body.scrollTop=0;
+
+                }
+            })
+
+        }
+
+    }
+    item.init();
+
+
+</script>
+</body>
+</html>
