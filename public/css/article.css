@@ -40,14 +40,14 @@
 .main .menu {
     position: absolute;
     left: 20px;
-    top: 5px;
+    top: 6px;
     color: #E8E828;
     font-size: 28px;
     text-align: center;
     cursor: pointer;
-    padding: 2px 5px;
-    width: 16px;
-    height: 24px;
+    /* padding: 2px 5px; */
+    width: 24px;
+    height: 26px;
     border: #E0E028 solid 1px;
     line-height: 24px;
     border-radius: 3px;
