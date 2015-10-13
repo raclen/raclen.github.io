@@ -16,42 +16,44 @@
     <div class="sidebar">
         <img id="menu-bg" src="img/bg-wenzhang.png">
         <ul>
-            <li><a href="">每日一文</a></li>
-            <li><a href="">人生智慧</a></li>
-            <li><a href="">精选散文</a></li>
-            <li><a href="">在线聊天</a></li>
-            <li><a href="">意见反馈</a></li>
+            <li><a href="javascript:void(0)" class="category active" data-categoryid="001">每日一文</a></li>
+            <li><a href="javascript:void(0)" class="category" data-categoryid="002">人生智慧</a></li>
+            <li><a href="javascript:void(0)" class="category" >精选散文</a></li>
+            <li><a href="chat.html" >在线聊天</a></li>
+            <li><a href="javascript:void(0)">意见反馈</a></li>
         </ul>
 
     </div>
-<div class="main">
-    <header>
-        <span class="menu">≡</span>
-        <h1>清晨好文章</h1>
-    </header>
-    <div class="content-wrap">
-        <article class="item-list item_1">
-            <ul id="ul-list">
+    <div class="main">
+        <header>
+            <span class="menu">≡</span>
 
-            </ul>
-        </article>
+            <h1>清晨好文章</h1>
+        </header>
+        <div class="content-wrap">
+            <article class="item-list item_1">
+                <ul id="ul-list">
+
+                </ul>
+            </article>
+        </div>
+        <a href="chat.html" class="chat">在线聊天</a>
     </div>
-    <a href="chat.html" class="chat">在线聊天</a>
-</div>
 
 </div>
 <script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
 <script>
     var section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
-    function showhometitle(p) {
-        //var baseUrl='';
+    function showhometitle(p,id) {
+        //var baseUrl = '';
         var baseUrl='http://raclen-wenzhang.coding.io';
-        var homeUrl =baseUrl+ '/home';
+        var homeUrl = baseUrl + '/category';
         $.ajax({
             url: homeUrl,
             type: 'GET',
             data: {
-                page: p
+                page: p,
+                categoryid:id
             },
             dataType: 'jsonp',
             beforeSend: function () {
@@ -61,38 +63,68 @@
             success: function (data) {
                 // console.log(data)
                 section.remove();
+                var $list=$('#ul-list');
+                $list.html('');
                 for (var i = 0, len = data.length; i < len; i++) {
-                    var id = data[i].href.replace(/\D/g, '');
-                    $('#ul-list').append('<li><a href="item.html?id=' + id + '">' + data[i].title + '</a></li>');
+                    //var id = data[i].href.replace(/\D/g, '');
+                    var article=encodeURIComponent(data[i].href);
+                    var categoryid=$('.category.active').data('categoryid');
+                    $list.append('<li><a href="item.html?article=' + article + '&categoryid=' + categoryid + '">' + data[i].title + '</a></li>');
+                    setinterli('off');
+                    setinterli('on');
                 }
-                var step = 0;
-                setInterval(function () {
-                    var li = $('#ul-list li');
-                    if (step == li.length) {
-                        step = 0;
-                    }
-                    li.removeClass('ani');
-                    li.eq(step).addClass('ani');
-                    step++;
-                }, 3000)
+
             }
         })
     }
-    showhometitle(0);
-    $('.menu').on('click',function(){
-        $('.main').addClass('opend');
-        $('.sidebar').addClass('animate');
+    var animateli=null;
+     function setinterli(s){
+         var step = 0;
+         if(s==='on'){
+             animateli= setInterval(function () {
+                 var li = $('#ul-list li');
+                 if (step == li.length) {
+                     step = 0;
+                 }
+                 li.removeClass('ani');
+                 li.eq(step).addClass('ani');
+                 step++;
+             }, 3000)
+         }else if(s==='off'){
+            clearInterval(animateli);
+         }
+    }
+    showhometitle(1,'001');
+    var $main = $('.main');
+    var $sidebar = $('.sidebar');
+    $('.menu').on('click', function (e) {
+        if ($main.hasClass('opend')) {
+            $main.removeClass('opend');
+            $sidebar.removeClass('animate');
+        } else {
+            $main.addClass('opend');
+            $sidebar.addClass('animate');
+        }
+        e.stopPropagation();
+        e.preventDefault();
     });
 
-    $('.main').on('touchstart',function(e){
-        if( $('.main').hasClass('opend')){
-            $('.main').removeClass('opend');
-            $('.sidebar').removeClass('animate');
+    $main.on('click', function (e) {
+        if ($main.hasClass('opend')) {
+            $main.removeClass('opend');
+            $sidebar.removeClass('animate');
             e.stopPropagation();
             e.preventDefault();
         }
-
-
+    });
+    var  $category=$('.category');
+    $category.on('click',function(){
+        var categoryid =$(this).data('categoryid');
+        $category.removeClass('active');
+        $(this).addClass('active');
+        showhometitle(1,categoryid);
+        $main.removeClass('opend');
+        $sidebar.removeClass('animate');
     })
 </script>
 </body>

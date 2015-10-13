@@ -25,6 +25,9 @@
     color: #000;
     display: block;
     width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .main header {
@@ -113,6 +116,10 @@ div.sidebar ul li a {
     text-decoration: none;
     letter-spacing: 1px;
 }
+div.sidebar ul li a.active {
+    color: #EDE;
+}
+
 
 div.sidebar.animate ul li {
     margin-left: 70px;
@@ -330,4 +337,11 @@ p.post-meta {
     font: bold 15px Arial, Helvetica;
     padding: 5px 15px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+/*wenzhangba特殊样式*/
+.a_detail p{
+    text-indent: 0;
+}
+.a_detail a{
+    color: #666;
 }

@@ -57,15 +57,15 @@
             var _this=this;
             var resparams=this.tools.params(window.location.href);
             //文章ID
-            var articleid = resparams.id;
-            var hosturl='ihx';
+            var article = resparams.article;
+            var categoryid=resparams.categoryid;
             this.section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
-            this.getwenzhang(articleid,hosturl);
+            this.getwenzhang(article,categoryid);
             $('#random').on('click',function(){
-                _this.getwenzhang('','meiriyiwen');
+                _this.getwenzhang('','003');
             })
         },
-        getwenzhang:function(id,h){
+        getwenzhang:function(a,c){
             var _this=this;
            // var baseUrl='';
             var baseUrl='http://raclen-wenzhang.coding.io';
@@ -73,8 +73,8 @@
                 url: baseUrl+'/contents',
                 type: 'GET',
                 data: {
-                    articleid: id,
-                    hostUrl:h
+                    article: a,
+                    categoryid:c
                 },
                 dataType: 'jsonp',
                 beforeSend: function () {
