@@ -228,7 +228,18 @@ section {
     bottom: 0;
     z-index: 101;
 }
-
+.spinner.liu {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 101;
+}
 .model-3 .spinner {
     border: 5px solid transparent;
     border-bottom-color: #19A5DF;
@@ -265,7 +276,7 @@ section {
 
 /*item css*/
 .item {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .item .post-title {
@@ -303,7 +314,7 @@ p.post-meta {
 }
 
 .post-inner {
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .entry p:first-child {
@@ -318,7 +329,7 @@ p.post-meta {
 }
 
 .item .container {
-    width: 280px;
+    width: 560px;
     margin: 0 auto;
 }
 
@@ -337,10 +348,10 @@ p.post-meta {
 
 .goback {
     position: fixed;
-    right: 10px;
-    bottom: 15px;
-    width: 40px;
-    height: 40px;
+    right: 20px;
+    bottom: 25px;
+    width: 80px;
+    height: 80px;
 }
 
 .goback img {
@@ -360,15 +371,15 @@ p.post-meta {
     text-decoration: none;
     background-color: #FFB94B;
     border-color: #D69E31 #E3A037 #D5982D;
-    border-radius: 3px 3px 3px 3px;
+    border-radius: 6px;
     border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    border-width: 2px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
     color: #8F5A0A;
     cursor: pointer;
-    font: bold 15px Arial, Helvetica;
-    padding: 5px 15px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    font: bold 28px Arial, Helvetica;
+    padding: 10px 30px;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.5);
 }
 /*wenzhangba特殊样式*/
 .a_detail p{

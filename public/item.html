@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="MobileOptimized">
-    <meta name="viewport" content="width=320,user-scalable=no">
+    <meta name="viewport" content="width=640,user-scalable=no">
     <meta http-equiv="cleartype" content="on">
     <link rel="stylesheet" href="css/resest.css"/>
     <link rel="stylesheet" href="css/article.css"/>
@@ -59,7 +59,7 @@
             //文章ID
             var article = resparams.article;
             var categoryid=resparams.categoryid;
-            this.section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
+            this.section = $('<section class="mod model-3"> <div class="spinner liu"> </div> </section>');
             this.getwenzhang(article,categoryid);
             $('#random').on('click',function(){
                 _this.getwenzhang('','003');
@@ -67,8 +67,8 @@
         },
         getwenzhang:function(a,c){
             var _this=this;
-            //var baseUrl='';
-            var baseUrl='http://raclen-wenzhang.coding.io';
+            var baseUrl='';
+            //var baseUrl='http://raclen-wenzhang.coding.io';
             $.ajax({
                 url: baseUrl+'/contents',
                 type: 'GET',
