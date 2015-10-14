@@ -227,14 +227,19 @@ section {
     top: 0;
     bottom: 0;
     z-index: 101;
+    border: 5px solid transparent;
 }
-.spinner.liu {
+
+.model-3 .spinner {
+    border-bottom-color: #19A5DF;
+    border-top-color: #19A5DF;
+    -webkit-animation: rotate 1.5s linear 0s infinite;
+    animation: rotate 1.5s linear 0s infinite;
+}
+.model-3 .spinner.liu {
     width: 100px;
     height: 100px;
     border: 10px solid transparent;
-}
-.model-3 .spinner {
-    border: 5px solid transparent;
     border-bottom-color: #19A5DF;
     border-top-color: #19A5DF;
     -webkit-animation: rotate 1.5s linear 0s infinite;
