@@ -1,6 +1,7 @@
 .home {
     padding-bottom: 20px;
     background-color: #f5f5d5;
+    overflow: hidden;
 }
 
 .main ul {
@@ -94,6 +95,8 @@
     height: 100%;
     position: absolute;
     z-index: 0;
+    top: 0;
+    left: 0;
     box-shadow: inset 1px 0 3px #111;
     background: #111;
 }
