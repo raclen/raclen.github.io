@@ -1,6 +1,7 @@
 .home {
     padding-bottom: 20px;
     background-color: #f5f5d5;
+    overflow: hidden;
 }
 
 .main ul {
