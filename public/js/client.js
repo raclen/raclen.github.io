@@ -100,8 +100,8 @@
             this.scrollToBottom();
 
             //连接websocket后端服务器
-            //this.socket = io.connect('http://raclen-wenzhang.coding.io');
-            this.socket = io.connect('http://localhost:3001');
+            this.socket = io.connect('http://raclen-wenzhang.coding.io');
+            //this.socket = io.connect('http://localhost:3001');
 
             //告诉服务器端有用户登录
             this.socket.emit('login', {userid:this.userid, username:this.username});
