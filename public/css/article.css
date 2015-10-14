@@ -5,8 +5,6 @@
 }
 
 .main ul {
-    border: 1px solid #dddddd;
-    border-radius: 4px;
     padding: 0 20px;
     margin: 5px 0;
 }
@@ -39,7 +37,10 @@
     text-align: center;
     border-top: #ccc solid 5px;
 }
-
+.item-list{
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+}
 .main .menu {
     position: absolute;
     left: 20px;
@@ -233,7 +234,23 @@ section {
     -webkit-animation: rotate 1.5s linear 0s infinite;
     animation: rotate 1.5s linear 0s infinite;
 }
-
+.pagination{
+    text-align: center;
+    margin: 10px 0;
+}
+.pagination a{
+    border: #EEDDEE solid 1px;
+    border-radius: 4px;
+    padding: 3px 10px;
+    color: #666;
+}
+.pagination a:nth-of-type(1){
+    margin-right: 6px;
+}
+.pagination a.dis{
+    pointer-events:none;
+    color: #ccc;
+}
 /*.mask {
     z-index: 99;
     background-color: #f5f5d5;
