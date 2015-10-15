@@ -373,3 +373,82 @@ h1, h2, h3, h4, h5, h6 {
 .a_detail a{
     color: #666;
 }
+
+/*意见反馈页面样式*/
+.feed-body{
+    background-color: #ededed;
+    font-size: 28px;
+}
+.feedback section {
+    padding: 20px;
+    overflow: hidden;
+}
+.feedback .icon-back{
+    background: url("../img/Arrow-Left.png");
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    position: absolute;
+    left: 16px;
+    top: 10px;
+
+}
+.feedback header{
+    position: relative;
+    z-index: 2;
+    height: 80px;
+    line-height: 80px;
+    background: #fff;
+    text-align: center;
+    border-top: #ccc solid 10px;
+    font-size: 36px;
+}
+.feedback .feed-tips{
+    margin-bottom: 20px;
+}
+.feed-tar, .feed-frame .feed-inp {
+    border: 1px solid #adadad;
+    background-color: #fff;
+    width: 96%;
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    height: 180px;
+}
+.default {
+    color: #646464;
+    font-size: 24px;
+    font-weight: normal;
+}
+.feed-frame {
+    padding: 20px 0;
+}
+.feed-frame .feed-inp {
+    height: 50px;
+    margin-top: 10px;
+}
+.icon-btn {
+    display: block;
+    color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 28px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #FFF #FFFFFF #FFFFFF #FFFFFF;
+    border-radius: 3px;
+    -webkit-border-radius: 6px;
+    background: -webkit-gradient(linear,0 0,0 100%,from(#4BBC97),to(#4BBC97));
+    -webkit-box-shadow: 0 1px 1px 0 white inset;
+    box-shadow: 0 1px 1px 0 white inset;
+}
+.icon-btn:active{
+    background-color:#4BBC97 ;
+    opacity: 0.7;
+}
+.icon-btn.dis{
+    background: #ccc;
+    color: #000;
+    pointer-events: none;
+}

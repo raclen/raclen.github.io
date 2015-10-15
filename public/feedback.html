@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>清晨好文章</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="MobileOptimized">
+    <meta name="viewport" content="width=640,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <link rel="stylesheet" href="css/resest.css"/>
+    <link rel="stylesheet" href="css/article.css"/>
+
+</head>
+<body class="feed-body">
+<div class="page feedback">
+    <header><a class="icon-back" href="javascript: history.go(-1)"></a> 意见反馈</header>
+    <section>
+        <p class="feed-tips">欢迎您提出宝贵的建议和意见，您留下的每个字我们都将认真聆听，落实改进</p>
+        <textarea class="feed-tar default" id="feedbackMessage" placeholder="请输入您的意见反馈（500字以内）"></textarea>
+
+        <div class="feed-frame">
+            <p>联系方式：</p>
+            <input type="text" id="contact" class="feed-inp default" required="required"
+                   placeholder="请输入联系方式（QQ or 邮箱）">
+        </div>
+        <a href="javascript:void(0)" id="btn-submit" class="icon-btn">提交</a>
+    </section>
+</div>
+<script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
+<script>
+    //var baseUrl = '';
+    var baseUrl = 'http://raclen-wenzhang.coding.io';
+    var SUBMITFEEDBACKAPI = baseUrl + '/submitfeedback';
+    $('#btn-submit').on('click', function () {
+        var feedbackMessage = $('#feedbackMessage').val();
+        var contact = $('#contact').val();
+        if ($.trim(feedbackMessage) == '') {
+            alert('意见信息不能为空');
+            return;
+        }
+        if ($.trim(contact) == '') {
+            alert('填一下联系方式呗');
+            return;
+        }
+
+        $.ajax({
+            url: SUBMITFEEDBACKAPI,
+            type: 'GET',
+            data: {
+                feedbackMessage: feedbackMessage,
+                contact: contact
+            },
+            dataType: 'jsonp',
+            beforeSend: function () {
+                $('#btn-submit').addClass('dis');
+            },
+            success: function (data) {
+                // console.log(data)
+                $('#btn-submit').removeClass('dis');
+                alert('感谢您的反馈，确定后跳转到首页');
+                location.href = '/index.html';
+
+            }
+        })
+    })
+
+
+</script>
+</body>
+</html>
