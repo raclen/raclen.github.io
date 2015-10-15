@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="MobileOptimized">
+	<meta name="viewport" content="width=431,user-scalable=no">
+	<title>投票器</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding:0px;
+		}
+
+		@-webkit-keyframes scaleout {
+			0% { -webkit-transform: scale(1.0) }
+			100% {
+				-webkit-transform: scale(1.3);
+				opacity: 0;
+			}
+		}
+		@keyframes scaleout {
+			0% {
+				transform: scale(1.0);
+				-webkit-transform: scale(1.0);
+			} 100% {
+				  transform: scale(1.3);
+				  -webkit-transform: scale(1.3);
+				  opacity: 0;
+			  }
+		}
+		.wrapper{
+			width:100%;
+			height:100%;
+			position:relative;
+		}
+		.point{
+			position:absolute;
+			left:127px;
+			top:6px;
+			z-index:999;
+		}
+		.point2{
+			position:absolute;
+			left:127px;
+			top:355px;
+			z-index:999;
+		}
+		.donghua{
+			cursor:pointer;
+			-webkit-animation: scaleout 3.3s  ease-in-out;
+			animation: scaleout 3.3s  ease-in-out;
+		}
+		.power1-1{
+			position:absolute;
+			left:312px;
+			top:360px;
+		}
+		.power1-2{
+			position:absolute;
+			left:312px;
+			top:350px;
+		}
+
+		.power1-3{
+			position:absolute;
+			left:312px;
+			top:340px;
+		}
+
+		.power2-1{
+			position:absolute;
+			left:66px;
+			top:376px;
+		}
+		.power2-2{
+			position:absolute;
+			left:66px;
+			top:387px;
+		}
+		.power2-3{
+			position:absolute;
+			left:66px;
+			top:398px;
+		}
+		.power{
+			opacity: 0;
+		}
+		.power2{
+			opacity: 0;
+		}
+
+	</style>
+</head>
+<body>
+<div class="wrapper">
+	<img src="images/toupiao1.jpg" width="431" height="762" />
+	<div class="point" style="width:185px;height:185px;background:url(images/icon1.png) center center no-repeat;margin:100px auto 0 auto;">
+		<div><a><img src="images/icon1.png"></a></div>
+	</div>
+	<div class="power1-1 power"><img src="images/power2.png" width="61" height="10" /></div>
+	<div class="power1-2 power"><img src="images/power2.png" width="61" height="10" /></div>
+	<div class="power1-3 power"><img src="images/power2.png" width="61" height="10" /></div>
+
+	<div class="point2"  style="width:185px;height:185px;background:url(images/icon2.png) center center no-repeat;margin:100px auto 0 auto;">
+		<div><a><img src="images/icon2.png"/></a></div>
+	</div>
+	<div class="power2-1 power2"><img src="images/power.png" width="62" height="10" /></div>
+	<div class="power2-2 power2"><img src="images/power.png" width="62" height="10" /></div>
+	<div class="power2-3 power2"><img src="images/power.png" width="62" height="10" /></div>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<!--<script type="text/javascript">
+        $(document).ready(function () {
+         $(".point").click(function(){
+             $(".point>div").addClass("donghua");
+             $(".power1").addClass("add_power");
+            });
+            $(".point2").click(function(){
+             $(".point2>div").addClass("donghua");
+             $(".power2").addClass("add_power2");
+            });
+        });
+    </script>-->
+<script type="text/javascript">
+	$(function(){
+		$(".point").click(function(){
+			if($('.power').css('opacity')!=='0'){
+				$('.power').css('opacity',0);
+				$('.power1-1 ,.power1-2,.power1-3').stop();
+
+			}
+			$(".point>div").addClass("donghua");
+			$('.power1-1').animate({opacity:1},1000,function(){
+				$('.power1-2').animate({opacity:1},2000,function(){
+					$('.power1-3').animate({opacity:1},3000,function(){
+						$(".point>div").removeClass("donghua");
+					})
+				})
+
+			})
+
+		});
+		$(".point2").click(function(){
+			if($('.power2').css('opacity')!=='0'){
+				$('.power2').css('opacity',0);
+				$('.power2-1,.power2-2,.power2-3').stop()
+			}
+			$(".point2>div").addClass("donghua");
+			$('.power2-1').animate({opacity:1},1000,function(){
+				$('.power2-2').animate({opacity:1},2000,function(){
+					$('.power2-3').animate({opacity:1},3000,function(){
+						$(".point2>div").removeClass("donghua");
+					})
+				})
+
+			})
+		});
+	});
+</script>
+</body>
+</html>
