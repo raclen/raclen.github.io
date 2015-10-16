@@ -59,22 +59,24 @@
             //文章ID
             var article = resparams.article;
             var categoryid=resparams.categoryid;
+            var articleid =resparams.articleid;
             this.section = $('<section class="mod model-3"> <div class="spinner liu"> </div> </section>');
-            this.getwenzhang(article,categoryid);
+            this.getwenzhang(article,categoryid,articleid);
             $('#random').on('click',function(){
                 _this.getwenzhang('','003');
             })
         },
-        getwenzhang:function(a,c){
+        getwenzhang:function(a,c,id){
             var _this=this;
-           // var baseUrl='';
+            // var baseUrl='';
             var baseUrl='http://raclen-wenzhang.coding.io';
             $.ajax({
                 url: baseUrl+'/contents',
                 type: 'GET',
                 data: {
                     article: a,
-                    categoryid:c
+                    categoryid:c,
+                    articleid:id
                 },
                 dataType: 'jsonp',
                 beforeSend: function () {
@@ -99,7 +101,6 @@
 
     }
     item.init();
-
 
 </script>
 </body>

@@ -1,0 +1,144 @@
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <title>清晨好文章</title>
+    <link href="raclen.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="css/resest.css"/>
+    <link rel="stylesheet" href="css/admin.css"/>
+    <link rel="stylesheet" href="js/editor/themes/default/default.css"/>
+</head>
+<body>
+<div class="page admin">
+    <div class="head" id="header">
+        <div class="head_box">
+            <div class="inner wrp">
+                <h1 class="logo">清晨好文章</h1>
+
+                <div class="account_meta account_logout">
+                    <a id="username" href="">九木旭</a>
+                    <a id="logout" href="">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="body" class="body page_mass_send">
+        <div class="container_box cell_layout side_l">
+            <div class="col_side">
+                <div class="menu_box" id="menuBar">
+                    <dl class="menu no_extra">
+                        <dt class="menu_title">
+                            <i class="icon_menu">
+                            </i>功能
+                        </dt>
+
+                        <dd class="menu_item selected"><a href="javascript:void(0)">撰写文章</a></dd>
+                        <dd class="menu_item "><a href="javascript:void(0)">添加管理员</a></dd>
+                        <dd class="menu_item "><a href="javascript:void(0)">意见反馈</a></dd>
+                        <dd class="menu_item "><a href="javascript:void(0)">待定 </a></dd>
+                    </dl>
+
+                </div>
+
+            </div>
+
+            <div class="col_main">
+                <div class="main-item">
+                    <div class="main_hd">
+                        <h2>撰写文章</h2>
+                    </div>
+                    <div class="main_bd">
+                        <div class="appmsg_editor">
+                            <div class="inner">
+                                <div class="appmsg_edit_item">
+                                    <label class="frm_label">标题</label>
+                                    <span class="frm_input_box with_counter counter_in append count">
+                                    <input type="text" id="title" class="frm_input js_title js_counter" max-length="64">
+
+                                   </span>
+                                </div>
+                                <div class="appmsg_edit_item">
+                                    <label class="frm_label">
+                                        <strong class="title">作者</strong>
+
+                                        <p class="tips l">（选填）</p>
+                                    </label>
+                                             <span class="frm_input_box with_counter counter_in append count">
+                                        <input type="text" id="author" class="frm_input js_author js_counter"
+                                               max-length="8">
+
+                                        </span>
+
+
+                                </div>
+
+                                <div class="appmsg_edit_item">
+                                    <label class="frm_label">正文</label>
+     <span class="frm_input_box with_counter counter_in append count">
+                                    <textarea id="editor_id" name="content" style="width:700px;height:300px;">
+                                        &lt;strong&gt;HTML内容&lt;/strong&gt;
+                                    </textarea>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" id="js_submit" class="btn-submit"> 发表</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
+<script charset="utf-8" src="js/editor/kindeditor.js"></script>
+<script>
+    var editor;
+    KindEditor.ready(function (K) {
+        editor = K.create('textarea[name="content"]', {
+            allowFileManager: true
+        });
+
+    });
+
+
+    $('#js_submit').on('click',function(){
+        var title = $('#title').val();
+        var author=$('#author').val();
+        var editorcontent=editor.html();
+        if($.trim(title)==''){
+            alert('标题不能为空');
+            return;
+        }
+        if($.trim(editorcontent)==''){
+            alert('正文不能为空');
+            return;
+        }
+       // var baseUrl = '';
+        var baseUrl='http://raclen-wenzhang.coding.io';
+        var  API_ADDARTICLE=baseUrl+'/addarticle';
+        $.ajax({
+            url: API_ADDARTICLE,
+            type: 'GET',
+            data: {
+                title: title,
+                author:author,
+                editorcontent:editorcontent
+            },
+            dataType: 'jsonp',
+            success: function (data) {
+                alert('感谢你的贡献，文章添加成功');
+
+            }
+        })
+    })
+
+
+</script>
+</body>
+</html>
