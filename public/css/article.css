@@ -345,6 +345,7 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 25px;
     width: 80px;
     height: 80px;
+    z-index: 3;
 }
 
 .goback img {
@@ -459,4 +460,9 @@ h1, h2, h3, h4, h5, h6 {
     background: #ccc;
     color: #000;
     pointer-events: none;
+}
+#ds-thread{
+    width: 560px;
+    margin: 0 auto;
+    z-index: 1;
 }

@@ -35,6 +35,7 @@
                         </dt>
 
                         <dd class="menu_item selected"><a href="javascript:void(0)">撰写文章</a></dd>
+                        <dd class="menu_item "><a href="javascript:void(0)">删除文章</a></dd>
                         <dd class="menu_item "><a href="javascript:void(0)">添加管理员</a></dd>
                         <dd class="menu_item "><a href="javascript:void(0)">意见反馈</a></dd>
                         <dd class="menu_item "><a href="javascript:void(0)">待定 </a></dd>
@@ -87,6 +88,30 @@
                         <a href="javascript:void(0)" id="js_submit" class="btn-submit"> 发表</a>
                     </div>
                 </div>
+                <div class="main-item">
+                    <div class="main_hd">
+                        <h2>删除文章</h2>
+                    </div>
+                    <div class="main_bd">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>文章名称</th>
+                                <th>作者</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="actionList">
+                        <!--    <tr>
+                                <td>美好的日子</td>
+                                <td>九木旭</td>
+                                <td><a href="javascript:void(0)" data-articleid="">删除</a></td>
+                            </tr>-->
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -98,6 +123,7 @@
 <script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
 <script charset="utf-8" src="js/editor/kindeditor.js"></script>
 <script>
+    //生产编辑器
     var editor;
     KindEditor.ready(function (K) {
         editor = K.create('textarea[name="content"]', {
@@ -105,39 +131,100 @@
         });
 
     });
+    var admin = {
+        findarticle: function (p, id) {
+            $.ajax({
+                url: '/category',
+                type: 'GET',
+                data: {
+                    page: p,
+                    categoryid: id
+                },
+                dataType: 'json',
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    $('#actionList').html('');
+                    for (var i = 0, len = data.length; i < len; i++) {
+                        $('#actionList').append(
+                                '<tr>' +
+                                '<td>' + data[i].title + '</td>' +
+                                '<td>' + data[i].author + '</td>' +
+                                '<td><a href="javascript:void(0)" data-articleid="' + data[i].articleid + '" class="del-btn">删除</a></td>' +
+                                '</tr>'
+                        );
+                    }
+
+                    $('.del-btn').on('click', function () {
+                        var articleid = $(this).data('articleid');
+                        admin.delarticle(articleid);
+                    })
+                }
+            })
+        },
+        delarticle: function (id) {
+            $.ajax({
+                url: '/delarticle',
+                type: 'GET',
+                data: {
+                    articleid: id
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.statusCode == '0000') {
+                        alert('文章删除成功');
+                        location.reload();
+                    }
 
 
-    $('#js_submit').on('click',function(){
+                }
+            })
+        }
+    }
+
+    $('#js_submit').on('click', function () {
         var title = $('#title').val();
-        var author=$('#author').val();
-        var editorcontent=editor.html();
-        if($.trim(title)==''){
+        var author = $('#author').val();
+        var editorcontent = editor.html();
+        if ($.trim(title) == '') {
             alert('标题不能为空');
             return;
         }
-        if($.trim(editorcontent)==''){
+        if ($.trim(editorcontent) == '') {
             alert('正文不能为空');
             return;
         }
         var baseUrl = '';
-       // var baseUrl='http://raclen-wenzhang.coding.io';
-        var  API_ADDARTICLE=baseUrl+'/addarticle';
+        // var baseUrl='http://raclen-wenzhang.coding.io';
+        var API_ADDARTICLE = baseUrl + '/addarticle';
         $.ajax({
             url: API_ADDARTICLE,
             type: 'POST',
             data: {
                 title: title,
-                author:author,
-                editorcontent:editorcontent
+                author: author,
+                editorcontent: editorcontent
             },
-            dataType:'json',
+            dataType: 'json',
 
             success: function (data) {
-                if(data.statusCode=='0000')
-                alert('感谢你的贡献，文章添加成功');
+                if (data.statusCode == '0000')
+                    alert('感谢你的贡献，文章添加成功');
 
             }
         })
+    })
+    var $menuitem = $('.menu_item');
+    var $mainitem = $('.col_main  .main-item')
+    $menuitem.on('click', function () {
+        $menuitem.removeClass('selected');
+        $(this).addClass('selected');
+        var _index = $('.menu_item').index(this);
+        // alert(_index);
+        $mainitem.hide();
+        $mainitem.eq(_index).show();
+        admin.findarticle(1, '004');
+
     })
 
 

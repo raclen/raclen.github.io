@@ -3,6 +3,7 @@ body {
     background: #e7e8eb;
     font-size: 14px;
 }
+
 .head_box {
     position: relative;
     background-color: #fff;
@@ -263,4 +264,38 @@ body {
 .btn-submit:active{
     opacity: 0.7;
 
+}
+/*删除文章*/
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+table {
+    max-width: 100%;
+    background-color: transparent;
+}
+.table thead tr{
+    height: 44px;
+    background-color: #F4F5F9 !important;
+}
+.table td {
+    padding: 8px;
+    line-height: 1.428571429;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    text-align: center;
+
+}
+.table tr:nth-child(odd){
+    background-color: #C6ECC3;
+}
+.main-item{
+    display: none;
+}
+.main-item:nth-of-type(1){
+    display: block;
 }
