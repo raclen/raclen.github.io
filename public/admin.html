@@ -119,19 +119,21 @@
             alert('正文不能为空');
             return;
         }
-       // var baseUrl = '';
-        var baseUrl='http://raclen-wenzhang.coding.io';
+        var baseUrl = '';
+       // var baseUrl='http://raclen-wenzhang.coding.io';
         var  API_ADDARTICLE=baseUrl+'/addarticle';
         $.ajax({
             url: API_ADDARTICLE,
-            type: 'GET',
+            type: 'POST',
             data: {
                 title: title,
                 author:author,
                 editorcontent:editorcontent
             },
-            dataType: 'jsonp',
+            dataType:'json',
+
             success: function (data) {
+                if(data.statusCode=='0000')
                 alert('感谢你的贡献，文章添加成功');
 
             }
