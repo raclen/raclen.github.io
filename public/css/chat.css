@@ -50,7 +50,7 @@ body {
     background-color: #efeff4;
     margin-top: 32px;
     margin-bottom: 46px;
-    overflow: scroll;
+    overflow: auto;
     min-height: 300px;
 
 }
@@ -169,29 +169,7 @@ section.user > div:before {
     font-size: .8em;
 }
 
-/* 底部*/
-.bottom-box {
-    padding: 8px 10px;
-    box-shadow: 0 0 1px #000;
-    background-color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
 
-.bottom-box .left {
-    background-color: #fff;
-    height: 28px;
-    line-height: 25px;
-    width: 70%;
-    float: left;
-}
-
-.bottom-box .right {
-    width: 30%;
-    float: left;
-}
 
 .action-a {
     color: #8c8c8c;
@@ -252,4 +230,53 @@ section .msg-system a.isClicked {
 .header .r-span {
     float: right;
     margin-right: 10px;
+}
+/* 底部*/
+.bottom{
+ position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.imageLable {
+    position: relative;
+}
+#sendImage {
+    position: absolute;
+    width: 52px;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.bottom-box {
+    padding: 8px 10px;
+    box-shadow: 0 0 1px #000;
+    background-color: #fff;
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+}
+
+.bottom-box .left {
+    background-color: #fff;
+    height: 28px;
+    line-height: 25px;
+    width: 70%;
+    float: left;
+}
+
+.bottom-box .right {
+    width: 30%;
+    float: left;
+}
+img {
+    max-width: 100%;
+}
+.imageLable input:nth-of-type(1){
+    background: url("../img/chat-img.png");
+    background-size: contain;
+    width: 48px;
+    height: 25px;
+    border: 1px solid #CACA44;
+    margin-left: 10px;
 }

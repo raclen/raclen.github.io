@@ -16,7 +16,7 @@
         username:null,
         userid:null,
         socket:null,
-        meshight:document.body.scrollHeight-78,
+        meshight:document.body.scrollHeight-108,
         //让浏览器滚动条保持在最低部
         scrollToBottom:function(){
             this.msgObj.scrollTop=this.msgObj.scrollHeight-this.meshight;
@@ -39,6 +39,51 @@
                 d.getElementById("content").value = '';
             }
             return false;
+        },
+        change:function(){
+            var that=this;
+            var sendImage= d.getElementById('sendImage');
+            //检查是否有文件被选中
+            if (sendImage.files.length != 0) {
+                //获取文件并用FileReader进行读取
+                var file = sendImage.files[0],
+                    reader = new FileReader();
+                if (!reader) {
+                    that._displayNewMsg('system', '!your browser doesn\'t support fileReader', 'red');
+                    sendImage.value = '';
+                    return;
+                };
+                reader.onload = function(e) {
+                    //读取成功，显示到页面并发送到服务器
+                    sendImage.value = '';
+                    var imgdata=e.target.result;
+                    var obj={
+                        userid: that.userid,
+                        username: that.username,
+                        imgdata: imgdata
+                    }
+                    that.socket.emit('img', obj);
+                    //that._displayImage('me', obj);
+                };
+                reader.readAsDataURL(file);
+            };
+
+        },
+        _displayImage: function(obj) {
+            var isme = (obj.userid == CHAT.userid) ? true : false;
+            var contentDiv = '<div><a href="' + obj.imgdata + '" target="_blank"><img src="' + obj.imgdata + '"/></a></div>';
+            var usernameDiv = '<span>'+obj.username+'</span>';
+
+            var section = d.createElement('section');
+            if(isme){
+                section.className = 'user';
+                section.innerHTML = contentDiv + usernameDiv;
+            } else {
+                section.className = 'service';
+                section.innerHTML = usernameDiv + contentDiv;
+            }
+            CHAT.msgObj.appendChild(section);
+            CHAT.scrollToBottom();
         },
         genUid:function(){
             return new Date().getTime()+""+Math.floor(Math.random()*899+100);
@@ -87,6 +132,7 @@
             return false;
         },
         init:function(username){
+            var that=this;
             /*
              客户端根据时间和随机数生成uid,这样使得聊天室用户名称可以重复。
              实际项目中，如果是需要用户登录，那么直接采用用户的uid来做标识就可以
@@ -134,6 +180,11 @@
                 CHAT.scrollToBottom();
             });
 
+            this.socket.on('newImg', function(obj) {
+                //that._displayImage(user, img);
+                that._displayImage(obj);
+            });
+
         }
     };
     //通过“回车”提交用户名
@@ -156,4 +207,9 @@
     d.getElementById('go').addEventListener('click',function(){
         CHAT.usernameSubmit();
     })
+
+    d.getElementById('sendImage').addEventListener('change', function() {
+        CHAT.change();
+
+    });
 })();
