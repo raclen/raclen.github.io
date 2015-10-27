@@ -49,7 +49,7 @@
                 var file = sendImage.files[0],
                     reader = new FileReader();
                 if (!reader) {
-                    that._displayNewMsg('system', '!your browser doesn\'t support fileReader', 'red');
+                    console.log('读取图片失败');
                     sendImage.value = '';
                     return;
                 };
