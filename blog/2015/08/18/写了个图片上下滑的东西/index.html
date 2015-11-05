@@ -1,0 +1,498 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
+<meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
+  
+    <title>写了个图片上下滑的东西 | 当下的七炎</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="当下的七炎">
+    
+    <meta name="description" content="平常不怎么写动画，怕面试问到，刚好看到这个题目，就写写试试。代码写的有点乱…1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606">
+    
+    
+    
+    
+    <link rel="alternate" href="atom.xml" title="当下的七炎" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            var _bdId ='391982416296a0d54221f59fe35250d4';
+             hm.src = "//hm.baidu.com/hm.js?" + _bdId;
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+     
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="当下的七炎">当下的七炎</a></h1>
+				<a class="blog-motto">给自己算了一卦，五行之中水太多，故取名为七炎</a>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+                            </nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/18/写了个图片上下滑的东西/" title="写了个图片上下滑的东西" itemprop="url">写了个图片上下滑的东西</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://raclen.win" title="当下的七炎">当下的七炎</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-08-18T04:41:44.000Z" itemprop="datePublished">2015-08-18</time>
+    更新日期:<time datetime="2015-11-04T07:18:32.987Z" itemprop="dateModified">2015-11-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+		</div>
+		
+		<p>平常不怎么写动画，怕面试问到，刚好看到这个题目，就写写试试。代码写的有点乱…<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>滑动<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">    * <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">li</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">list-style</span>:<span class="value"> none</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">img</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">border</span>:<span class="value"> none</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="class">.content</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">150px</span> auto auto auto</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">470px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">150px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">ol</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">bottom</span>:<span class="value"> <span class="number">20px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">right</span>:<span class="value"> <span class="number">20px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">z-index</span>:<span class="value"> <span class="number">2</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">ol</span> <span class="tag">li</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">margin-right</span>:<span class="value"> <span class="number">5px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#fff</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">15px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">15px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">cursor</span>:<span class="value"> pointer</span></span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">ol</span> <span class="tag">li</span><span class="class">.active</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#f47500</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="class">.content</span> <span class="tag">ul</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">ol</span> <span class="attribute">id</span>=<span class="value">"ol"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span>4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span>5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"ul"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:;"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://www.codefans.net//jscss/demoimg/201108/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"广告一"</span>/&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:;"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://www.codefans.net//jscss/demoimg/201108/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"广告二"</span>/&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:;"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://www.codefans.net//jscss/demoimg/201108/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"广告三"</span>/&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:;"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://www.codefans.net//jscss/demoimg/201108/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"广告四"</span>/&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:;"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://www.codefans.net//jscss/demoimg/201108/5.jpg"</span> <span class="attribute">alt</span>=<span class="value">"广告五"</span>/&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="keyword">var</span> len = $(<span class="string">'#ul li'</span>).length;</span><br><span class="line">    $(<span class="string">'#ol li'</span>).eq(<span class="number">0</span>).addClass(<span class="string">'active'</span>).siblings().removeClass(<span class="string">'active'</span>);</span><br><span class="line">    <span class="keyword">var</span> i = dis = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> ulTop = $(<span class="string">'#ul'</span>).offset().top - <span class="number">150</span>;</span><br><span class="line">    <span class="keyword">var</span> slide = <span class="function"><span class="keyword">function</span> (<span class="params">dz</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dz == <span class="string">'down'</span>)i++, h = -<span class="number">150</span>;</span><br><span class="line">        <span class="keyword">else</span> i--, h = <span class="number">150</span>;</span><br><span class="line"></span><br><span class="line">        $(<span class="string">'#ol li'</span>).eq(i).addClass(<span class="string">'active'</span>).siblings().removeClass(<span class="string">'active'</span>);</span><br><span class="line">        <span class="keyword">var</span> ulTop = $(<span class="string">'#ul'</span>).offset().top - <span class="number">150</span>;</span><br><span class="line">        $(<span class="string">'#ul'</span>).animate(&#123;<span class="string">'top'</span>: ulTop + h + <span class="string">'px'</span>&#125;, <span class="number">500</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> slide2 = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        $(<span class="string">'#ol li'</span>).eq(n).addClass(<span class="string">'active'</span>).siblings().removeClass(<span class="string">'active'</span>);</span><br><span class="line">        $(<span class="string">'#ul'</span>).animate(&#123;<span class="string">'top'</span>: -n * <span class="number">150</span> + <span class="string">'px'</span>&#125;, <span class="number">500</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> autoshow = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= len - <span class="number">1</span>) &#123;</span><br><span class="line">            dis = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            dis = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dis == <span class="number">0</span>) &#123;</span><br><span class="line">            slide(<span class="string">'down'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dis == <span class="number">1</span>) &#123;</span><br><span class="line">            slide(<span class="string">'up'</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">    $(<span class="string">'#ol li'</span>).mouseover(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        clearInterval(autoshow);</span><br><span class="line">    &#125;)</span><br><span class="line">    $(<span class="string">'#ol li'</span>).mouseout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        autoshow = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= len - <span class="number">1</span>) &#123;</span><br><span class="line">                dis = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                dis = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (dis == <span class="number">0</span>) &#123;</span><br><span class="line">                slide(<span class="string">'down'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (dis == <span class="number">1</span>) &#123;</span><br><span class="line">                slide(<span class="string">'up'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    $(<span class="string">'#ol li'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> index = $(<span class="keyword">this</span>).index();</span><br><span class="line">        i = index;</span><br><span class="line">        slide2(index);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果演示：<a href="http://output.jsbin.com/fepetupeqa" target="_blank" rel="external">http://output.jsbin.com/fepetupeqa</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/滑动/">滑动</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/javascript/">javascript</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://raclen.win/2015/08/18/写了个图片上下滑的东西/" data-title="写了个图片上下滑的东西 | 当下的七炎" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/08/28/使用触摸事件判断滑动方向/" title="使用触摸事件判断滑动方向">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  使用触摸事件判断滑动方向</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/08/11/移动端reset-css/"  title="移动端reset.css">
+ <strong>NEXT:</strong><br/> 
+ <span>移动端reset.css
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	
+	<div class="ds-thread" data-title="写了个图片上下滑的东西" data-thread-key="写了个图片上下滑的东西" data-author-key="当下的七炎" data-url="http://raclen.win/post/写了个图片上下滑的东西"></div>
+	
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-logo"></div>		
+	
+	<div class="social-list" class="clearfix">
+		
+		<a href="http://weibo.com/http://weibo.com/t2275025" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/https://github.com/raclen" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/css/" title="css">css<sup>8</sup></a></li>
+		
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>40</sup></a></li>
+		
+			<li><a href="/categories/other/" title="other">other<sup>3</sup></a></li>
+		
+			<li><a href="/categories/工具/" title="工具">工具<sup>2</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/box-pack/" title="box-pack">box-pack<sup>1</sup></a></li>
+		
+			<li><a href="/tags/bug/" title="bug">bug<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>3</sup></a></li>
+		
+			<li><a href="/tags/express/" title="express">express<sup>1</sup></a></li>
+		
+			<li><a href="/tags/flex/" title="flex">flex<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+		
+			<li><a href="/tags/iframe-css3-loading/" title="iframe css3 loading">iframe css3 loading<sup>1</sup></a></li>
+		
+			<li><a href="/tags/index/" title="index">index<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js/" title="js">js<sup>16</sup></a></li>
+		
+			<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/tags/other/" title="other">other<sup>1</sup></a></li>
+		
+			<li><a href="/tags/rem/" title="rem">rem<sup>1</sup></a></li>
+		
+			<li><a href="/tags/reset/" title="reset">reset<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sae/" title="sae">sae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
+		
+			<li><a href="/tags/布局/" title="布局">布局<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数组/" title="数组">数组<sup>2</sup></a></li>
+		
+			<li><a href="/tags/日历/" title="日历">日历<sup>1</sup></a></li>
+		
+			<li><a href="/tags/模板/" title="模板">模板<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+      <li><a href="" target="_blank"></a></li>
+
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">標簽雲</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/box-pack/" style="font-size: 10px;">box-pack</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/iframe-css3-loading/" style="font-size: 10px;">iframe css3 loading</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/nodejs/" style="font-size: 13.33px;">nodejs</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/reset/" style="font-size: 10px;">reset</a> <a href="/tags/sae/" style="font-size: 10px;">sae</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/布局/" style="font-size: 13.33px;">布局</a> <a href="/tags/数组/" style="font-size: 13.33px;">数组</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/模板/" style="font-size: 10px;">模板</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/滑动/" style="font-size: 13.33px;">滑动</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/表单/" style="font-size: 10px;">表单</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/跨域/" style="font-size: 13.33px;">跨域</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a> <a href="/tags/验证/" style="font-size: 10px;">验证</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+    
+            <p class="copyright"> © 2015 
+		
+		<a href="http://raclen.win" target="_blank" title="当下的七炎">当下的七炎</a>
+		
+            && Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> && Theme by <a href="http://gengbiao.me" target="_blank" title="coney">coney</a>
+            </div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar').click(function () {
+            $('header nav').toggleClass('shownav');
+        });
+        var myWidth = 0;
+
+        function getSize() {
+            if (typeof( window.innerWidth ) == 'number') {
+                myWidth = window.innerWidth;
+            } else if (document.documentElement && document.documentElement.clientWidth) {
+                myWidth = document.documentElement.clientWidth;
+            }
+            ;
+        };
+        var m = $('#main'),
+                a = $('#asidepart'),
+                c = $('.closeaside'),
+                o = $('.openaside');
+        $(window).resize(function () {
+            getSize();
+            if (myWidth >= 1024) {
+                $('header nav').removeClass('shownav');
+            } else {
+                m.removeClass('moveMain');
+                a.css('display', 'block').removeClass('fadeOut');
+                o.css('display', 'none');
+                
+                $('#toc.toc-aside').css('display', 'none');
+                
+            }
+        });
+        c.click(function () {
+            a.addClass('fadeOut').css('display', 'none');
+            o.css('display', 'block').addClass('fadeIn');
+            m.addClass('moveMain');
+        });
+        o.click(function () {
+            o.css('display', 'none').removeClass('beforeFadeIn');
+            a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');
+            m.removeClass('moveMain');
+        });
+        $(window).scroll(function () {
+            o.css("top", Math.max(80, 260 - $(this).scrollTop()));
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ai = $('.article-content>iframe'),
+                ae = $('.article-content>embed'),
+                t = $('#toc'),
+                h = $('article h2')
+        ah = $('article h2'),
+                ta = $('#toc.toc-aside'),
+                o = $('.openaside'),
+                c = $('.closeaside');
+        if (ai.length > 0) {
+            ai.wrap('<div class="video-container" />');
+        }
+        ;
+        if (ae.length > 0) {
+            ae.wrap('<div class="video-container" />');
+        }
+        ;
+        if (ah.length == 0) {
+            t.css('display', 'none');
+        } else {
+            c.click(function () {
+                ta.css('display', 'block').addClass('fadeIn');
+            });
+            o.click(function () {
+                ta.css('display', 'none');
+            });
+            $(window).scroll(function () {
+                ta.css("top", Math.max(140, 320 - $(this).scrollTop()));
+            });
+        }
+        ;
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $this = $('.share'),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                title = $this.attr('data-title'),
+                tsina = $this.attr('data-tsina');
+        var html = [
+            '<a href="#" class="overlay" id="qrcode"></a>',
+            '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+            '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+            '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+            '<a href="http://service.weibo.com/share/share.php?title=' + title + '&url=' + encodedUrl + '&ralateUid=' + tsina + '&searchPic=true&style=number' + '" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+            '<span title="Share to"></span>'
+        ].join('');
+        $this.append(html);
+        $('.article-share-qrcode').click(function () {
+            var imgSrc = $('#qrcode-pic').attr('data-src');
+            $('#qrcode-pic').attr('src', imgSrc);
+            $('#qrcode-pic').load(function () {
+                $('.qrcode strong').text(' ');
+            });
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    var duoshuoQuery = {short_name: "hello-javascript"};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+<script>
+    
+        var _bdImg = '4';
+    
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{
+
+            },
+            "bdText":"",
+            "bdMini":"2",
+            "bdMiniList":[
+                "qzone",
+                "tsina",
+                "weixin",
+                "renren",
+                "tqq",
+                "tieba",
+                "douban",
+                "sqq",
+                "diandian",
+                "huaban",
+                "youdao",
+                "mail",
+                "ty",
+                "fbook",
+                "twi",
+                "linkedin",
+                "copy",
+                "print"
+            ],
+            "bdPic":"",
+            "bdStyle":"0",
+            "bdSize":"16"
+        },
+        "slide":{
+            "type":"slide",
+            "bdImg":_bdImg,
+            "bdPos":"right",
+            "bdTop":"350"
+        },
+        "image":{
+            "viewList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ],
+            "viewText":"分享：",
+            "viewSize":"16"
+        },
+        "selectShare":{
+            "bdContainerClass":null,
+            "bdSelectMiniList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ]
+        }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
+

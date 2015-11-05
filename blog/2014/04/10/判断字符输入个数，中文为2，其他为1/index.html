@@ -7,10 +7,12 @@
   <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
 <meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
   
-    <title>当下的七炎</title>
+    <title>判断字符输入个数，中文为2，其他为1 | 当下的七炎</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="当下的七炎">
+    
+    <meta name="description" content="12345678910111213141516171819202122232425//返回val的字节长度      function getByteLen(val) &amp;#123;          var len = 0;          for (var i = 0; i &amp;lt; val.l">
     
     
     
@@ -68,160 +70,94 @@
 
     </header>
     <div id="container">
-      <div id="main">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/04/10/判断字符输入个数，中文为2，其他为1/" title="判断字符输入个数，中文为2，其他为1" itemprop="url">判断字符输入个数，中文为2，其他为1</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://raclen.win" title="当下的七炎">当下的七炎</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-04-10T03:43:51.000Z" itemprop="datePublished">2014-04-10</time>
+    更新日期:<time datetime="2015-11-04T07:18:33.133Z" itemprop="dateModified">2015-11-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+		</div>
+		
+		<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回val的字节长度</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">getByteLen</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> len = <span class="number">0</span>;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; val.length; i++) &#123;</span><br><span class="line">              <span class="keyword">if</span> (val[i].match(<span class="regexp">/[^\x00-\xff]/ig</span>) != <span class="literal">null</span>) <span class="comment">//全角</span></span><br><span class="line">                  len += <span class="number">2</span>;</span><br><span class="line">              <span class="keyword">else</span></span><br><span class="line">                  len += <span class="number">1</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> len;</span><br><span class="line">      &#125;</span><br><span class="line">          $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                         <span class="keyword">var</span> text = $(<span class="string">"#album_name"</span>).val();</span><br><span class="line">                          <span class="keyword">var</span> counter = getByteLen(text);</span><br><span class="line">                         $(<span class="string">"#numtj var"</span>).text(counter);</span><br><span class="line">                         $(<span class="string">"#album_name"</span>).keyup(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">                                <span class="keyword">var</span> text = $(<span class="string">"#album_name"</span>).val();</span><br><span class="line">                                <span class="keyword">var</span> counter = getByteLen(text);</span><br><span class="line">                               $(<span class="string">"#name_word"</span>).text(counter);</span><br><span class="line">                         &#125;);</span><br><span class="line"></span><br><span class="line">          &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> maxlength=<span class="string">"10"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"int_txt"</span> name=<span class="string">"album_name"</span> id=<span class="string">"album_name"</span>&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"count_txt"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"name_word"</span>&gt;</span>0<span class="tag">&lt;/<span class="title">span</span>&gt;</span>/10<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span></span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a>
+  </div>
 
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/10/23/几个不错css-loading动画/" title="几个不错css-loading动画" itemprop="url">
-  
-      <time datetime="2015-10-23T08:16:48.000Z" itemprop="datePublished">2015-10-23</time>
-    <h1 itemprop="name">几个不错css-loading动画</h1>
-    
-     
-           <p itemprop="description" >看jsfiddle效果</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/10/19/node-Mongoose实现分页/" title="node+Mongoose实现分页" itemprop="url">
-  
-      <time datetime="2015-10-19T05:32:33.000Z" itemprop="datePublished">2015-10-19</time>
-    <h1 itemprop="name">node+Mongoose实现分页</h1>
-    
-     
-           <p itemprop="description" >如果说hibernate是让程序员用面向对象的思维操作数据库，Mongoose就是让程序员用函数的思想操作数据库。node+Mongoose实现分页的原理这个人写的是对的，就是有个单词写错了exex应为exec修改后如下12345678910var mongoose = requ</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/10/19/取不到数据/" title="express post请求res.body 取不到数据" itemprop="url">
-  
-      <time datetime="2015-10-19T02:42:49.000Z" itemprop="datePublished">2015-10-19</time>
-    <h1 itemprop="name">express post请求res.body 取不到数据</h1>
-    
-     
-           <p itemprop="description" >使用post请求，json格式的时候，req.body=undefind这里需要使用一个中间件body-parser12345678910111213141516var express = require(&#39;express&#39;);var bodyParser = require(&#39;</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/10/08/数组去重/" title="数组去重" itemprop="url">
-  
-      <time datetime="2015-10-08T09:21:34.000Z" itemprop="datePublished">2015-10-08</time>
-    <h1 itemprop="name">数组去重</h1>
-    
-     
-           <p itemprop="description" >今天发现以前写的数组去重方法有问题，删了新的，这个应该没问题吧12345678910111213141516171819202122var arr4 = [2, 5, 1, 1, 1, 1, 1, 5, 2, 1];var arr = &amp;#123;    unique: func</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/09/25/清晨好文章/" title="清晨好文章" itemprop="url">
-  
-      <time datetime="2015-09-25T09:07:06.000Z" itemprop="datePublished">2015-09-25</time>
-    <h1 itemprop="name">清晨好文章</h1>
-    
-     
-           <p itemprop="description" >使用到了nodejs+mongoose+socket.io部署在https://coding.net预览地址http://raclen.win/（用手机访问）
-代码在https://coding.net/u/max001/p/raclen/git</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/09/23/图片滑动，每次移动一个/" title="图片滑动，每次移动一个" itemprop="url">
-  
-      <time datetime="2015-09-23T02:36:52.000Z" itemprop="datePublished">2015-09-23</time>
-    <h1 itemprop="name">图片滑动，每次移动一个</h1>
-    
-     
-           <p itemprop="description" >这东西几行代码就写完了，一些插件写得那么多，吓人12345678910111213141516171819202122232425262728293031323334353637&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head lang=&quot;en&quot;</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/09/22/float-left的对象如何居中/" title="float-left的对象如何居中" itemprop="url">
-  
-      <time datetime="2015-09-22T02:07:24.000Z" itemprop="datePublished">2015-09-22</time>
-    <h1 itemprop="name">float-left的对象如何居中</h1>
-    
-     
-           <p itemprop="description" >[参与测试的浏览器：IE6 / IE7 / IE8 / FF3 / OP9.6 / SF3 / Chrome2 ]
-我们在做导航（nav）时，通常会用到float：left;但是这样做的话，让导航文本水平居中确实个麻烦事；
-PC端用的多，在手机端，可以不用float，很多新的布局</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/09/17/加载进度条/" title="加载进度条" itemprop="url">
-  
-      <time datetime="2015-09-17T03:25:43.000Z" itemprop="datePublished">2015-09-17</time>
-    <h1 itemprop="name">加载进度条</h1>
-    
-     
-           <p itemprop="description" >动画写的好，一定要css写得多，看着一个动画，就能看出来它的结构，有了结构，js就好写了，下面是一个进度条123456789101112131415161718192021222324252627282930313233343536373839404142434445464748</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/09/16/验证提示组件/" title="验证提示组件" itemprop="url">
-  
-      <time datetime="2015-09-16T11:21:47.000Z" itemprop="datePublished">2015-09-16</time>
-    <h1 itemprop="name">验证提示组件</h1>
-    
-     
-           <p itemprop="description" >以前主要写移动端，验证提示不会放在文本框后面，屏幕比较小，PC端这种提示很不错
-我觉得PC兼容性很多，使用jquery是很好的，所以这个组件基于jquery，来避免未知的错误123456789101112131415161718192021222324252627282930;(</p>
-        
-    
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/09/07/写了一个简单的日历/" title="写了一个简单的日历" itemprop="url">
-  
-      <time datetime="2015-09-07T10:53:30.000Z" itemprop="datePublished">2015-09-07</time>
-    <h1 itemprop="name">写了一个简单的日历</h1>
-    
-     
-           <p itemprop="description" >公司的一个日历控件有问题，让我看哪有问题，看起来真复杂，我就先写了一个日历，看实现原理是什么也不怎么会表达，一行一行的coding完了，就这样了预览地址http://output.jsbin.com/qayisezula核心代码12345678910111213141516171</p>
-        
-    
-  </a>
-</section>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/javascript/">javascript</a>
+</div>
 
 
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
+
+<div class="article-share" id="share">
+
+  <div data-url="http://raclen.win/2014/04/10/判断字符输入个数，中文为2，其他为1/" data-title="判断字符输入个数，中文为2，其他为1 | 当下的七炎" data-tsina="null" class="share clearfix">
+  </div>
 
 </div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/04/10/contains实现简单搜索/" title="contains实现简单搜索">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  contains实现简单搜索</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/04/08/CSS边框发光/"  title="css边框发光">
+ <strong>NEXT:</strong><br/> 
+ <span>css边框发光
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	
+	<div class="ds-thread" data-title="判断字符输入个数，中文为2，其他为1" data-thread-key="判断字符输入个数，中文为2，其他为1" data-author-key="当下的七炎" data-url="http://raclen.win/post/判断字符输入个数，中文为2，其他为1"></div>
+	
+</section>
+
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
@@ -335,8 +271,8 @@ PC端用的多，在手机端，可以不用float，很多新的布局</p>
 
 </aside>
 </div>
-  </div>
-  <footer><div id="footer" >
+    </div>
+    <footer><div id="footer" >
     
             <p class="copyright"> © 2015 
 		
@@ -374,6 +310,8 @@ PC端用的多，在手机端，可以不用float，很多新的布局</p>
                 a.css('display', 'block').removeClass('fadeOut');
                 o.css('display', 'none');
                 
+                $('#toc.toc-aside').css('display', 'none');
+                
             }
         });
         c.click(function () {
@@ -392,7 +330,83 @@ PC端用的多，在手机端，可以不用float，很多新的布局</p>
     });
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ai = $('.article-content>iframe'),
+                ae = $('.article-content>embed'),
+                t = $('#toc'),
+                h = $('article h2')
+        ah = $('article h2'),
+                ta = $('#toc.toc-aside'),
+                o = $('.openaside'),
+                c = $('.closeaside');
+        if (ai.length > 0) {
+            ai.wrap('<div class="video-container" />');
+        }
+        ;
+        if (ae.length > 0) {
+            ae.wrap('<div class="video-container" />');
+        }
+        ;
+        if (ah.length == 0) {
+            t.css('display', 'none');
+        } else {
+            c.click(function () {
+                ta.css('display', 'block').addClass('fadeIn');
+            });
+            o.click(function () {
+                ta.css('display', 'none');
+            });
+            $(window).scroll(function () {
+                ta.css("top", Math.max(140, 320 - $(this).scrollTop()));
+            });
+        }
+        ;
+    });
+</script>
 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $this = $('.share'),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                title = $this.attr('data-title'),
+                tsina = $this.attr('data-tsina');
+        var html = [
+            '<a href="#" class="overlay" id="qrcode"></a>',
+            '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+            '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+            '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+            '<a href="http://service.weibo.com/share/share.php?title=' + title + '&url=' + encodedUrl + '&ralateUid=' + tsina + '&searchPic=true&style=number' + '" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+            '<span title="Share to"></span>'
+        ].join('');
+        $this.append(html);
+        $('.article-share-qrcode').click(function () {
+            var imgSrc = $('#qrcode-pic').attr('data-src');
+            $('#qrcode-pic').attr('src', imgSrc);
+            $('#qrcode-pic').load(function () {
+                $('.qrcode strong').text(' ');
+            });
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    var duoshuoQuery = {short_name: "hello-javascript"};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
 
 
 
@@ -479,5 +493,5 @@ ga('send', 'pageview');
 
 
   </body>
- </html>
+</html>
 
