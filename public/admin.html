@@ -7,7 +7,106 @@
     <link href="raclen.ico" rel="Shortcut Icon">
     <link rel="stylesheet" href="css/resest.css"/>
     <link rel="stylesheet" href="css/admin.css"/>
-    <link rel="stylesheet" href="js/editor/themes/default/default.css"/>
+    <link rel="stylesheet" href="resource/editor/css/editor.css">
+    <link rel="stylesheet" href="resource/highlightJS/styles/github.css">
+    <script src="resource/js/jquery.js"></script>
+    <script src="resource/editor/js/editor.js"></script>
+    <script src="resource/plupload/plupload.full.min.js"></script>
+    <script src="resource/highlightJS/highlight.pack.js"></script>
+    <div id="uploadContainer">
+        <input type="button" value="选择文件" id="btnBrowse"/>
+        <input type="button" value="上传文件" id="btnUpload">
+        <ul id="fileList"></ul>
+    </div>
+    <script>
+        $(function(){
+            //代码高亮
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+            //获取dom节点
+            var $uploadContainer = $('#uploadContainer'),
+                    $fileList = $('#fileList'),
+                    $btnUpload = $('#btnUpload');
+            //实例化编辑器
+            var editor = $('#content').wangEditor({
+                uploadImgComponent: $uploadContainer
+            });
+            //实例化一个上传对象
+            var uploader = new plupload.Uploader({
+                browse_button: 'btnBrowse',
+                url: '/uploadImg',
+                flash_swf_url: '/resource/plupload/Moxie.swf',
+                sliverlight_xap_url: '/resource/plupload/Moxie.xap',
+                filters: {
+                    mime_types: [
+                        //只允许上传图片文件 （注意，extensions中，逗号后面不要加空格）
+                        { title: "图片文件", extensions: "jpg,gif,png,bmp" }
+                    ]
+                }
+            });
+            //存储多个图片的url地址
+            var urls = [];
+
+            //存储触发上传事件的事件对象
+            var event;
+
+            //初始化
+            uploader.init();
+
+            //绑定文件添加到队列的事件
+            uploader.bind('FilesAdded', function (uploader, files) {
+                $.each(files, function (key, value) {
+                    var fileName = value.name,
+                            html = '<li id="file-' + value.id + '">' +
+                                    ' <p class="file-name">' + fileName + '</p>' +
+                                    ' <p class="progress"></p>' +
+                                    '</li>';
+
+                    $fileList.append(html);
+                });
+            });
+
+            //绑定上传进度
+            uploader.bind('UploadProgress', function (uploader, file) {
+                $fileList.find('.progress').text(file.percent + '%');
+            });
+
+            //单个文件上传之后
+            uploader.bind('FileUploaded', function (uploader, file, responseObject) {
+                //从服务器返回图片url地址
+                var url = responseObject.response;
+                //先将url地址存储来
+                if(url=="0"){
+                    alert("上传失败");
+                }else{
+                    urls.push(url);
+                }
+            });
+
+            //全部文件上传时候
+            uploader.bind('UploadComplete', function (uploader, files) {
+
+                $.each(urls, function (key, value) {
+                    //把每一个图片的url，都插入到编辑器中
+                    editor.command(event, 'insertHTML', '<img src="' + value + '"/>');
+                });
+
+                //清空url数组
+                urls = [];
+
+                //清空显示列表
+                $fileList.html('');
+            });
+
+            //上传事件
+            $btnUpload.click(function (e) {
+                event = e;
+                uploader.start();
+            });
+
+        });
+    </script>
 </head>
 <body>
 <div class="page admin">
@@ -36,8 +135,8 @@
 
                         <dd class="menu_item selected"><a href="javascript:void(0)">撰写文章</a></dd>
                         <dd class="menu_item "><a href="javascript:void(0)">删除文章</a></dd>
-                        <dd class="menu_item "><a href="javascript:void(0)">添加管理员</a></dd>
                         <dd class="menu_item "><a href="javascript:void(0)">意见反馈</a></dd>
+                        <dd class="menu_item "><a href="javascript:void(0)">添加管理员</a></dd>
                         <dd class="menu_item "><a href="javascript:void(0)">待定 </a></dd>
                     </dl>
 
@@ -77,10 +176,10 @@
 
                                 <div class="appmsg_edit_item">
                                     <label class="frm_label">正文</label>
-     <span class="frm_input_box with_counter counter_in append count">
-                                    <textarea id="editor_id" name="content" style="width:700px;height:300px;">
-                                        &lt;strong&gt;HTML内容&lt;/strong&gt;
-                                    </textarea>
+     <span class="frm_input_box with_counter  append count">
+                                <textarea style="width: 500px;height: 380px" class="input"  name="content" id="content" rows="10" cols="50" placeholder="文章内容">
+                                   html内容
+                                </textarea>
                                     </span>
                                 </div>
                             </div>
@@ -114,6 +213,31 @@
                                 href="javascript:void(0)" class="next">下一页</a></div>
                     </div>
                 </div>
+                <div class="main-item">
+                    <div class="main_hd">
+                        <h2>查看意见反馈</h2>
+                    </div>
+                    <div class="main_bd">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>反馈信息</th>
+                                <th>联系方式</th>
+
+                            </tr>
+                            </thead>
+                            <tbody id="feedback">
+                            <!--    <tr>
+                                    <td>九木旭</td>
+                                    <td><a href="javascript:void(0)" data-articleid="">删除</a></td>
+                                </tr>-->
+
+                            </tbody>
+                        </table>
+                        <div class="paging"><a href="javascript:void(0)" class="pre dis">上一页</a><a
+                                href="javascript:void(0)" class="next">下一页</a></div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -122,17 +246,10 @@
 </div>
 
 </div>
-<script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
-<script charset="utf-8" src="js/editor/kindeditor.js"></script>
-<script>
-    //生产编辑器
-    var editor;
-    KindEditor.ready(function (K) {
-        editor = K.create('textarea[name="content"]', {
-            allowFileManager: true
-        });
 
-    });
+
+<script>
+
 
     //页码page
     var categorypage = 1;
@@ -150,7 +267,7 @@
                 },
                 success: function (res) {
                     $('#actionList').html('');
-                    var data=res.items;
+                    var data = res.items;
                     for (var i = 0, len = data.length; i < len; i++) {
                         $('#actionList').append(
                                 '<tr>' +
@@ -161,15 +278,36 @@
                         );
                     }
                     //最后一页了
-                    var tolpage=parseInt(res.pagenum/10)+1;
-                    if(categorypage==tolpage){
-                            $('.next').addClass('dis');
+                    var tolpage = parseInt(res.pagenum / 10) + 1;
+                    if (categorypage == tolpage) {
+                        $('.next').addClass('dis');
 
                     }
                     $('.del-btn').on('click', function () {
                         var articleid = $(this).data('articleid');
                         admin.delarticle(articleid);
                     })
+                }
+            })
+        },
+        feedback:function(){
+            $.ajax({
+                url: '/findfeedback',
+                type: 'GET',
+                dataType: 'json',
+                beforeSend: function () {
+                },
+                success: function (res) {
+                    $('#feedback').html('');
+                    for(var i= 0,len=res.length;i<len;i++){
+                        $('#feedback').append(
+                                '<tr>' +
+                                '<td>' + res[i].feedbackMessage + '</td>' +
+                                '<td>' + res[i].contact + '</td>' +
+                                '</tr>'
+                        )
+                    }
+
                 }
             })
         },
@@ -196,7 +334,7 @@
     $('#js_submit').on('click', function () {
         var title = $('#title').val();
         var author = $('#author').val();
-        var editorcontent = editor.html();
+        var editorcontent = $('#content').val();
         if ($.trim(title) == '') {
             alert('标题不能为空');
             return;
@@ -219,8 +357,11 @@
             dataType: 'json',
 
             success: function (data) {
-                if (data.statusCode == '0000')
+                if (data.statusCode == '0000'){
                     alert('感谢你的贡献，文章添加成功');
+                    location.reload();
+                }
+
 
             }
         })
@@ -234,20 +375,30 @@
         // alert(_index);
         $mainitem.hide();
         $mainitem.eq(_index).show();
-        admin.findarticle(1, '004');
+
+        switch(_index){
+            case 1:
+                admin.findarticle(1, '004');
+                break;
+            case 2:
+                admin.feedback()
+                break;
+
+        }
+
 
     })
     $('.pre').on('click', function () {
-        categorypage=--categorypage;
+        categorypage = --categorypage;
         $('.next').removeClass('dis');
-        if(categorypage==1){
+        if (categorypage == 1) {
             $(this).addClass('dis');
         }
         admin.findarticle(categorypage, '004');
 
     })
     $('.next').on('click', function () {
-        categorypage=++categorypage;
+        categorypage = ++categorypage;
         $('.pre').removeClass('dis');
         admin.findarticle(categorypage, '004');
 
