@@ -70,6 +70,9 @@ var home = {
         _self.config.resource=_r;
         //根据id获取名称
         function getArrayName(_arr,cg,did){
+            if(!_arr[cg]){
+                return did;
+            }
             for(var k= 0,len= _arr[cg].length;k<len;k++){
                 if(_arr[cg][k].id==did){
                     return _arr[cg][k].name;
@@ -268,7 +271,13 @@ var home = {
                         $itemSel.trigger('change');
 
                     }
-                    _self.getResources(c);
+                    if(_type!=3){
+                        _self.getResources(c);
+                    }
+                    if(_type==3){
+                      $('#detail-ul').html('');
+                        $('.li-sub').hide();
+                    }
                     $navli.removeClass('active');
                     $(this).addClass('active');
                 });
