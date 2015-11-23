@@ -75,6 +75,7 @@ var home = {
                     return _arr[cg][k].name;
                 }
             }
+            return did;
         }
         for (var i in arr) {
             res[arr[i].categoryId] = {};
@@ -171,7 +172,11 @@ var home = {
             }
         }
         //填充数据
-        function showSearch(_arr) {
+        function showSearch(_arr1) {
+            var _arr=[];
+            _arr1.forEach(function(item,i){
+                _arr[i]=parseFloat(item);
+            });
             var category = $('.nav-pills .active').find('a').data('categoryid');
             var $textc = $('.text-content[data-category=' + category + ']');
             if ($textc.length == 0) {
@@ -210,11 +215,14 @@ var home = {
         });
         //输入框回车提交
         $('#keySubmit').on('keydown', function (e) {
+            var select = $('#item-sel');
+            var selval = select.val() || "0";
             e = e || event;
             if (e.keyCode === 13) {
                 //alert('回车');
                 var tval = $(this).val();
                 var _arrVal = tval.split(/,|，/g);
+                if(_arrVal.length===1&&selval!=0)_self.seleltRes(_arrVal[0],_arrVal[0]);
                 showSearch(_arrVal);
             }
         })
@@ -269,6 +277,185 @@ var home = {
         })
 
     },
+    seleltRes:function(valId,txt){
+        var select = $('#item-sel');
+        var selval = select.val() || "0";
+        var category = $('.nav-pills .active').find('a').data('categoryid');
+        var $textc = $('.text-content[data-category=' + category + ']');
+        if ($textc.length == 0) {
+            $textc = $('<div class="text-content" data-category=' + category + '><h2>' + res[category].categoryName + '</h2><a href="javascript:void(0)" class="cClose">×</a></div>')
+            $('#text-mains').append($textc);
+        }
+        //渲染
+
+        var _category = configdata[category];
+
+        switch (selval) {
+            case "0":
+                if (!configdata[category]) {
+                    var $pequal = $('<p class="pequal" data-type="equal">等于：</p>');
+                    $pequal.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pequal);
+                    configdata[category] = {};
+                    configdata[category].equal = [];
+                    configdata[category].equal.push(valId);
+                    break;
+                }
+                if (!_self.equalid(valId, _category.equal)) {
+                    var $pequal = $textc.find('.pequal');
+                    $pequal.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    _category.equal.push(valId);
+                    break;
+                }
+                break;
+
+            case "1":
+                if (!_category) {
+                    var $pless = $('<p class="pless" data-type="less">小于：</p>');
+                    $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pless);
+                    configdata[category] = {};
+                    configdata[category].less = valId;
+                    break;
+                }
+                if (!!_category.lessEqual && valId < _category.lessEqual) {
+                    $textc.find('.plessEqual').remove();
+                    var $pless = $('<p class="pless" data-type="less">小于：</p>');
+                    $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pless);
+                    _category.less = valId;
+                    _category.lessEqual='';
+                    break;
+
+                }
+                if (!!_category.less && valId < _category.less) {
+                    $textc.find('.pless a').remove();
+                    var $pless = $textc.find('.pless');
+                    $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    _category.less = valId;
+                    break;
+                }
+                if (!!_category.lessEqual && valId >= _category.lessEqual||!!_category.less && valId >= _category.less) {
+                    break;
+                }
+                if (!_category.less) {
+                    var $pless = $('<p class="pless" data-type="less">小于：</p>');
+                    $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pless);
+                    _category.less = valId;
+                    break;
+                }
+
+
+            case "2":
+                if (!configdata[category]) {
+                    var $pgreater = $('<p class="pgreater" data-type="greater">大于：</p>');
+                    $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pgreater);
+                    configdata[category] = {};
+                    configdata[category].greater = valId;
+                    break;
+                }
+                if (!!_category.greaterEqual && valId > _category.greaterEqual) {
+                    $textc.find('.pgreaterEqual').remove();
+                    var $pgreater = $('<p class="pgreater" data-type="greater">大于：</p>');
+                    $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pgreater);
+                    _category.greater = valId;
+                    _category.greaterEqual='';
+                    break;
+                }
+                if (!!_category.greater && valId > _category.greater) {
+                    $textc.find('.pgreater a').remove();
+                    var $pgreater = $textc.find('.pgreater');
+                    $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    _category.greater = valId;
+                    break;
+                }
+                if (!!_category.greaterEqual && valId <= _category.greaterEqual||!!_category.greater && valId <= _category.greater) {
+                    break;
+                }
+                if (!_category.greater) {
+                    var $pgreater = $('<p class="pgreater" data-type="greater">大于：</p>');
+                    $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pgreater);
+                    _category.greater = valId;
+                    break;
+                }
+            case "3":
+                if (!configdata[category]) {
+                    var $plessEqual = $('<p class="plessEqual" data-type="lessEqual">小于等于：</p>');
+                    $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($plessEqual);
+                    configdata[category] = {};
+                    configdata[category].lessEqual = valId;
+                    break;
+                }
+                if (!!_category.less && valId < _category.less) {
+                    $textc.find('.pless').remove();
+                    var $plessEqual = $('<p class="plessEqual" data-type="lessEqual">小于等于：</p>');
+                    $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($plessEqual);
+                    _category.lessEqual = valId;
+                    _category.less = '';
+                    break;
+                }
+                if (!!_category.lessEqual && valId < _category.lessEqual) {
+                    $textc.find('.plessEqual a').remove();
+                    var $plessEqual = $textc.find('.plessEqual');
+                    $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    _category.lessEqual = valId;
+                    break;
+                }
+                if (!!_category.less && valId >= _category.less||!!_category.lessEqual && valId >= _category.lessEqual) {
+                    break;
+                }
+                if (!_category.lessEqual) {
+                    var $plessEqual = $('<p class="plessEqual" data-type="lessEqual">小于等于：</p>');
+                    $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($plessEqual);
+                    _category.lessEqual = valId;
+                    break;
+                }
+            case "4":
+                if (!configdata[category]) {
+                    var $pgreaterEqual = $('<p class="pgreaterEqual" data-type="greaterEqual">大于等于：</p>');
+                    $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pgreaterEqual);
+                    configdata[category] = {};
+                    configdata[category].greaterEqual = valId;
+                    break;
+                }
+                if (!!_category.greater && valId > _category.greater) {
+                    $textc.find('.pgreater').remove();
+                    var $pgreaterEqual = $('<p class="pgreaterEqual" data-type="greaterEqual">大于等于：</p>');
+                    $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pgreaterEqual);
+                    _category.greaterEqual = valId;
+                    _category.greater = '';
+                    break;
+                }
+                if (!!_category.greaterEqual && valId > _category.greaterEqual) {
+                    $textc.find('.pgreaterEqual a').remove();
+                    var $pgreaterEqual = $textc.find('.pgreaterEqual');
+                    $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    _category.greaterEqual = valId;
+                    break;
+                }
+                if (!!_category.greater && valId <= _category.greater||!!_category.greaterEqual && valId <= _category.greaterEqual) {
+                    break;
+                }
+                if (!_category.greaterEqual) {
+                    var $pgreaterEqual = $('<p class="pgreaterEqual" data-type="greaterEqual">大于等于：</p>');
+                    $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
+                    $textc.append($pgreaterEqual);
+                    _category.greaterEqual = valId;
+                    break;
+                }
+        }
+
+        $(this).parents('.text-detail').hide();
+    },
     //获取下拉数据
     getResources: function (category) {
 
@@ -295,183 +482,9 @@ var home = {
                 });
                 $('#detail-ul li').on('click', function () {
                     var txt = $(this).text();
-//                    var _index = $('.nav-pills .active').index();
-                    var select = $('#item-sel');
-                    var selval = select.val() || "0";
-                    var $textc = $('.text-content[data-category=' + category + ']');
-                    if ($textc.length == 0) {
-                        $textc = $('<div class="text-content" data-category=' + category + '><h2>' + res[category].categoryName + '</h2><a href="javascript:void(0)" class="cClose">×</a></div>')
-                        $('#text-mains').append($textc);
-                    }
-                    //渲染
                     var valId = $(this).data('id');
-                    var _category = configdata[category];
-
-                    switch (selval) {
-                        case "0":
-                            if (!configdata[category]) {
-                                var $pequal = $('<p class="pequal" data-type="equal">等于：</p>');
-                                $pequal.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pequal);
-                                configdata[category] = {};
-                                configdata[category].equal = [];
-                                configdata[category].equal.push(valId);
-                                break;
-                            }
-                            if (!_self.equalid(valId, _category.equal)) {
-                                var $pequal = $textc.find('.pequal');
-                                $pequal.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                _category.equal.push(valId);
-                                break;
-                            }
-                            break;
-
-                        case "1":
-                            if (!_category) {
-                                var $pless = $('<p class="pless" data-type="less">小于：</p>');
-                                $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pless);
-                                configdata[category] = {};
-                                configdata[category].less = valId;
-                                break;
-                            }
-                            if (!!_category.lessEqual && valId < _category.lessEqual) {
-                                $textc.find('.plessEqual').remove();
-                                var $pless = $('<p class="pless" data-type="less">小于：</p>');
-                                $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pless);
-                                _category.less = valId;
-                                _category.lessEqual='';
-                                break;
-
-                            }
-                            if (!!_category.less && valId < _category.less) {
-                                $textc.find('.pless a').remove();
-                                var $pless = $textc.find('.pless');
-                                $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                _category.less = valId;
-                                break;
-                            }
-                            if (!!_category.lessEqual && valId >= _category.lessEqual||!!_category.less && valId >= _category.less) {
-                                break;
-                            }
-                            if (!_category.less) {
-                                var $pless = $('<p class="pless" data-type="less">小于：</p>');
-                                $pless.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pless);
-                                _category.less = valId;
-                                break;
-                            }
-
-
-                        case "2":
-                            if (!configdata[category]) {
-                                var $pgreater = $('<p class="pgreater" data-type="greater">大于：</p>');
-                                $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pgreater);
-                                configdata[category] = {};
-                                configdata[category].greater = valId;
-                                break;
-                            }
-                            if (!!_category.greaterEqual && valId > _category.greaterEqual) {
-                                $textc.find('.pgreaterEqual').remove();
-                                var $pgreater = $('<p class="pgreater" data-type="greater">大于：</p>');
-                                $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pgreater);
-                                _category.greater = valId;
-                                _category.greaterEqual='';
-                                break;
-                            }
-                            if (!!_category.greater && valId > _category.greater) {
-                                $textc.find('.pgreater a').remove();
-                                var $pgreater = $textc.find('.pgreater');
-                                $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                _category.greater = valId;
-                                break;
-                            }
-                            if (!!_category.greaterEqual && valId <= _category.greaterEqual||!!_category.greater && valId <= _category.greater) {
-                                break;
-                            }
-                            if (!_category.greater) {
-                                var $pgreater = $('<p class="pgreater" data-type="greater">大于：</p>');
-                                $pgreater.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pgreater);
-                                _category.greater = valId;
-                                break;
-                            }
-                        case "3":
-                            if (!configdata[category]) {
-                                var $plessEqual = $('<p class="plessEqual" data-type="lessEqual">小于等于：</p>');
-                                $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($plessEqual);
-                                configdata[category] = {};
-                                configdata[category].lessEqual = valId;
-                                break;
-                            }
-                            if (!!_category.less && valId < _category.less) {
-                                $textc.find('.pless').remove();
-                                var $plessEqual = $('<p class="plessEqual" data-type="lessEqual">小于等于：</p>');
-                                $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($plessEqual);
-                                _category.lessEqual = valId;
-                                _category.less = '';
-                                break;
-                            }
-                            if (!!_category.lessEqual && valId < _category.lessEqual) {
-                                $textc.find('.plessEqual a').remove();
-                                var $plessEqual = $textc.find('.plessEqual');
-                                $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                _category.lessEqual = valId;
-                                break;
-                            }
-                            if (!!_category.less && valId >= _category.less||!!_category.lessEqual && valId >= _category.lessEqual) {
-                                break;
-                            }
-                            if (!_category.lessEqual) {
-                                var $plessEqual = $('<p class="plessEqual" data-type="lessEqual">小于等于：</p>');
-                                $plessEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($plessEqual);
-                                _category.lessEqual = valId;
-                                break;
-                            }
-                        case "4":
-                            if (!configdata[category]) {
-                                var $pgreaterEqual = $('<p class="pgreaterEqual" data-type="greaterEqual">大于等于：</p>');
-                                $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pgreaterEqual);
-                                configdata[category] = {};
-                                configdata[category].greaterEqual = valId;
-                                break;
-                            }
-                            if (!!_category.greater && valId > _category.greater) {
-                                $textc.find('.pgreater').remove();
-                                var $pgreaterEqual = $('<p class="pgreaterEqual" data-type="greaterEqual">大于等于：</p>');
-                                $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pgreaterEqual);
-                                _category.greaterEqual = valId;
-                                _category.greater = '';
-                                break;
-                            }
-                            if (!!_category.greaterEqual && valId > _category.greaterEqual) {
-                                $textc.find('.pgreaterEqual a').remove();
-                                var $pgreaterEqual = $textc.find('.pgreaterEqual');
-                                $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                _category.greaterEqual = valId;
-                                break;
-                            }
-                            if (!!_category.greater && valId <= _category.greater||!!_category.greaterEqual && valId <= _category.greaterEqual) {
-                                break;
-                            }
-                            if (!_category.greaterEqual) {
-                                var $pgreaterEqual = $('<p class="pgreaterEqual" data-type="greaterEqual">大于等于：</p>');
-                                $pgreaterEqual.append('<a class="a-close" data-id="' + valId + '" href="javascript:void(0)">' + txt + '×</a>');
-                                $textc.append($pgreaterEqual);
-                                _category.greaterEqual = valId;
-                                break;
-                            }
-                    }
-
-                    $(this).parents('.text-detail').hide();
+//                    var _index = $('.nav-pills .active').index();
+                    _self.seleltRes(valId,txt);
                 })
             }, error: function (err) {
                 console.log(err);
