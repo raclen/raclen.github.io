@@ -48,7 +48,10 @@ var home = {
             $('.text-detail').hide();
         });
         $('.item-bar>input').on('click', function (e) {
-            $('.text-detail').show();
+            var otype = $('.nav-pills .active').find('a').data('type');
+            if(otype!=3)
+                $('.text-detail').show();
+
             e.preventDefault();
             e.stopPropagation();
         });
@@ -186,7 +189,7 @@ var home = {
                 $textc = $('<div class="text-content" data-category=' + category + '><h2>' + res[category].categoryName + '</h2><a href="javascript:void(0)" class="cClose">×</a></div>')
                 $('#text-mains').append($textc);
             }
-            if (!configdata[category]) {
+            if (!configdata[category]||!configdata[category].equal) {
                 var $pequal = $('<p class="pequal" data-type="equal">等于：</p>');
                 $pequal.append(str_arr(_arr,category));
                 $textc.append($pequal);
@@ -218,15 +221,18 @@ var home = {
         });
         //输入框回车提交
         $('#keySubmit').on('keydown', function (e) {
-            var select = $('#item-sel');
-            var selval = select.val() || "0";
+
             e = e || event;
             if (e.keyCode === 13) {
                 //alert('回车');
+                var select = $('#item-sel');
+                var selval = select.val() || "0";
                 var tval = $(this).val();
                 var _arrVal = tval.split(/,|，/g);
-                if(_arrVal.length===1&&selval!=0)_self.seleltRes(_arrVal[0],_arrVal[0]);
-                showSearch(_arrVal);
+                if(_arrVal.length===1&&selval!=0)
+                    _self.seleltRes(_arrVal[0],_arrVal[0]);
+                else
+                    showSearch(_arrVal);
             }
         })
 
