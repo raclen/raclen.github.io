@@ -51,7 +51,6 @@ var home = {
             var otype = $('.nav-pills .active').find('a').data('type');
             if(otype!=3)
                 $('.text-detail').show();
-
             e.preventDefault();
             e.stopPropagation();
         });
@@ -222,7 +221,7 @@ var home = {
         //输入框回车提交
         $('#keySubmit').on('keydown', function (e) {
 
-            e = e || event;
+           var e = e || event;
             if (e.keyCode === 13) {
                 //alert('回车');
                 var select = $('#item-sel');

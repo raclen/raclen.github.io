@@ -2,14 +2,16 @@
  * Created by dixiao on 2015/11/5.
  1:number
  2:String
- 3:other(没有id，name的类型)
+ "isshowdropdownbox":1
 
  */
 jsonp1([
   {
     "categoryId": 2014110601,
     "categoryName": "资源大区",
-    "type": 1
+    "type": 1,
+    "isshowdropdownbox":1
+
   },
   {
     "categoryId": 2014110602,
@@ -43,7 +45,7 @@ jsonp1([
   {
     "categoryId": 2014110608,
     "categoryName": "毛利率",
-    "type": 3
+    "type": 1
   },
   {
     "categoryId": 2014110609,
@@ -53,7 +55,7 @@ jsonp1([
   {
     "categoryId": 2014110610,
     "categoryName": "售价",
-    "type": 3
+    "type": 1
   }
 ])
 
