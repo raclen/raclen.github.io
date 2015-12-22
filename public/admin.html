@@ -13,11 +13,7 @@
     <script src="resource/editor/js/editor.js"></script>
     <script src="resource/plupload/plupload.full.min.js"></script>
     <script src="resource/highlightJS/highlight.pack.js"></script>
-    <div id="uploadContainer">
-        <input type="button" value="选择文件" id="btnBrowse"/>
-        <input type="button" value="上传文件" id="btnUpload">
-        <ul id="fileList"></ul>
-    </div>
+
     <script>
         $(function(){
             //代码高亮
@@ -35,9 +31,9 @@
             //实例化一个上传对象
             var uploader = new plupload.Uploader({
                 browse_button: 'btnBrowse',
-                url: '/uploadImg',
-                flash_swf_url: '/resource/plupload/Moxie.swf',
-                sliverlight_xap_url: '/resource/plupload/Moxie.xap',
+                url: 'http://raclen-wenzhang.coding.io/uploadImg',
+                flash_swf_url: 'resource/plupload/Moxie.swf',
+                sliverlight_xap_url: 'resource/plupload/Moxie.xap',
                 filters: {
                     mime_types: [
                         //只允许上传图片文件 （注意，extensions中，逗号后面不要加空格）
@@ -109,6 +105,11 @@
     </script>
 </head>
 <body>
+<div id="uploadContainer">
+    <input type="button" value="选择文件" id="btnBrowse"/>
+    <input type="button" value="上传文件" id="btnUpload">
+    <ul id="fileList"></ul>
+</div>
 <div class="page admin">
     <div class="head" id="header">
         <div class="head_box">
@@ -245,8 +246,6 @@
 
 </div>
 
-</div>
-
 
 <script>
 
@@ -343,8 +342,8 @@
             alert('正文不能为空');
             return;
         }
-        var baseUrl = '';
-        // var baseUrl='http://raclen-wenzhang.coding.io';
+       // var baseUrl = '';
+         var baseUrl='http://raclen-wenzhang.coding.io';
         var API_ADDARTICLE = baseUrl + '/addarticle';
         $.ajax({
             url: API_ADDARTICLE,
@@ -365,9 +364,9 @@
 
             }
         })
-    })
+    });
     var $menuitem = $('.menu_item');
-    var $mainitem = $('.col_main  .main-item')
+    var $mainitem = $('.col_main  .main-item');
     $menuitem.on('click', function () {
         $menuitem.removeClass('selected');
         $(this).addClass('selected');
@@ -381,13 +380,13 @@
                 admin.findarticle(1, '004');
                 break;
             case 2:
-                admin.feedback()
+                admin.feedback();
                 break;
 
         }
 
 
-    })
+    });
     $('.pre').on('click', function () {
         categorypage = --categorypage;
         $('.next').removeClass('dis');
@@ -396,7 +395,7 @@
         }
         admin.findarticle(categorypage, '004');
 
-    })
+    });
     $('.next').on('click', function () {
         categorypage = ++categorypage;
         $('.pre').removeClass('dis');

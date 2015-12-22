@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>清晨好文章</title>
@@ -10,167 +11,29 @@
     <meta content="telephone=no" name="format-detection">
     <link rel="stylesheet" href="css/resest.css"/>
     <link rel="stylesheet" href="css/article.css"/>
+    <script>
+        //auto adaptation
+        var calculate_size = function () {
+            var BASE_FONT_SIZE = 100;
+            var docEl = document.documentElement,
+                    clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = BASE_FONT_SIZE * (clientWidth / 640) + 'px';
+        };
+
+        // Abort if browser does not support addEventListener
+        if (document.addEventListener) {
+            var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            window.addEventListener(resizeEvt, calculate_size, false);
+            document.addEventListener('DOMContentLoaded', calculate_size, false);
+            calculate_size();
+        }
+    </script>
+    <script src="js/dist/Require/require.min.js" data-main="js/main.js"></script>
+    <!--<script src="js/dist/Require/require.min.js" data-main="js/main-build.js"></script>-->
 </head>
 <body>
-<div class="page home">
-    <div class="sidebar">
-        <img id="menu-bg" src="img/bg-wenzhang.png">
-        <ul>
-            <li><a href="javascript:void(0)" class="category active" data-categoryid="001">每日一文</a></li>
-            <li><a href="javascript:void(0)" class="category" data-categoryid="002">人生智慧</a></li>
-            <li><a href="javascript:void(0)"  class="category" data-categoryid="004" >原创分享</a></li>
-            <li><a href="chat.html" >在线聊天</a></li>
-            <li><a href="feedback.html">意见反馈</a></li>
-        </ul>
+<div ng-view style="height: 100%"></div><!-- angular 渲染的东西放在这里 -->
 
-    </div>
-    <div class="main">
-        <header>
-            <span class="menu">≡</span>
-
-            <h1>清晨好文章</h1>
-        </header>
-        <div class="content-wrap">
-            <article class="item-list item_1">
-                <ul id="ul-list">
-
-                </ul>
-                <p class="pagination"><a href="javascript:void(0)" id="pre" class="dis">← Prev</a><a href="javascript:void(0)" id="next">Next →</a></p>
-            </article>
-        </div>
-        <a href="chat.html" class="chat">在线聊天</a>
-    </div>
-
-</div>
-<script src="//www.wanlitong.com/app_js/wanlitong/v40/wap/vendor/zepto/dist/zepto.min.js"></script>
-<script>
-    var section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
-    var oPage={
-        '001':1,
-        '002':1,
-        '004':1
-    };
-    function showhometitle(p,id) {
-        //var baseUrl = '';
-        var baseUrl='http://raclen-wenzhang.coding.io';
-        var homeUrl = baseUrl + '/category';
-        $.ajax({
-            url: homeUrl,
-            type: 'GET',
-            data: {
-                page: p,
-                categoryid:id
-            },
-            dataType: 'jsonp',
-            beforeSend: function () {
-                $('body').prepend(section);
-
-            },
-            success: function (res) {
-                // console.log(data)
-                section.remove();
-                var $list=$('#ul-list');
-                $list.html('');
-                    var data=id==='004'?res.items:res;
-                for (var i = 0, len = data.length; i < len; i++) {
-                    //var id = data[i].href.replace(/\D/g, '');
-                    var article='',articleid='';
-                    if(!!data[i].href){
-                         article=encodeURIComponent(data[i].href);
-                    }
-                    if(!!data[i].articleid){
-                        articleid=data[i].articleid;
-                    }
-                    var categoryid=$('.category.active').data('categoryid');
-                    $list.append('<li><a href="item.html?article=' + article + '&categoryid=' + categoryid +  '&articleid=' + articleid + '">' + data[i].title + '</a></li>');
-                }
-                setinterli('off');
-                setinterli('on');
-                $('.main h1').addClass('animate');
-                //最后一页了
-                if(id==='004'){
-                    var tolpage=parseInt(res.pagenum/10)+1;
-                    if(oPage[id]==tolpage){
-                        $('#next').addClass('dis');
-
-                    }
-                }
-
-
-            }
-        })
-    }
-    var animateli=null;
-     function setinterli(s){
-         var step = 0;
-         if(s==='on'){
-             animateli= setInterval(function () {
-                 var li = $('#ul-list li');
-                 if (step == li.length) {
-                     step = 0;
-                 }
-                 li.removeClass('ani');
-                 li.eq(step).addClass('ani');
-                 step++;
-             }, 3000)
-         }else if(s==='off'){
-            clearInterval(animateli);
-         }
-    }
-    showhometitle(1,'001');
-
-    $('#pre').on('click',function(){
-        var categoryid=$('.category.active').data('categoryid');
-        var page=oPage[categoryid]= --oPage[categoryid];
-        $('#next').removeClass('dis');
-        if(oPage[categoryid]==1){
-            $('.pagination a').eq(0).addClass('dis');
-        }
-        showhometitle(page,categoryid);
-
-    });
-    $('#next').on('click',function(){
-        var categoryid=$('.category.active').data('categoryid');
-        var page=oPage[categoryid]= ++oPage[categoryid];
-        $('.pagination a').removeClass('dis');
-        showhometitle(page,categoryid);
-
-    });
-    var $main = $('.main');
-    var $sidebar = $('.sidebar');
-    $('.menu').on('click', function (e) {
-        if ($main.hasClass('opend')) {
-            $main.removeClass('opend');
-            $sidebar.removeClass('animate');
-        } else {
-            $main.addClass('opend');
-            $sidebar.addClass('animate');
-        }
-        e.stopPropagation();
-        e.preventDefault();
-    });
-
-    $main.on('click', function (e) {
-        if ($main.hasClass('opend')) {
-            $main.removeClass('opend');
-            $sidebar.removeClass('animate');
-            e.stopPropagation();
-            e.preventDefault();
-        }
-    });
-    var  $category=$('.category');
-    $category.on('click',function(){
-        var categoryid =$(this).data('categoryid');
-        $category.removeClass('active');
-        oPage[categoryid]==1;
-        $('.pagination a').eq(0).addClass('dis');
-        $(this).addClass('active');
-        showhometitle(1,categoryid);
-        $main.removeClass('opend');
-        $sidebar.removeClass('animate');
-    })
-    var mainheight=$('.main').height();
-    $('.sidebar').css('minHeight',mainheight+'px');
-</script>
 </body>
 </html>

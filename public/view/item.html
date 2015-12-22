@@ -1,0 +1,29 @@
+
+<div class="page item">
+    <div class="container">
+
+        <div class="post-inner">
+            <h1 class="name post-title entry-title" itemprop="itemReviewed" itemscope="">
+                <span itemprop="name">{{content.titile}}</span>
+            </h1>
+
+            <div class="clear"></div>
+
+            <div class="entry">
+                <p id="author">{{content.author}}</p>
+                <!--内容-->
+                <div id="article_text">
+                    <div ng-bind-html="thisCanBeusedInsideNgBindHtml"></div>
+                </div>
+            </div>
+            <!-- .entry /-->
+
+        </div>
+        <div class="random_box">
+            <a id="random" class="random_article" href="javascript:void(0)">随机文章</a>
+        </div>
+    </div>
+    <a href="#/home" class="goback"><img src="img/Arrow-Left.png" alt="返回"/></a>
+
+</div>
+

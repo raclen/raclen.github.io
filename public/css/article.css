@@ -1,5 +1,5 @@
 body{
-    max-width: 640px;
+    max-width:6.4rem;
     margin: 0 auto;
 }
 img{
@@ -7,24 +7,26 @@ img{
 }
 #article_text img{
     width: 88%;
-    margin: 10 auto;
+    margin: 10px auto;
     display: block;
 }
 .home {
-    padding-bottom: 20px;
     background-color: #f5f5d5;
     overflow: hidden;
     position: relative;
+    min-height: 100%;
 }
-
+.home .wrapper{
+    position: relative;
+}
 .main ul {
-    padding: 0 20px;
-    margin: 5px 0;
+    padding: 0 0.4rem;
+    margin: 0.1rem 0;
 }
 
 .main li {
-    margin: 10px 0;
-    font-size: 16px;
+    margin: 0.2rem 0;
+    font-size: 0.32rem;
     list-style: none;
     background-color: #ede;
     border-radius: 9px;
@@ -44,8 +46,8 @@ img{
 .main header {
     position: relative;
     z-index: 2;
-    height: 40px;
-    line-height: 40px;
+    height: 0.8rem;
+    line-height: 0.8rem;
     background: #fff;
     text-align: center;
     border-top: #ccc solid 5px;
@@ -56,22 +58,22 @@ img{
 }
 .main .menu {
     position: absolute;
-    left: 20px;
-    top: 6px;
+    left: 0.4rem;
+    top: 0.06rem;
     color: #E8E828;
-    font-size: 28px;
+    font-size: 0.56rem;
     text-align: center;
     cursor: pointer;
     /* padding: 2px 5px; */
-    width: 24px;
-    height: 26px;
+    width: 0.48rem;
+    height: 0.52rem;
     border: #E0E028 solid 1px;
-    line-height: 24px;
+    line-height: 0.48rem;
     border-radius: 3px;
 }
 
 .home .content-wrap {
-    padding: 10px 20px 0 20px;
+    padding: 0.2rem 0.4rem 0 0.4rem;
 }
 
 .home .main {
@@ -83,6 +85,7 @@ img{
     -webkit-transition: all 500ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
     transition: all 500ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
     min-height: 100%;
+    padding-bottom: 0.4rem;
 }
 
 .home .main.opend {
@@ -249,18 +252,11 @@ section {
     -webkit-animation: rotate 1.5s linear 0s infinite;
     animation: rotate 1.5s linear 0s infinite;
 }
-.model-3 .spinner.liu {
-    width: 100px;
-    height: 100px;
-    border: 10px solid transparent;
-    border-bottom-color: #19A5DF;
-    border-top-color: #19A5DF;
-    -webkit-animation: rotate 1.5s linear 0s infinite;
-    animation: rotate 1.5s linear 0s infinite;
-}
+
 .pagination{
     text-align: center;
-    margin: 10px 0;
+    margin: 0.2rem 0;
+    font-size: 0.2rem;
 }
 .pagination a{
     border: #EEDDEE solid 1px;
@@ -287,19 +283,21 @@ section {
 
 /*item css*/
 .item {
-    font-size: 28px;
+    font-size: 0.28rem;
 }
 
 .item .post-title {
     font-family: Oswald, arial, Georgia, serif;
-    margin-bottom: 20px;
-    font-size: 56px;
+    margin-bottom: 0.2rem;
+    font-size: 0.56rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
-
+h1{
+    font-size: 0.4rem;
+}
 
 #author {
     text-align: center;
@@ -311,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .post-inner {
-    padding-top: 40px;
+    padding-top: 0.4rem;
 }
 
 .entry p:first-child {
@@ -326,29 +324,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .item .container {
-    width: 560px;
+    width: 5.6rem;
     margin: 0 auto;
 }
 
 .chat {
     position: fixed;
-    bottom: 50px;
+    bottom: 0.5rem;
     right: 0;
     display: block;
     padding: 5px 0 5px 8px;
     background: -webkit-linear-gradient(left, #e5e5be 0, #003973 100%);
     background: linear-gradient(to left, #e5e5be 0, #003973 100%);
     color: #FFF;
-    width: 20px;
+    width: 0.3rem;
     border-radius: 5px 0 0 5px;
+    font-size: 0.2rem;
 }
 
 .goback {
     position: fixed;
-    right: 20px;
-    bottom: 25px;
-    width: 80px;
-    height: 80px;
+    right: 0.2rem;
+    bottom: 0.25rem;
+    width: 0.8rem;
+    height: 0.8rem;
     z-index: 3;
 }
 
@@ -359,8 +358,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .random_box {
     display: inline-block;
-    margin: 15px 0 35px;
-    padding: 30px 0 0;
+    margin: 0.15rem 0 0.35rem;
+    padding: 0.3rem 0 0;
     text-align: center;
     width: 100%;
 }
@@ -369,14 +368,14 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     background-color: #FFB94B;
     border-color: #D69E31 #E3A037 #D5982D;
-    border-radius: 6px;
+    border-radius: 0.06rem;
     border-style: solid;
     border-width: 2px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
     color: #8F5A0A;
     cursor: pointer;
-    font: bold 28px Arial, Helvetica;
-    padding: 10px 30px;
+    font: bold 0.28rem Arial, Helvetica;
+    padding: 0.1rem 0.3rem;
     text-shadow: 0 2px 0 rgba(255, 255, 255, 0.5);
 }
 /*wenzhangba特殊样式*/
@@ -388,70 +387,70 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*意见反馈页面样式*/
-.feed-body{
+.feedback{
     background-color: #ededed;
-    font-size: 28px;
+    font-size: 0.28rem;
 }
 .feedback section {
-    padding: 20px;
+    padding: 0.2rem;
     overflow: hidden;
 }
 .feedback .icon-back{
     background: url("../img/Arrow-Left.png");
     background-size: cover;
-    width: 60px;
-    height: 60px;
+    width: 0.6rem;
+    height: 0.6rem;
     display: inline-block;
     position: absolute;
-    left: 16px;
-    top: 10px;
+    left: 0.16rem;
+    top: 0.1rem;
 
 }
 .feedback header{
     position: relative;
     z-index: 2;
-    height: 80px;
-    line-height: 80px;
+    height: 0.8rem;
+    line-height: 0.8rem;
     background: #fff;
     text-align: center;
     border-top: #ccc solid 10px;
-    font-size: 36px;
+    font-size: 0.36rem;
 }
 .feedback .feed-tips{
-    margin-bottom: 20px;
+    margin-bottom: 0.2rem;
 }
 .feed-tar, .feed-frame .feed-inp {
     border: 1px solid #adadad;
     background-color: #fff;
     width: 96%;
-    padding: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    height: 180px;
+    padding: 0.1rem;
+    -webkit-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+    height: 1.8rem;
 }
 .default {
     color: #646464;
-    font-size: 24px;
+    font-size: 0.24rem;
     font-weight: normal;
 }
 .feed-frame {
-    padding: 20px 0;
+    padding: 0.2rem 0;
 }
 .feed-frame .feed-inp {
-    height: 50px;
-    margin-top: 10px;
+    height: 0.5rem;
+    margin-top: 0.1rem;
 }
 .icon-btn {
     display: block;
     color: #FFFFFF;
-    padding: 20px 0;
+    padding: 0.2rem 0;
     text-align: center;
-    font-size: 28px;
+    font-size: 0.28rem;
     border-width: 1px;
     border-style: solid;
     border-color: #FFF #FFFFFF #FFFFFF #FFFFFF;
     border-radius: 3px;
-    -webkit-border-radius: 6px;
+    -webkit-border-radius: 0.06rem;
     background: -webkit-gradient(linear,0 0,0 100%,from(#4BBC97),to(#4BBC97));
     -webkit-box-shadow: 0 1px 1px 0 white inset;
     box-shadow: 0 1px 1px 0 white inset;

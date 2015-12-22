@@ -1,0 +1,31 @@
+<div class="page home">
+    <div class="wrapper">
+        <div class="sidebar">
+            <img id="menu-bg" src="../img/bg-wenzhang.png">
+            <ul>
+                <li><a href="javascript:void(0)" class="category active" data-categoryid="001">人生智慧</a></li>
+                <li><a href="javascript:void(0)" class="category" data-categoryid="002">每日一文</a></li>
+                <li><a href="javascript:void(0)"  class="category" data-categoryid="004" >原创分享</a></li>
+                <li><a href="../chat.html" >在线聊天</a></li>
+                <li><a href="#/feedback">意见反馈</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <header>
+                <span class="menu">≡</span>
+
+                <h1>清晨好文章</h1>
+            </header>
+            <div class="content-wrap">
+                <article class="item-list item_1">
+                    <ul id="ul-list" ng-repeat="category in categoryList">
+                        <li><a href="#/item/{{categoryid}}/{{category.href}}/{{category.articleid}}">{{category.title}}</a></li>
+                    </ul>
+                    <p class="pagination"><a href="javascript:void(0)" id="pre" class="dis">← Prev</a><a href="javascript:void(0)" id="next">Next →</a></p>
+                </article>
+            </div>
+            <a href="../chat.html" class="chat">在线聊天</a>
+        </div>
+    </div>
+
+</div>
