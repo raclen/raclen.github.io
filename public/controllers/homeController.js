@@ -1,1 +1,128 @@
-define(["./module"],function(a){a.controller("homeController",["$scope","getCategory",function(a,e){function n(n,t){var r={page:n,categoryid:t};$("body").prepend(o),e.query(r).$promise.then(function(e){if(console.log(e),o.remove(),a.categoryList=e.items,a.categoryid=$(".category.active").data("categoryid"),s("off"),s("on"),$(".main h1").addClass("animate"),"004"===t){var n=parseInt(e.pagenum/10)+1;i[t]==n&&$("#next").addClass("dis")}else $("#next").hasClass("dis")&&$("#next").removeClass("dis")})}function s(a){var e=0;"on"===a?t=setInterval(function(){var a=$("#ul-list li");e==a.length&&(e=0),a.removeClass("ani"),a.eq(e).addClass("ani"),e++},3e3):"off"===a&&clearInterval(t)}var o=$('<section class="mod model-3"> <div class="spinner"> </div> </section>'),i={"001":1,"002":1,"004":1},t=null;n(1,"001"),$("#pre").on("click",function(){var a=$(".category.active").data("categoryid"),e=i[a]=--i[a];$("#next").removeClass("dis"),1==i[a]&&$(".pagination a").eq(0).addClass("dis"),n(e,a)}),$("#next").on("click",function(){var a=$(".category.active").data("categoryid"),e=i[a]=++i[a];$(".pagination a").removeClass("dis"),n(e,a)});var r=$(".main"),d=$(".sidebar");$(".menu").on("click",function(a){r.hasClass("opend")?(r.removeClass("opend"),d.removeClass("animate")):(r.addClass("opend"),d.addClass("animate")),a.stopPropagation(),a.preventDefault()}),r.on("click",function(a){r.hasClass("opend")&&(r.removeClass("opend"),d.removeClass("animate"),a.stopPropagation(),a.preventDefault())});var l=$(".category");l.on("click",function(){var a=$(this).data("categoryid");l.removeClass("active"),1==i[a],$(".pagination a").eq(0).addClass("dis"),$(this).addClass("active"),n(1,a),r.removeClass("opend"),d.removeClass("animate")});var c=$(window).height();$(".main").css("minHeight",c)}])});
+/**
+ * Created by dixiao on 2015/12/16.
+ */
+
+define(['module-controllers'], function (controllers) {
+    controllers.controller('homeController', ['$scope', 'getCategory', function ($scope, getCategory) {
+        var section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
+        var oPage = {
+            '001': 1,
+            '002': 1,
+            '004': 1
+        };
+
+        function showhometitle(p, id) {
+            var categoryDate = {
+                page: p,
+                categoryid: id
+            };
+            $('body').prepend(section);
+            getCategory.query(categoryDate)
+                .$promise.then(function (data) {
+                    console.log(data);
+                    section.remove();
+                    $scope.categoryList = data.items;
+                    $scope.categoryid = $('.category.active').data('categoryid');
+                    setinterli('off');
+                    setinterli('on');
+                    $('.main h1').addClass('animate');
+                    //最后一页了
+                    if (id === '004') {
+                        var tolpage = parseInt(data.pagenum / 10) + 1;
+                        if (oPage[id] == tolpage) {
+                            $('#next').addClass('dis');
+
+                        }
+                    }else{
+                        $('#next').hasClass('dis')&&$('#next').removeClass('dis');
+                    }
+
+
+                })
+
+        }
+
+        var animateli = null;
+
+        function setinterli(s) {
+            var step = 0;
+            if (s === 'on') {
+                animateli = setInterval(function () {
+                    var li = $('#ul-list li');
+                    if (step == li.length) {
+                        step = 0;
+                    }
+                    li.removeClass('ani');
+                    li.eq(step).addClass('ani');
+                    step++;
+                }, 3000)
+            } else if (s === 'off') {
+                clearInterval(animateli);
+            }
+        }
+
+        showhometitle(1, '001');
+
+        $('#pre').on('click', function () {
+            var categoryid = $('.category.active').data('categoryid');
+            var page = oPage[categoryid] = --oPage[categoryid];
+            $('#next').removeClass('dis');
+            if (oPage[categoryid] == 1) {
+                $('.pagination a').eq(0).addClass('dis');
+            }
+            showhometitle(page, categoryid);
+
+        });
+        $('#next').on('click', function () {
+            var categoryid = $('.category.active').data('categoryid');
+            var page = oPage[categoryid] = ++oPage[categoryid];
+            $('.pagination a').removeClass('dis');
+            showhometitle(page, categoryid);
+
+        });
+        var $main = $('.main');
+        var $sidebar = $('.sidebar');
+        $('.menu').on('click', function (e) {
+            if ($main.hasClass('opend')) {
+                $main.removeClass('opend');
+                $sidebar.removeClass('animate');
+            } else {
+                $main.addClass('opend');
+                $sidebar.addClass('animate');
+            }
+            e.stopPropagation();
+            e.preventDefault();
+        });
+
+        $main.on('click', function (e) {
+            if ($main.hasClass('opend')) {
+                $main.removeClass('opend');
+                $sidebar.removeClass('animate');
+                e.stopPropagation();
+                e.preventDefault();
+            }
+        });
+        var $category = $('.category');
+        $category.on('click', function () {
+            var categoryid = $(this).data('categoryid');
+            $category.removeClass('active');
+            oPage[categoryid] == 1;
+            $('.pagination a').eq(0).addClass('dis');
+            $(this).addClass('active');
+            showhometitle(1, categoryid);
+            $main.removeClass('opend');
+            $sidebar.removeClass('animate');
+        });
+        var height = $(window).height();
+        $('.main').css('minHeight',height);
+
+    }])
+
+});
+
+
+
+
+
+
+

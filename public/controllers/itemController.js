@@ -1,1 +1,62 @@
-define(["./module"],function(t){t.controller("itemController",["$scope","$sce","$routeParams","getContents",function(t,e,n,o){var i={init:function(){var t=this,e=atob(n.article),o=n.categoryID,i=n.articleid;this.section=$('<section class="mod model-3"> <div class="spinner"> </div> </section>'),this.getwenzhang(e,o,i),$("#random").on("click",function(){t.getwenzhang("","003")})},getwenzhang:function(n,i,c){var s=this,r={article:n,categoryid:i,articleid:c};$("body").prepend(s.section),o.query(r).$promise.then(function(n){console.log(n),s.section.remove(),t.content=n.items,t.thisCanBeusedInsideNgBindHtml=e.trustAsHtml(n.items.content),document.body.scrollTop=0})}};i.init(),$(window).scroll(function(){var t=$(this).scrollTop(),e=$(document).height(),n=$(this).height();t+n+20>=e?$(".goback").hide():$(".goback").show()})}])});
+/**
+ * Created by dixiao on 2015/12/16.
+ */
+
+define(['module-controllers'], function (controllers) {
+    controllers.controller('itemController', ['$scope', '$sce', '$routeParams', 'getContents', function ($scope, $sce, $routeParams, getContents) {
+        var item = {
+            init: function () {
+                var _this = this;
+                //文章ID
+                var article = atob($routeParams.article);
+                var categoryid = $routeParams.categoryID;
+                var articleid = $routeParams.articleid;
+                this.section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
+                this.getwenzhang(article, categoryid, articleid);
+                $('#random').on('click', function () {
+                    _this.getwenzhang('', '003');
+                })
+            },
+            getwenzhang: function (a, c, id) {
+                var _this = this;
+                var contentsData = {
+                    article: a,
+                    categoryid: c,
+                    articleid: id
+                };
+                $('body').prepend(_this.section);
+                getContents.query(contentsData)
+                    .$promise.then(function (data) {
+                        console.log(data);
+                        _this.section.remove();
+                        $scope.content = data.items;
+                        $scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(data.items.content);
+                        document.body.scrollTop = 0;
+
+                    })
+
+            }
+        };
+        item.init();
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+            if (scrollTop + windowHeight + 20 >= scrollHeight) {
+                $('.goback').hide();
+            }
+            else {
+                $('.goback').show();
+            }
+        });
+
+    }])
+
+})
+
+
+
+
+
+
+
