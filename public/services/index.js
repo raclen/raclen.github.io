@@ -15,7 +15,7 @@ define(['angular'],function(ng){
         return $resource(GET_CONTENTS_API, {}, {query: {method: 'JSONP', params: {callback:'JSON_CALLBACK'}}});
     }]);
     services.factory('submitfeedback', ['$resource', function($resource) {
-        return $resource(SUBMIT_FEEDBACK_API, {}, {query: {method: 'POST', params: {}}});
+        return $resource(SUBMIT_FEEDBACK_API, {}, {query: {method: 'JSONP', params: {callback:'JSON_CALLBACK'}}});
     }]);
 
 });
