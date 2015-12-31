@@ -8,19 +8,17 @@ define(['module-controllers'], function (controllers) {
             init: function () {
                 var _this = this;
                 //文章ID
-                var article = atob($routeParams.article);
                 var categoryid = $routeParams.categoryID;
                 var articleid = $routeParams.articleid;
                 this.section = $('<section class="mod model-3"> <div class="spinner"> </div> </section>');
-                this.getwenzhang(article, categoryid, articleid);
+                this.getwenzhang(categoryid, articleid);
                 $('#random').on('click', function () {
-                    _this.getwenzhang('', '003');
+                    _this.getwenzhang('003');
                 })
             },
-            getwenzhang: function (a, c, id) {
+            getwenzhang: function (c, id) {
                 var _this = this;
                 var contentsData = {
-                    article: a,
                     categoryid: c,
                     articleid: id
                 };

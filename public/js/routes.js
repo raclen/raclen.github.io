@@ -4,13 +4,14 @@ define(['angular','angular-route','angular-resource','angular-sanitize'],functio
         $routeProvider.when('/home',{
             templateUrl:'view/home.html',
             controller:'homeController'
-        }).when('/item/:categoryID/:article/:articleid',{
+        }).when('/item/:categoryID/:articleid',{
             templateUrl:'view/item.html',
             controller:'itemController'
         }).when('/feedback',{
             templateUrl:'view/feedback.html',
             controller:'feedbackController'
-        }).otherwise({ redirectTo: '/home'});
+        })
+            .otherwise({ redirectTo: '/home'});
     }])
 })
 

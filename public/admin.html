@@ -161,6 +161,17 @@
                                    </span>
                                 </div>
                                 <div class="appmsg_edit_item">
+                                    <label class="frm_label">类目</label>
+                                    <span class="frm_input_box with_counter counter_in append count">
+                                   <select id="category">
+                                       <option value="001">人生智慧</option>
+                                       <option value="002">每日一文</option>
+                                       <option value="004">原创分享</option>
+                                   </select>
+
+                                   </span>
+                                </div>
+                                <div class="appmsg_edit_item">
                                     <label class="frm_label">
                                         <strong class="title">作者</strong>
 
@@ -332,18 +343,24 @@
 
     $('#js_submit').on('click', function () {
         var title = $('#title').val();
+        var category =$('#category').val();
         var author = $('#author').val();
         var editorcontent = $('#content').val();
         if ($.trim(title) == '') {
             alert('标题不能为空');
             return;
         }
+        if ($.trim(category) == '') {
+            alert('目录不能为空');
+            return;
+        }
         if ($.trim(editorcontent) == '') {
             alert('正文不能为空');
             return;
         }
+
        // var baseUrl = '';
-         var baseUrl='http://raclen-wenzhang.coding.io';
+         var baseUrl='';
         var API_ADDARTICLE = baseUrl + '/addarticle';
         $.ajax({
             url: API_ADDARTICLE,
@@ -351,7 +368,8 @@
             data: {
                 title: title,
                 author: author,
-                editorcontent: editorcontent
+                category:category,
+                content: editorcontent
             },
             dataType: 'json',
 
@@ -382,10 +400,7 @@
             case 2:
                 admin.feedback();
                 break;
-
         }
-
-
     });
     $('.pre').on('click', function () {
         categorypage = --categorypage;

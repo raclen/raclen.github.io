@@ -27,14 +27,13 @@ define(['module-controllers'], function (controllers) {
                     setinterli('on');
                     $('.main h1').addClass('animate');
                     //最后一页了
-                    if (id === '004') {
-                        var tolpage = parseInt(data.pagenum / 10) + 1;
-                        if (oPage[id] == tolpage) {
-                            $('#next').addClass('dis');
+                    var tolpage = Math.ceil(data.count / 10);
+                    if (oPage[id] == tolpage) {
+                        $('#next').addClass('dis');
 
-                        }
-                    }else{
-                        $('#next').hasClass('dis')&&$('#next').removeClass('dis');
+                    }
+                    else {
+                        $('#next').hasClass('dis') && $('#next').removeClass('dis');
                     }
 
 
