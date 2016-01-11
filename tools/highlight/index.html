@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>代码高亮</title>
+</head>
+<link href="atelier-dune-light.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<style>
+    .text {
+        height: 100px;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    a#go {
+        background-color: #fff0ff;
+        color: #000;
+        border: 1px solid #dddddd;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        width: 56px;
+        display: block;
+        text-decoration: none;
+
+    }
+</style>
+<body>
+<p>代码高亮，用于网易博客，不支持代码高亮的替代方法</p>
+<textarea class="text" id="text"></textarea><br/>
+<input type="text" id="inp" placeholder="语言类型" value="javascript"/><br/>
+<a href="javacript:void(0)" id="go">生成</a>
+<pre>
+<code id="html">
+    for (var i = 1; i < 3; i++) {
+    wzbList.push('http://w/zheligushi/list_23_' + i + '.html');
+    ihx.push('http://w/category/meiriyiwen/page/' + i);
+    }
+</code>
+</pre>
+<script>
+    var go =document.querySelector('#go');
+    var text =document.querySelector('#text');
+    var inp =document.querySelector('#inp');
+    var html =document.querySelector('#html');
+    go.addEventListener('click',function(){
+        html.className= inp.value;
+        html.innerHTML=text.value;;
+        hljs.highlightBlock(html);
+    })
+
+</script>
+</body>
+</html>
