@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>二维码生成</title>
+</head>
+
+<body>
+    <div id="qrcodeSVG"></div>
+    <script src='index.js'></script>
+    <script>
+    var qrcode = new AraleQRCode({
+        text: 'http://raclen.win',
+        image: 'raclen.jpg',
+        size: 100,
+        imageSize: 16
+
+    });
+    document.getElementById('qrcodeSVG').appendChild(qrcode);
+    </script>
+</body>
+
+</html>

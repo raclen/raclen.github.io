@@ -97,7 +97,7 @@ function ptqrlogin(cookie){
                 url = url.substring(1, url.length - 1);
                 console.log(url);
                 //再往下执行
-                //Login1(url);
+
             }
             else if (temp.indexOf("已失效") != -1) {
                console.log("验证码已失效")

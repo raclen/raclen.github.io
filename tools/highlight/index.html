@@ -35,7 +35,7 @@
 <textarea class="text" id="text"></textarea><br/>
 <input type="text" id="inp" placeholder="语言类型" value="javascript"/><br/>
 <a href="javacript:void(0)" id="go">生成</a>
-<pre>
+<pre style="background-color: #f6f6f6;">
 <code id="html">
     for (var i = 1; i < 3; i++) {
     wzbList.push('http://w/zheligushi/list_23_' + i + '.html');
@@ -50,7 +50,7 @@
     var html =document.querySelector('#html');
     go.addEventListener('click',function(){
         html.className= inp.value;
-        html.innerHTML=text.value;;
+        html.innerHTML=text.value.replace(/</g, '&lt;').replace(/>/g, '&gt;');;
         hljs.highlightBlock(html);
     })
 
