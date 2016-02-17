@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yungen logo 在线制作</title>
+</head>
+<style>
+    .logo-bg {
+        width: 380px;
+        height: 220px;
+        position: absolute;
+        top: 0px;
+        left: -70px;
+        z-index: 1;
+    }
+
+    .logo {
+        width: 200px;
+        position: absolute;
+        left: 3em;
+        top: 3em;
+        z-index: 100;
+    }
+
+    .logo h2 {
+        font-size: 0.75em;
+        color: #fafafa;
+    }
+
+    .logo h1 a {
+        text-decoration: none;
+        color: #fff;
+    }
+</style>
+<body>
+
+<div id="logo-bg" class="logo-bg">
+    <canvas id="yugen-logo-canvas" style="display: none;"></canvas>
+    <canvas id="yugen-shadow-canvas" style="display: none;"></canvas>
+</div>
+<div class="logo">
+    <h2>muxu.<span>pw</span></h2>
+
+    <h1><a href="/" rel="nofollow">当下的七炎</a></h1>
+</div>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
+<script src="http://www.zhanxin.info/static/javascript/yunlogo.js"></script>
+<script>
+    YugenLogo.initialize({
+        framerate: 60,
+
+        width: 380,
+        height: 220,
+
+        colorSpeedFactor: 0.4,
+        morphSpeedFactor: 0.4,
+        introSpeedFactor: 2,
+        outroSpeedFactor: 2,
+
+        morphStrengthFactor: 0.8,
+
+        morphBaseSpeedFactor: 0.2,
+        normalOffsetFactor: 1.5,
+
+        maxShapeRotation: 0.2,
+
+        wordOffsetX: 0,
+        wordOffsetY: 0,
+
+        wordScale: 1,
+
+        foregroundScaleX: 0.42,
+        foregroundScaleY: 0.21,
+        backgroundScaleX: 0.36,
+        backgroundScaleY: 0.21,
+
+        shadowAlpha: 0.1,
+
+        shapeQuality: 9,
+
+        containerID: "logo-bg",
+        logoCanvasID: "yugen-logo-canvas",
+
+        colors: [
+            [new YugenLogo.util.Color(240, 240, 240), new YugenLogo.util.Color(0, 0, 0)],
+            [new YugenLogo.util.Color(0, 0, 0), new YugenLogo.util.Color(240, 240, 240)]
+        ],
+
+        inputs: [
+            YugenLogo.input.move,
+            YugenLogo.input.press
+        ],
+
+        fallbackImages: []
+    });
+</script>
+</body>
+</html>
