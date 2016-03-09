@@ -62,7 +62,11 @@
 </div>
 <script type='text/javascript' src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>
 <script>
-
+    //睡眠函数
+    function sleep(milliSeconds) {
+        var startTime = new Date().getTime();
+        while (new Date().getTime() < startTime + milliSeconds);
+    }
     var touchStartClientX,touchStartClientY, direction;
     var $box=document.querySelector('#box');
     var imgList = ['img/pic_005.jpg','img/pic_006.jpg','img/pic_007.jpg','img/pic_009.jpg','img/pic_010.jpg','img/pic_011.jpg'];
@@ -71,16 +75,22 @@
         touchStartClientY=e.touches[0].clientY;
         //console.log(touchStartClientX+','+touchStartClientY);
     })
+    $box.addEventListener('touchmove',function(e){
+        ClientX= e.touches[0].clientX;
+        var x=ClientX-touchStartClientX
+        $('#aimg02').css({"-webkit-transform":'translateX('+x+'px)'})
+    })
     $box.addEventListener('touchend',function(e){
         var touchendClientX,touchendClientY;
         touchendClientX= e.changedTouches[0].clientX;
         touchendClientY=e.changedTouches[0].clientY;
-        //console.log(touchendClientX+','+touchendClientY);
+//        console.log(touchendClientX+','+touchendClientY);
         var sx=touchendClientX-touchStartClientX;
         var sy=touchendClientY-touchStartClientY;
         direction=Math.abs(sx)>Math.abs(sy)?(sx>0?'right':'left'):(sy>0?'down':'up');
 //        alert('direction='+direction);
         slide(direction);
+
     })
     function slide(d){
         if(d=='left'){
@@ -99,6 +109,7 @@
         $('#aimg01 img').attr('src',imgList[0]);
         $('#aimg02 img').attr('src',imgList[1]);
         $('#aimg03 img').attr('src',imgList[2]);
+        $('#aimg02').css({"-webkit-transform":'translateX(0px)'})
     }
     draw()
 </script>
