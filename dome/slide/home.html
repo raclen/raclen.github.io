@@ -1,117 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=320,initial-scale=1.0,user-scalable=no">
+    <meta name="viewport" content="width=320,user-scalable=no">
     <meta http-equiv="cleartype" content="on">
     <meta content="telephone=no" name="format-detection">
     <title>滑动</title>
-</head>
-<style>
-    *{
-        padding: 0;
-        margin: 0;
-    }
-    .box{
-        width: 320px;
-        height: 160px;
-        position: relative;
-        border: #004444 solid 1px;
-    }
-    #aimg01{
-        position: absolute;
-        left: 0;
-        width: 280px;
-        height: 160px;
-        top: 0;
-        display: block;
-        border: #006600 solid 1px;
-    }
-    #aimg03{
-        position: absolute;
-        width: 280px;
-        height: 160px;
-        right: 0;
-        top: 0;
-        display: block;
-        border: #006600 solid 1px;
-    }
-    #aimg02{
-        position: absolute;
-        width: 280px;
-        height: 160px;
-        left: 50%;
-        margin-left: -140px;
-        top: 0;
-        display: block;
-        border: #006600 solid 1px;
-        z-index: 2;
-    }
-    img {
-        width: 100%;
-        height: 100%;
-    }
-</style>
-<body>
+    <link rel="stylesheet" href="animate.css"/>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
 
+        .box {
+            width: 320px;
+            height: 160px;
+            position: relative;
+            border: #004444 solid 1px;
+        }
+
+        #aimg01 {
+            position: absolute;
+            left: 0;
+            width: 280px;
+            height: 160px;
+            top: 0;
+            display: block;
+            border: #006600 solid 1px;
+        }
+
+        #aimg03 {
+            position: absolute;
+            width: 280px;
+            height: 160px;
+            right: 0;
+            top: 0;
+            display: block;
+            border: #006600 solid 1px;
+        }
+
+        #aimg02 {
+            position: absolute;
+            width: 280px;
+            height: 160px;
+            left: 20px;
+            top: 0;
+            display: block;
+            border: #006600 solid 1px;
+            z-index: 2;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
 <div class="box" id="box">
     <a href="javascript:;" id="aimg01"><img src="" alt=""/></a>
     <a href="javascript:;" id="aimg02"><img src="" alt=""/></a>
     <a href="javascript:;" id="aimg03"><img src="" alt=""/></a>
 </div>
-<script type='text/javascript' src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>
+<script type="text/javascript" src="zepto/zepto.js"></script>
+<script type="text/javascript" src="zepto/touch.js"></script>
 <script>
-    //睡眠函数
-    function sleep(milliSeconds) {
-        var startTime = new Date().getTime();
-        while (new Date().getTime() < startTime + milliSeconds);
-    }
-    var touchStartClientX,touchStartClientY, direction;
-    var $box=document.querySelector('#box');
-    var imgList = ['img/pic_005.jpg','img/pic_006.jpg','img/pic_007.jpg','img/pic_009.jpg','img/pic_010.jpg','img/pic_011.jpg'];
-    $box.addEventListener('touchstart',function(e){
-        touchStartClientX= e.touches[0].clientX;
-        touchStartClientY=e.touches[0].clientY;
-        //console.log(touchStartClientX+','+touchStartClientY);
+    var o2left = $('#aimg02').offset().left;
+    var imgList = ['img/pic_005.jpg', 'img/pic_006.jpg', 'img/pic_007.jpg', 'img/pic_009.jpg', 'img/pic_010.jpg', 'img/pic_011.jpg'];
+
+    var $img02 = $('#aimg02');
+    $img02.on('tap', function () {
+        console.log('common in tap')
     })
-    $box.addEventListener('touchmove',function(e){
-        ClientX= e.touches[0].clientX;
-        var x=ClientX-touchStartClientX
-        $('#aimg02').css({"-webkit-transform":'translateX('+x+'px)'})
-    })
-    $box.addEventListener('touchend',function(e){
-        var touchendClientX,touchendClientY;
-        touchendClientX= e.changedTouches[0].clientX;
-        touchendClientY=e.changedTouches[0].clientY;
-//        console.log(touchendClientX+','+touchendClientY);
-        var sx=touchendClientX-touchStartClientX;
-        var sy=touchendClientY-touchStartClientY;
-        direction=Math.abs(sx)>Math.abs(sy)?(sx>0?'right':'left'):(sy>0?'down':'up');
-//        alert('direction='+direction);
-        slide(direction);
+    $img02.swipeLeft(function () {
+        console.log("common in swipeLeft")
+        var first = imgList.shift();
+        imgList.push(first);
+        draw("left");
 
     })
-    function slide(d){
-        if(d=='left'){
-            var first =imgList.shift();
-            imgList.push(first);
-            draw()
-        }else if(d=='right'){
-            var last =imgList.pop();
-            imgList.unshift(last);
-            draw()
+    $img02.swipeRight(function () {
+        console.log("common in swipeRight")
+        var last = imgList.pop();
+        imgList.unshift(last);
+        draw("right");
+
+    })
+
+    function draw(d) {
+        $('#aimg01 img').attr('src', imgList[0]);
+        $('#aimg02 img').attr('src', imgList[1]);
+        $('#aimg03 img').attr('src', imgList[2]);
+        $img02.css({
+            "left": o2left + 'px'
+        })
+
+        if (d === 'right') {
+            $img02.addClass('animated slideInLeft')
+        } else if (d === 'left') {
+            $img02.addClass('animated slideInRight');
+
         }
-    }
 
+        $img02[0].addEventListener("webkitAnimationEnd", function () {
+            $img02.removeClass('animated slideInLeft slideInRight')
+        }, false);
 
-    function draw(){
-        $('#aimg01 img').attr('src',imgList[0]);
-        $('#aimg02 img').attr('src',imgList[1]);
-        $('#aimg03 img').attr('src',imgList[2]);
-        $('#aimg02').css({"-webkit-transform":'translateX(0px)'})
     }
     draw()
 </script>
 </body>
+
 </html>
