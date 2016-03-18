@@ -68,7 +68,6 @@
 <script type="text/javascript" src="zepto/zepto.js"></script>
 <script type="text/javascript" src="zepto/touch.js"></script>
 <script>
-    var o2left = $('#aimg02').offset().left;
     var imgList = ['img/pic_005.jpg', 'img/pic_006.jpg', 'img/pic_007.jpg', 'img/pic_009.jpg', 'img/pic_010.jpg', 'img/pic_011.jpg'];
 
     var $img02 = $('#aimg02');
@@ -94,10 +93,6 @@
         $('#aimg01 img').attr('src', imgList[0]);
         $('#aimg02 img').attr('src', imgList[1]);
         $('#aimg03 img').attr('src', imgList[2]);
-        $img02.css({
-            "left": o2left + 'px'
-        })
-
         if (d === 'right') {
             $img02.addClass('animated slideInLeft')
         } else if (d === 'left') {
