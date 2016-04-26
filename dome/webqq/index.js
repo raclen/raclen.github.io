@@ -39,6 +39,8 @@ var defOptions = {
     json: true
 };
 
+   options.url = url2, options.jar = j, options.method = 'POST', options.headers.Cookie = cookiesStr+'Hm_lvt_72aa476a79cf5b994d99ee60fe6359aa='+Math.round(+new Date / 1E3)+'; Hm_lpvt_72aa476a79cf5b994d99ee60fe6359aa='+Math.round(+new Date / 1E3)+'; Hm_lvt_582984b07e59e5e9985451344bf7d1d1='+Math.round(+new Date / 1E3)+'; Hm_lpvt_582984b07e59e5e9985451344bf7d1d1='+Math.round(+new Date / 1E3)+';
+
 //格式化cookies
 function formatCookies(c) {
     var cookies = {};
@@ -242,38 +244,6 @@ function sleep(milliSeconds) {
     var startTime = new Date().getTime();
     while (new Date().getTime() < startTime + milliSeconds);
 }
-//自动注册
-function autoReg(){
-    var email = Math.random().toString(8).substr(5);
-    var pw = Math.random().toString(36).substr(8);
-    var pLogin = {
-        username: pw,
-        password: pw,
-        repassword: pw,
-        sskey:"salanghae",
-        email: email + "@163.com"
-    };
-    var j = request.jar();
-    var url_register = 'http://third-contact.com/ss/Account/User/register';
-    options.url=url_register,options.jar=j,options.method= 'POST', options.headers.Cookie="__session:0.9360456641297787:=http:;thinkphp_show_page_trace=0|0; PHPSESSID=c1kr9fes4lfjh044svdup3t183";
-    options.headers.Referer="http://third-contact.com/ss";
-    options.headers.Host="third-contact.com";
-    options.headers["X-Requested-With"]= "XMLHttpRequest"
-    options.headers.Origin="http://third-contact.com"
-    options.headers["Content-Type"]="application/x-www-form-urlencoded; charset=UTF-8";
-    //console.log(options);
-    options.form=pLogin;
-    request(options, function (error, response, body) {
-        console.log("login2="+response.statusCode)
-        if (!error && response.statusCode == 200) {
-            console.log(body);
-            //sleep(500)
-            //autoReg()
-        }
-    });
-
-}
-//autoReg();
 /*
 登陆后的返回值
 var t = {
@@ -311,54 +281,7 @@ function send_qun_msg2(res){
     });
 }
 
-//多说评论
-function autoDuoShuo() {
-    var options=cloneObj(defOptions);
-    var email = Math.random().toString(8).substr(5);
-    //thread_id=6213185830144443137&parent_id=&nonce=568b955fe05c9&message=vvv&author_name=%E6%B5%8B%E8%AF%95&author_email=2275025%40qq.com&v=15.11.15
-    var submit = {
-        thread_id: "6218357338827391746",
-        parent_id: "",
-        nonce: "568c7ef40c80c",
-        message: "vvv"+email,
-        author_name: "raclen",
-        author_email:email + "@163.com",
-       // author_email:"raclen@qq.com",
-        v:"15.11.15"
 
-    }
-    console.log(arguments[0])
-    if(!!arguments[0]){
-        options.proxy="http://127.0.0.1:1084";
-    }
-    var j = request.jar();
-    var url_duoshuo = 'http://hello-javascript.duoshuo.com/api/posts/create.json';
-    options.url = url_duoshuo, options.jar = j, options.method = 'POST', options.headers.Cookie = "duoshuo_unique=2f423fba75c68a2a";
-    options.headers.Referer = "http://blog.raclen.win/2015/11/18/node%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/";
-    options.headers.Host = "hello-javascript.duoshuo.com";
-    options.headers.Origin = "http://blog.raclen.win";
-    options.headers['User-Agent'] = randomUA();
-    options.headers["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";
-    options.form = submit;
-    options.headers.Accept = "*/*";
-    console.log(options);
-    request(options, function (error, response, body) {
-        if(response.statusCode!==200){
-            console.log()
-            sleep(1500);
-            autoDuoShuo('proxy');
-            return
-        }
-        console.log("autoDuoShuo=" + response.statusCode)
-        if (!error && response.statusCode == 200) {
-            console.log(body);
-            sleep(500);
-            autoDuoShuo()
-        }
-    });
-
-}
-//autoDuoShuo()
 var server = http.listen(app_port, function (req, res) {
     console.log('Listening on port %d', server.address().port);
 });

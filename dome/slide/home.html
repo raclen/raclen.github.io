@@ -19,9 +19,10 @@
             height: 160px;
             position: relative;
             border: #004444 solid 1px;
+            overflow: hidden;
         }
 
-        #aimg01 {
+        #box a:nth-of-type(1) {
             position: absolute;
             left: 0;
             width: 280px;
@@ -31,7 +32,7 @@
             border: #006600 solid 1px;
         }
 
-        #aimg03 {
+        #box a:nth-of-type(3) {
             position: absolute;
             width: 280px;
             height: 160px;
@@ -41,11 +42,11 @@
             border: #006600 solid 1px;
         }
 
-        #aimg02 {
+        #box a:nth-of-type(2) {
             position: absolute;
-            width: 280px;
+            width: 240px;
             height: 160px;
-            left: 20px;
+            left: 40px;
             top: 0;
             display: block;
             border: #006600 solid 1px;
@@ -60,53 +61,41 @@
 </head>
 
 <body>
+
 <div class="box" id="box">
-    <a href="javascript:;" id="aimg01"><img src="" alt=""/></a>
-    <a href="javascript:;" id="aimg02"><img src="" alt=""/></a>
-    <a href="javascript:;" id="aimg03"><img src="" alt=""/></a>
+    <a href="javascript:;"><img src="img/pic_001.jpg" alt=""/></a>
+    <a href="javascript:;"><img src="img/pic_002.jpg" alt=""/></a>
+    <a href="javascript:;"><img src="img/pic_003.jpg" alt=""/></a>
+    <a href="javascript:;"><img src="img/pic_004.jpg" alt=""/></a>
+    <a href="javascript:;"><img src="img/pic_005.jpg" alt=""/></a>
 </div>
 <script type="text/javascript" src="zepto/zepto.js"></script>
 <script type="text/javascript" src="zepto/touch.js"></script>
 <script>
-    var imgList = ['img/pic_005.jpg', 'img/pic_006.jpg', 'img/pic_007.jpg', 'img/pic_009.jpg', 'img/pic_010.jpg', 'img/pic_011.jpg'];
-
-    var $img02 = $('#aimg02');
-    $img02.on('tap', function () {
-        console.log('common in tap')
+    var $box =$('#box');
+    $box.on('tap', function () {
+        console.log('common in tap');
     })
-    $img02.swipeLeft(function () {
-        console.log("common in swipeLeft")
-        var first = imgList.shift();
-        imgList.push(first);
-        draw("left");
+    var len = ($('#box a').length - 1);
+    $box.swipeLeft(function () {
+        console.log('common in swipeLeft');
+        $('#box a:eq('+len+')').after($("#box a:eq(0)").clone());
+        $("#box a:eq(0)").remove();
 
     })
-    $img02.swipeRight(function () {
-        console.log("common in swipeRight")
-        var last = imgList.pop();
-        imgList.unshift(last);
-        draw("right");
+    $box.swipeRight(function () {
+        console.log('common in swipeRight');
+        $("#box a:eq(0)").before($('#box a:eq('+len+')').clone());
+        var tmp = len+1;
+        $('#box a:eq('+tmp+')').remove();
 
     })
 
-    function draw(d) {
-        $('#aimg01 img').attr('src', imgList[0]);
-        $('#aimg02 img').attr('src', imgList[1]);
-        $('#aimg03 img').attr('src', imgList[2]);
-        if (d === 'right') {
-            $img02.addClass('animated slideInLeft')
-        } else if (d === 'left') {
-            $img02.addClass('animated slideInRight');
 
-        }
 
-        $img02[0].addEventListener("webkitAnimationEnd", function () {
-            $img02.removeClass('animated slideInLeft slideInRight')
-        }, false);
 
-    }
-    draw()
 </script>
+
 </body>
 
 </html>
