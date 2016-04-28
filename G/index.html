@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<style>
+    .main{
+        margin: 0 auto;
+        display: block;
+        margin-top: 200px;
+        width: 580px;
+    }
+    .main p{ width: 100%; text-align: center}
+    #search{
+        width: 580px;
+        height: 38px;
+
+    }
+</style>
+<body>
+<div class="main">
+    <p><img src="coollogo_com-151871767.png" alt="Double search"/></p>
+    <input type="text" id="search">
+</div>
+
+<script type="text/javascript">
+    var $search = document.getElementById('search');
+    $search.addEventListener('keyup',function(e){
+        if(e.keyCode =='13'){
+            var val= $search.value;
+            window.open("https://www.google.com/#q="+val);
+            window.open("https://www.baidu.com/s?wd="+val);
+        }
+
+    })
+</script>
+</body>
+</html>
