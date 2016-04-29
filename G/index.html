@@ -26,6 +26,7 @@
     </div>
 </div>
 <footer>
+    <a href="javascript:;">意见反馈muxu.jiu@gmail.com</a>
     <a href="javascript:;" class="set">设置</a>
 </footer>
 <script type='text/javascript' src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>
@@ -58,11 +59,11 @@
     $('.set').on('click', function () {
         var that = $(this);
         $('.right').show()
-        that.hide()
+        $('footer').hide()
     })
     $('.back').on('click', function () {
         $('.right').hide()
-        $('.set').show()
+        $('footer').show()
 
     })
     $('.submit').on('click', function () {
