@@ -5,36 +5,73 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="main.css"/>
 </head>
-<style>
-    .main{
-        margin: 0 auto;
-        display: block;
-        margin-top: 200px;
-        width: 580px;
-    }
-    .main p{ width: 100%; text-align: center}
-    #search{
-        width: 580px;
-        height: 38px;
-
-    }
-</style>
 <body>
+<header></header>
 <div class="main">
     <p><img src="coollogo_com-151871767.png" alt="Double search"/></p>
-    <input type="text" id="search">
-</div>
+    <input type="text" class="search_btn"/>
 
+    <div class="right">
+        <p class="title"><a href="javascript:;" class="back">返回</a></p>
+        <ul class="search-list">
+            <li><input class="magic-checkbox" type="checkbox" name="google" id="1"><label for="1">Google</label></li>
+            <li><input class="magic-checkbox" type="checkbox" name="baidu" id="2"><label for="2">百度</label></li>
+            <li><input class="magic-checkbox" type="checkbox" name="bing" id="3"><label for="3">必应</label></li>
+            <li><input class="magic-checkbox" type="checkbox" name="sougou" id="4"><label for="4">搜狗</label></li>
+            <li><input class="magic-checkbox" type="checkbox" name="zhihu" id="5"><label for="5">知乎</label></li>
+        </ul>
+        <a href="javascript:;" class="submit">保存</a>
+    </div>
+</div>
+<footer>
+    <a href="javascript:;" class="set">设置</a>
+</footer>
+<script type='text/javascript' src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>
 <script type="text/javascript">
-    var $search = document.getElementById('search');
-    $search.addEventListener('keyup',function(e){
-        if(e.keyCode =='13'){
-            var val= $search.value;
-            window.open("https://www.google.com/#q="+val);
-            window.open("https://www.baidu.com/s?wd="+val);
+    var searchList = {
+        "google": "https://www.google.com/#q=",
+        "baidu": "https://www.baidu.com/s?wd=",
+        "bing": "http://cn.bing.com/search?q=",
+        "sougou": "http://www.sogou.com/web?query=",
+        "zhihu": "https://www.zhihu.com/search?q="
+    }
+
+    var search_name = JSON.parse(window.localStorage.getItem('search.name') || '["google", "baidu"]');
+    window.localStorage.setItem('search.name', JSON.stringify(search_name));
+    $.each(search_name, function (index, value) {
+        $('[name="'+value+'"]').prop('checked',true);
+    });
+    $('.search_btn').on('keyup', function (e) {
+        if (e.keyCode == '13') {
+            var val = $(this).val();
+            var name = JSON.parse(window.localStorage.getItem('search.name'))
+            $.each(name, function (index, value) {
+                var search_host = searchList[value];
+                window.open(search_host + val);
+            });
+
         }
 
+    })
+    $('.set').on('click', function () {
+        var that = $(this);
+        $('.right').show()
+        that.hide()
+    })
+    $('.back').on('click', function () {
+        $('.right').hide()
+        $('.set').show()
+
+    })
+    $('.submit').on('click', function () {
+        var s_name = $('.magic-checkbox:checked').map(function () {
+            return $(this).attr('name');
+        }).get()
+        window.localStorage.removeItem('search.name');
+        window.localStorage.setItem('search.name', JSON.stringify(s_name));
+        $('.back').click();
     })
 </script>
 </body>
