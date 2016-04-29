@@ -58,18 +58,17 @@
     })
     $('.set').on('click', function () {
         var that = $(this);
-        $('.right').show()
-        $('footer').hide()
+        $('.right').show();
+        $('footer').hide();
     })
     $('.back').on('click', function () {
-        $('.right').hide()
-        $('footer').show()
-
+        $('.right').hide();
+        $('footer').show();
     })
     $('.submit').on('click', function () {
         var s_name = $('.magic-checkbox:checked').map(function () {
             return $(this).attr('name');
-        }).get()
+        }).get();
         window.localStorage.removeItem('search.name');
         window.localStorage.setItem('search.name', JSON.stringify(s_name));
         $('.back').click();
