@@ -50,7 +50,7 @@
     var html =document.querySelector('#html');
     go.addEventListener('click',function(){
         html.className= inp.value;
-        html.innerHTML=text.value.replace(/</g, '&lt;').replace(/>/g, '&gt;');;
+        html.innerHTML=text.value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         hljs.highlightBlock(html);
     })
 

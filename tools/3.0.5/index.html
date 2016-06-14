@@ -6,10 +6,12 @@
     <title>二维码生成</title>
 </head>
 
+
 <body>
-    <div id="qrcodeSVG"></div>
-    <script src='index.js'></script>
-    <script>
+
+<div id="qrcodeSVG"></div>
+<script src='index.js'></script>
+<script>
     var qrcode = new AraleQRCode({
         text: 'http://raclen.win',
         image: 'raclen.jpg',
@@ -18,7 +20,8 @@
 
     });
     document.getElementById('qrcodeSVG').appendChild(qrcode);
-    </script>
+</script>
+
 </body>
 
 </html>
