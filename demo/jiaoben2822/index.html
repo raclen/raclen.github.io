@@ -1,0 +1,148 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+
+    <meta name="viewport"
+          content="width=device-width,initial-scale=0.45,maximum-scale=0.45,minimum-scale=0.45,user-scalable=no" />
+    <title>个人特权</title>
+    <link rel="stylesheet" href="css/public.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/content.css" type="text/css" media="screen" />
+</head>
+<body>
+
+    <div class="ptl_al">
+        <div class="ptl_altit">
+            <img class="ptl_altitimg" src="images/head.png" />
+            <div class="ptl_altopd fontweiruan">
+                <img src="images/qqptldoudou.png" /><span>53</span>
+            </div>
+
+            <div class="ptl_userimg">
+                <img src="images/qqimgtouxiang.png" />
+            </div>
+        </div>
+
+        <div class="ptl_alcon">
+            <ul class="ptl_alconul">
+                <li class="ptl_alcona4 ptl_pos ptlindex4">
+                    <img class="ptl_alcona4img" src="images/3.jpg" />
+                </li>
+
+                <li class="ptl_alcona ptl_pos ptlindex3 ptl_left">
+                    <img class="ptl_alcona3img" src="images/2.jpg" />
+                </li>
+
+                <li class="ptl_alcona ptl_pos ptlindex2 ptl_right">
+                    <img class="ptl_alcona2img" src="images/1.jpg" />
+                </li>
+
+                <li class="ptl_alcona ptl_pos ptlindex1 ptl_left">
+                    <img class="ptl_alcona1img" src="images/3.jpg" />
+                </li>
+            </ul>
+        </div>
+
+        <div class="ptl_albtm">
+
+            <div class="ptl_albtmba">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="ptl_ptname fontweiruan">
+        <div class="ptl_ptnametop">
+            格瓦拉电影橙券
+        </div>
+        <div class="ptl_ptnamecon">
+          &nbsp;&nbsp;&nbsp;&nbsp;格瓦拉电影券包含多种演出和电影，为广大消费者提供精彩生活。
+        </div>
+        <div class="ptl_ptnamebtm">
+           <span>30</span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var ht = $(document).height();
+            var wt = $(document).width();
+
+            $(".ptl_al").height(ht);
+            $(".ptl_al").width(wt);
+
+            $(".ptl_altit").height(ht * 0.176);
+            $(".ptl_altit").width(wt);
+
+            $(".ptl_altitimg").height(ht * 0.176);
+            $(".ptl_altitimg").width(wt);
+
+            $(".ptl_alcon").height(ht * 0.592);
+            $(".ptl_alcon").width(wt);
+
+            $(".ptl_alconul").height(ht * 0.592);
+            $(".ptl_alconul").width(wt);
+
+            $(".ptl_albtm").height(ht * 0.232-3);
+            $(".ptl_albtm").width(wt);
+
+            $(".ptl_alcona4").height(ht * 0.425);
+            $(".ptl_alcona4").width(wt * 0.72);
+
+            $(".ptl_alcona4 img").height(ht * 0.425);
+            $(".ptl_alcona4 img").width(wt * 0.72);
+
+            $(".ptl_alcona4").css("top", (ht * 0.176 + 14) + "px");
+            $(".ptl_alcona4").css("left", wt * 0.14 + "px");
+
+            $(".ptl_alcona img").height(ht * 0.371);
+            $(".ptl_alcona img").width(ht * 0.371 * 1.08);
+            $(".ptl_alcona").css("top", (ht * 0.213) + "px");
+
+            $(".ptl_altopd").css("top", (ht * 0.0199) + "px");
+
+            $(".ptl_userimg").height(ht * 0.0913);
+            $(".ptl_userimg").width(wt);
+
+            $(".ptl_userimg").css("top", (ht * 0.08) + "px");
+
+            $(".ptl_userimg img").height(ht * 0.0913 - 4);
+            $(".ptl_userimg img").width(ht * 0.0913 - 4);
+            $(".ptl_userimg img").css("border-radius", (ht * 0.0913 - 4)/2 + "px");
+
+            $(".ptl_ptname").height(ht * 0.23);
+            $(".ptl_ptname").width(wt * 0.72);
+
+            $(".ptl_ptname").css("top", (ht * 0.176 + 14 + ht * 0.425) + "px");
+            $(".ptl_ptname").css("left", wt * 0.14 + "px");
+
+
+            $(".ptl_ptnametop").height(ht * 0.23*0.2888);
+            $(".ptl_ptnametop").css("line-height", ht * 0.23 * 0.3 + "px");
+
+            $(".ptl_ptnamecon").height(ht * 0.23 * 0.5112);
+            $(".ptl_ptnamecon").css("line-height", ht * 0.23 * 0.1624 + "px");
+
+        })
+    </script>
+    <script>
+    var touchStartClientX,touchStartClientY, direction;
+    document.addEventListener('touchstart',function(e){
+        touchStartClientX= e.touches[0].clientX;
+        touchStartClientY=e.touches[0].clientY;
+    })
+    document.addEventListener('touchend',function(e){
+        var touchendClientX,touchendClientY;
+        touchendClientX= e.changedTouches[0].clientX;
+        touchendClientY=e.changedTouches[0].clientY;
+        var sx=touchendClientX-touchStartClientX;
+        var sy=touchendClientY-touchStartClientY;
+        direction=Math.abs(sx)>Math.abs(sy)?(sx>0?'right':'left'):(sy>0?'down':'up');
+        alert('direction='+direction);
+    })
+</script>
+
+</body>
+</html>

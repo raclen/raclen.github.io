@@ -1,0 +1,20 @@
+{
+  "2014110601":
+    {
+      "equal": [2, 2, 1, 1],
+      "lessEqual": 10,
+      "greaterEqual": 11,
+      "less":2,
+      "greater":87
+    }
+  ,
+  "2014110602":
+    {
+      "equal": [1, 2, 1, 1],
+      "lessEqual": 0,
+      "greaterEqual": 0,
+      "less":0,
+      "greater":0
+    }
+
+}

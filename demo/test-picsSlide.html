@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>多张图片转换</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        text-align: center;
+    }
+
+    #box {
+        margin: 100px auto auto;
+        display: inline-block;
+    }
+
+    ul {
+        width: 248px;
+        height: 102px;
+        float: left;
+        overflow: hidden;
+    }
+
+    ul li {
+        width: 60px;
+        height: 100px;
+        float: left;
+        border: 1px solid forestgreen;
+        list-style: none;
+    }
+
+    li img {
+        width: 60px;
+        height: 100px;
+    }
+
+    .tip {
+        width: 20px;
+        height: 100px;
+        border: 1px solid forestgreen;
+        float: left;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+        display: block;
+        margin-top: 40px;
+
+    }
+</style>
+<body>
+
+<div id="box">
+    <div id="pre" class="tip"><a href="javascript:;"><</a></div>
+    <ul>
+        <li><img src="image/P_000.jpg" alt="P_000"/></li>
+        <li><img src="image/P_001.jpg" alt="P_001"/></li>
+        <li><img src="image/P_002.jpg" alt="P_002"/></li>
+        <li><img src="image/P_010.jpg" alt="P_010"/></li>
+        <li><img src="image/P_012.jpg" alt="P_012"/></li>
+        <li><img src="image/P_014.jpg" alt="P_014"/></li>
+        <li><img src="image/P_015.jpg" alt="P_015"/></li>
+
+    </ul>
+    <div id="next" class="tip"><a href="javascript:;">></a></div>
+</div>
+<script>
+    var opre = document.getElementById('pre');
+    var onext = document.getElementById('next');
+    var obox = document.getElementById('box');
+    var oul = obox.getElementsByTagName('ul')[0];
+    var oli = oul.getElementsByTagName('li');
+    opre.addEventListener('click', function () {
+        oul.appendChild(oli[0]);
+    });
+    onext.addEventListener('click', function () {
+        var len = oli.length - 1;
+        oul.insertBefore(oli[len], oli[0]);
+    })
+</script>
+</body>
+</html>

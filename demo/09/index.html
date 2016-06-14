@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+    .sortableitem span {
+        display: inline-block;
+        width: 100px;
+    }
+
+    .sortablelist {
+        position: relative;
+    }
+
+    .sortableitem {
+        position: relative;
+        width: 400px;
+        border: 1px solid red;
+        margin: 30px;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="sortablelist">
+        <li class="sortableitem">
+            <span>1</span><span class="moveup">up</span><span class="movedown">down</span>
+        </li>
+        <li class="sortableitem">
+            <span>2</span><span class="moveup">up</span><span class="movedown">down</span>
+        </li>
+        <li class="sortableitem">
+            <span>3</span><span class="moveup">up</span><span class="movedown">down</span>
+        </li>
+        <li class="sortableitem">
+            <span>4</span><span class="moveup">up</span><span class="movedown">down</span>
+        </li>
+    </ul>
+    <script type='text/javascript' src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>
+    <script src="jquery.clickSort.js"></script>
+    <script>
+    $('.sortablelist').clickSort({
+        speed: 1000,
+        　　callback: function() {　　　　
+            alert('ok');　　　　
+        }
+
+    });
+    </script>
+</body>
+
+</html>

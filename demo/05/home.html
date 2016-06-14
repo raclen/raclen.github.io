@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta content="telephone=no" name="format-detection">
+    <link href="calendar.css" rel="stylesheet" >
+    <title>价格日历</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        input{
+            display: block;
+            margin: 100px auto;
+        }
+        ul li {
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+<input type="text" id="date"/>
+<script src="jquery/jquery.min.js"></script>
+<script src="DatePrice.js"></script>
+<script src="calendar.js"></script>
+<script>
+    $('#date').on('click',function(){
+        new Calendar({
+            id:'#date',
+            dataPrice:dataPrice,
+            callback:function(price){
+                console.log(price);
+            }
+        })
+    })
+
+</script>
+</body>
+</html>

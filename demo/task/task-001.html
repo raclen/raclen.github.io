@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script type="text/javascript">
+    //数组去重
+    Array.prototype.unique = function() {
+        var temp = {},
+            res = [];
+        for (var i = 0, len = this.length; i < len; i++) {
+            if (!temp[this[i]]) {
+                temp[this[i]] = true;
+                res.push(this[i]);
+            }
+        }
+        return res;
+    }
+    console.log([1, 1, 1, 2, 4, 4, 4, 2].unique());
+    //对象（引用类型）深复制
+    function clone(obj) {
+        var arr = [],
+            res = {};
+        if (obj instanceof Array) {
+            obj.forEach(function(item, i) {
+                arr[i] = clone(item);
+            })
+            return arr;
+        } else if (obj instanceof Object) {
+            for (var j in obj) {
+                res[j] = clone(obj[j]);
+            }
+            return res;
+        } else {
+            return obj;
+        }
+
+    }
+    var map = {
+        "name": "jack"
+    };
+    console.info(clone(map));
+    /*
+    自定义事件
+    我理解的自定义事件就是组装一个对象，事件名称和函数对应起来
+    添加事件就是往对象里面添加东西，调用事件就是通过key去找function然后执行，为了传一个指针就是用apply
+    下面开始写代码
+     */
+    //我个人喜欢用对象字面量
+    var notice = {
+
+        handlers: {},
+
+        on: function(type, params) {
+            var funs = this.handlers[type];
+            if (!funs) {
+                console.log("未注册此事件")
+            }
+            funs.forEach(function(item, i) {
+                item.func.apply(item.tg, params || []);
+
+            })
+
+        },
+        send: function(type, fun, tg) {
+            if (!this.handlers[type]) {
+                this.handlers[type] = [];
+            }
+            this.handlers[type].push({
+                tg: tg || this,
+                func: fun
+            })
+
+        }
+
+
+    }
+    notice.send("run", function() {
+        console.log("I’m running");
+    })
+    notice.on("run");
+    /**
+     * 判断一个是否为数组或者字符串
+     */
+    function isArray(arr){
+    	return Array.isArray(arr) || Object.prototype.toString.call(arr) === '[object Array]';
+    }
+    function isString(str){
+    	return Object.prototype.toString.call(str) === '[object String]';
+    }
+      /**
+     * [random 生成1-10的随机数]
+     * @return {[type]} [description]
+     * Math.floor用来取整数
+     */
+   function random(min,max){
+   		return Math.floor(Math.random()*(max-min) +1);
+   }
+   random(1,10);
+   /**
+    * [toArray 将argument转化为数组]
+    * @param  {[type]} arg [description]
+    * @return {[type]}     [description]
+    */
+   function toArray(){
+   		return Array.prototype.slice.call(arguments);
+   }
+   //求传入参数的和
+   function sum(){
+   		var arr = Array.prototype.slice.call(arguments);
+   		var res = 0;
+   		arr.forEach(function(item,i){
+   			res+=item;
+   		})
+   		return res;
+   }
+  sum(1,2,3,4);
+  //数组排序
+  var arr=[13,24,3,5,56,78,9];
+  arr.sort(function(x,y){
+  	return x-y;
+  })
+  console.log(arr)
+  //判断字符串是否为回文（名字有点拗口，其实就是“上海在海上”，知道是什么东西就好办了）
+	var str1 = "上海在海上",
+		str2 = "北京在北京";
+	function ishuiwen(str){
+		var tempStr = str.split("").reverse().join("");
+		if(tempStr === str){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	ishuiwen(str1);
+	ishuiwen(str2);
+    </script>
+
+</body>
+
+</html>
