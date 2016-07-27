@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>日历</title>
+</head>
+<style>
+    table {
+        border: 1px solid #000;
+    }
+
+    td {
+        width: 20px;
+        height: 20px;
+        background: #34AADC;
+        color: #000000;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    td a {
+        text-decoration: none;
+        color: #000066;
+    }
+
+    td.now {
+        background: #00C1B3;
+    }
+
+    #calendar {
+        display: block;
+        margin: 100px auto auto auto;
+    }
+</style>
+<body>
+<input id="calendar" type="text"/>
+</body>
+<script>
+    function Calendar(o) {
+        this.init(o);
+    }
+    Calendar.prototype = {
+        init: function (o) {
+            var opt = this.extend(defaults, o);
+            this._year = opt._year;
+            this._month = opt._month;
+            this.id = opt.id;
+            this.drawDate(opt);
+        },
+        getpos: function () {
+            var oid = document.getElementById(this.id);
+            var left = oid.offsetLeft;
+            var top = oid.offsetTop;
+            var his = oid.offsetHeight;
+            console.log(left);
+            var tableid = this.id + 'lytable';
+            var lytable = document.getElementById(tableid);
+            lytable.style.position = 'absolute';
+            lytable.style.top = his + top + 'px';
+            lytable.style.left = left + 'px';
+        },
+        listen: function () {
+            var self = this;
+            var tableid = this.id + 'lytable';
+            var lytable = document.getElementById(tableid);
+            document.getElementById('pre').addEventListener('click', function (e) {
+                self._month = self._month - 1;
+                if (self._month == -1) {
+                    self._month = 11;
+                    self._year = self._year - 1;
+                }
+                if (!!lytable)lytable.parentNode.removeChild(lytable);
+                self.drawDate();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            document.getElementById('next').addEventListener('click', function (e) {
+                self._month = self._month + 1;
+                if (self._month == 12) {
+                    self._month = 0;
+                    self._year = self._year + 1;
+                }
+                if (!!lytable)lytable.parentNode.removeChild(lytable);
+                self.drawDate();
+                e.stopPropagation();
+                e.preventDefault();
+            })
+            var otd = document.querySelectorAll('#' + tableid + ' tr td');
+            for (var i = 0, len = otd.length; i < len; i++) {
+                otd[i].addEventListener('click', function (e) {
+                    var tml = e.target.innerHTML;
+                    var val = self._year + '/' + (self._month + 1) + '/' + tml;
+                    var oid = document.getElementById(self.id);
+                    oid.value = val;
+                    lytable.parentNode.removeChild(lytable);
+                    //console.log(e.target.innerHTML);
+                })
+            }
+
+        },
+        /**
+         * 对象复制
+         */
+        extend: function (destination, source) {
+            for (var property in source) {
+                destination[property] = source[property];
+            }
+            return destination;
+        },
+        /**
+         * 获取每个月有多少天
+         */
+         mdays: function(ynow) {
+             return m_days = [0,31, 28 + this.is_leap(ynow), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+         },
+        /**
+         * 判断闰年
+         * @param year
+         * @returns {number}
+         */
+        is_leap: function (year) {
+            return (year % 100 == 0 ? res = (year % 400 == 0 ? 1 : 0) : res = (year % 4 == 0 ? 1 : 0));
+        },
+        drawDate: function (opt) {
+            var nowdata = new Date().getDate();
+            var nowmonth = new Date().getMonth();
+            var nowyear = new Date().getFullYear();
+            var month = this._month;
+            var year = this._year;
+            var val = this._year + '/' + (this._month + 1) + '/' + nowdata;
+            var oid = document.getElementById(this.id);
+            oid.value = val;
+            var showmonth = month + 1;
+            //当前月有多少天
+            var numdays = this.mdays(year)[month+1];
+            var first_date = new Date(year, month, 1);
+            //获取当月第一天是星期几
+            var first_day = first_date.getDay();
+            //第一天是星期几加上总天数，一个星期共有7天，除以7，就是行数，只能多不能少，所以用Math.ceil向上取整数
+            var str_num = Math.ceil((first_day + numdays) / 7);//得到表格有多少行
+            // 如果存在，则移除整个日期层Container
+            var tableid = this.id + 'lytable';
+            var odiv = document.getElementById(tableid);
+            if (!!odiv) odiv.parentNode.removeChild(odiv);
+            var str_table = '<tr><td><a href="javascript:void(0);" id="pre"><</a></td><td colspan="3">' + year + '年</td><td colspan="2">' + showmonth + '月</td><td><a href="javascript:void(0);" id="next">></a></td></tr><tr><td >日</td><td >一</td><td >二</td><td >三</td><td >四</td><td >五</td><td >六</td></tr>';
+            var table = document.createElement('table');
+            table.innerHTML = str_table;
+            for (var i = 0; i < str_num; i++) {
+                var tr = document.createElement('tr');
+                for (var j = 0; j < 7; j++) {
+                    var td = document.createElement('td');
+                    var idx = i * 7 + j;
+                    date_num = idx - first_day + 1;
+                    td.innerHTML = date_num;
+                    if (date_num < 1 || date_num > numdays) {
+                        td.innerHTML = '';
+                    }
+                    if (date_num == nowdata && nowyear == year && month == nowmonth) {
+                        td.className = 'now'
+                    }
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            table.id = this.id + 'lytable';
+            // console.log(table.innerHTML);
+            document.body.appendChild(table);
+            this.getpos();
+            this.listen();
+
+        }
+
+    }
+    var defaults = {
+        _year: new Date().getFullYear(),
+        _month: new Date().getMonth()
+    }
+
+    document.getElementById('calendar').addEventListener('click', function () {
+        new Calendar({
+            id: this.id
+        });
+    })
+</script>
+
+</html>

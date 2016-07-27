@@ -1,0 +1,82 @@
+.calendar .head {
+    height: 0.88rem;
+    line-height: 0.88rem;
+    border: 1px #ccc solid;
+    background-color: #3bb4f2;
+    text-align: center;
+    color: #fff;
+    font-size: 0.3rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+.flex {
+    display: flex;
+}
+.flex>li {
+    flex: 1;
+}
+.calendar .week-f {
+    background-color: #F7F7F7;
+    border-bottom: 1px solid #CDCDCD;
+    position: fixed;
+    width: 100%;
+    top: 0.88rem;
+}
+.calendar .week-f>li {
+    text-align: center;
+}
+.calendar .week-f li.wk {
+    color: orange
+}
+.calendar .main {
+    padding-top: 1.3rem;
+}
+.cal-wrap {
+    margin-bottom: 0.3rem;
+    background-color: #f9f9f9;
+}
+.cal-wrap h2 {
+    text-align: center;
+    padding: 10px 0;
+}
+.cal-wrap .day {
+    overflow: hidden;
+}
+.cal-wrap ul.day li i {
+    font-style: normal;
+    display: block;
+}
+.cal-wrap .day li {
+    float: left;
+    width: 14.285714%;
+    text-align: center;
+    height: 0.9rem;
+    line-height: 0.76rem;
+    padding: 0.04rem 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.cal-wrap ul.day li.wk {
+    color: #FF902D;
+}
+.cal-wrap ul.day li.hl {
+    color: #099fde;
+}
+.cal-wrap ul.day li.iv {
+    color: #cfcfcf!important;
+    pointer-events: none;
+}
+.cal-wrap ul.day li.dl {
+    line-height: 0.4rem;
+    padding-top: 0.04rem;
+    font-size: 0.3rem;
+}
+.cal-wrap ul.day li.cur {
+    background-color: #3bb4f2;
+    color: #FFFFFF;
+}
+.cal-wrap ul.day li .price-info {
+    color: #ff7d13;
+    font-size: 0.2rem;
+}

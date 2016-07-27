@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>日历</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="reset.css" charset="utf-8">
+    <link rel="stylesheet" href="calendar.css" m charset="utf-8">
+    <script>
+        //auto adaptation
+        var calculate_size = function() {
+            var BASE_FONT_SIZE = 100;
+            var docEl = document.documentElement,
+                clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = BASE_FONT_SIZE * (clientWidth / 640) + 'px';
+        };
+
+        // Abort if browser does not support addEventListener
+        if (document.addEventListener) {
+            var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            window.addEventListener(resizeEvt, calculate_size, false);
+            document.addEventListener('DOMContentLoaded', calculate_size, false);
+            calculate_size();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="page calendar ">
+            <div class="head">
+                <h1>选择日期</h1>
+            </div>
+
+            <div class="main">
+                <ul class="week-f flex">
+                    <li class="wk">日</li>
+                    <li>一</li>
+                    <li>二</li>
+                    <li>三</li>
+                    <li>四</li>
+                    <li>五</li>
+                    <li class="wk">六</li>
+                </ul>
+
+                <div id="calendar">
+
+                </div>
+
+            </div>
+        </div>
+        <script type="text/javascript" charset="utf-8" src="datePrice.js"></script>
+        <script src="main.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            new Calendar({
+                minDate:datePrice.SDate,
+                maxDate:datePrice.EDate,
+                price: datePrice.dateInfo
+
+            })
+        </script>
+</body>
+
+</html>
