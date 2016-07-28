@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>模板替换</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var tpl = ['{{name}}',
+            '<p>我来自{{address}}</p>',
+            '<p>这是我的个人博客</p>',
+        ].join("");
+
+        var data = {
+            name: "<h1>你好</h1>",
+            address: '湖北襄阳'
+        }
+        var html = tpl.replace(/{{name}}/, data.name).replace(/{{address}}/, data.address);
+        document.body.innerHTML = html
+    </script>
+</body>
+
+</html>
