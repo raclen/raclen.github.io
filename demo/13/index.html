@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>modal 弹框</title>
+    <style media="screen">
+        .modal {
+            position: fixed !important;
+            top: 50%;
+            left: 50%;
+            _position: absolute;
+            _top: 15%;
+            _margin-top: 0;
+            z-index: 102;
+            width: 660px;
+            margin-left: -330px;
+            margin-top: -300px;
+            background-color: #fff;
+            outline: none;
+        }
+
+        .modal-hide {
+            display: none;
+        }
+
+        .modal-vote {
+            width: 676px;
+            height: 480px;
+            margin-left: -338px;
+            margin-top: -240px;
+            border-radius: 10px;
+            overflow: hidden;
+            _zoom: 1;
+        }
+
+        .fade.in {
+            opacity: 1;
+            filter: alpha(opacity=100)\9;
+        }
+
+        .modal.fade {
+            -webkit-transition: opacity .4s linear, top .4s ease-out;
+            transition: opacity .4s linear, top .4s ease-out;
+            top: -25%;
+        }
+
+        .modal.fade.in {
+            top: 50%;
+            _top: 15%;
+        }
+
+        .modal-backdrop {
+            position: fixed !important;
+            _position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            background-color: #000;
+        }
+
+        .fade {
+            opacity: 0;
+            filter: alpha(opacity=0)\9;
+            -webkit-transition: opacity .15s linear;
+            transition: opacity .15s linear;
+            display: none;
+        }
+
+        .fade.in {
+            opacity: 1;
+            filter: alpha(opacity=100)\9;
+        }
+
+        .modal-backdrop.fade {
+            opacity: 0;
+            filter: alpha(opacity=0)\9;
+        }
+
+        .modal-backdrop,
+        .modal-backdrop.fade.in {
+            opacity: 0.5;
+            filter: alpha(opacity=50)\9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal fade modal-vote modal-vote-result " id="modal">
+
+    </div>
+
+    <div class="modal-backdrop fade" id="mask"></div>
+
+    <input type="button" name="name" value="出来" id="btn">
+    <script type="text/javascript">
+        var odiv = document.querySelectorAll('div');
+        var omodal = document.querySelector('#modal');
+        var omask = document.querySelector('#mask');
+        var obtn = document.querySelector('#btn');
+        obtn.addEventListener('click', function() {
+            omask.style.display = 'block';
+            omodal.style.display = 'block';
+            window.requestAnimationFrame(function() {
+                omask.className = omask.className + ' in';
+                omodal.className = omodal.className + ' in';
+
+            });
+
+        })
+        omask.addEventListener('click', function() {
+            console.log("common in mask")
+            omask.className = omask.className.replace('in',"");
+            omodal.className = omodal.className.replace('in',"");
+            setTimeout(function() {
+                omask.style.display = 'none';
+                omodal.style.display = 'none';
+
+            },400);
+
+        }, false)
+    </script>
+</body>
+
+</html>
