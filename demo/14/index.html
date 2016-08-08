@@ -7,6 +7,12 @@
 </head>
 
 <body>
+
+    <!-- <select name="" id="setdd">
+      <option value="www" selected="selected">www</option>
+      <option value=222"">222</option>
+      <option value="111">111</option>
+    </select> -->
     <script type="text/javascript">
         var tpl = ['{{name}}',
             '<p>我来自{{address}}</p>',
@@ -17,8 +23,17 @@
             name: "<h1>你好</h1>",
             address: '湖北襄阳'
         }
-        var html = tpl.replace(/{{name}}/, data.name).replace(/{{address}}/, data.address);
-        document.body.innerHTML = html
+
+        function htmlTpl(tpl, data) {
+            return tpl.replace(/{{(\w+)}}/g, function() {
+                return data[arguments[1]];
+            });
+
+        }
+        // var html = tpl.replace(/{{name}}/, data.name).replace(/{{address}}/, data.address);
+        document.body.innerHTML = htmlTpl(tpl, data)
+
+        // alert(document.querySelector('#setdd').value)
     </script>
 </body>
 

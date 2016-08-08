@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>js图片滑动切换</title>
+    <style type="text/css">
+        #showPic {
+            overflow: hidden;
+            position: relative;
+        }
+
+        #imgContainer {
+            position: absolute;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #imgContainer li {
+            list-style: none;
+            float: left;
+        }
+
+        #showPic span {
+            width: 25px;
+            height: 50px;
+            display: block;
+            position: absolute;
+            background-color: #fff;
+            opacity: 0.5;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+        }
+
+        #showPic span:hover {
+            cursor: pointer;
+        }
+
+        #prevSpan {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            left: 0px;
+        }
+
+        #nextSpan {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="showPic">
+        <ul id="imgContainer">
+            <li><img alt="11111" src="http://www.codefans.net//jscss/demoimg/201108/1.jpg" /></li>
+            <li><img alt="22222" src="http://www.codefans.net//jscss/demoimg/201108/2.jpg" /></li>
+            <li><img alt="33333" src="http://www.codefans.net//jscss/demoimg/201108/3.jpg" /></li>
+        </ul>
+        <span id="prevSpan">&lt;</span>
+        <span id="nextSpan">&gt;</span>
+    </div>
+    <script type="text/javascript">
+        var imgWidth = 500; //图片宽度
+        var imgHeight = 200; //图片高度
+        var moveSpeed = 20; //移动速度
+        var moveInterval = 2000; //移动间隔
+        //没有特殊要求，下面不用改。
+        var showPic = document.getElementById("showPic");
+        showPic.style.width = imgWidth + "px";
+        showPic.style.height = imgHeight + "px";
+        var imgContainer = document.getElementById("imgContainer");
+        imgContainer.innerHTML += imgContainer.innerHTML;
+        var imgs = imgContainer.getElementsByTagName("img");
+        imgContainer.style.width = imgWidth * imgs.length + "px";
+        imgContainer.style.height = imgHeight + "px";
+        var prevSpan = document.getElementById("prevSpan");
+        var nextSpan = document.getElementById("nextSpan");
+        var prevHeight = parseInt(prevSpan.offsetHeight);
+        prevSpan.style.top = (imgHeight - prevHeight) / 2 + "px";
+        nextSpan.style.top = (imgHeight - prevHeight) / 2 + "px";
+        var moveTimer = null;
+        var isActive = false;
+
+        function moveImg(targetX) {
+            if (!imgContainer.style.left) {
+                imgContainer.style.left = "0px";
+            }
+            var currentX = parseFloat(imgContainer.style.left);
+            if (targetX == currentX) {
+                clearInterval(moveTimer);
+                isActive = false;
+            } else {
+                var moveX = (targetX - currentX) / 10;
+                moveX = targetX > currentX ? Math.ceil(moveX) : Math.floor(moveX);
+                imgContainer.style.left = currentX + moveX + "px";
+                setTimeout("moveImg(" + targetX + ")", moveSpeed);
+                isActive = true;
+
+            }
+        }
+
+        function changePosition(currentX) {
+            if (currentX == 0) {
+                currentX = -imgWidth * imgs.length / 2;
+            } else if (currentX == -imgWidth * (imgs.length - 1)) {
+                currentX = -imgWidth * (imgs.length / 2 - 1);
+            }
+            return currentX;
+        }
+
+        function nextImg() {
+            var currX = changePosition(imgContainer.offsetLeft)
+            imgContainer.style.left = currX + "px";
+            var targetX = currX - imgWidth;
+            if (!isActive) {
+
+                moveImg(targetX);
+            }
+        }
+
+        function prevImg() {
+            var currX = changePosition(imgContainer.offsetLeft)
+            imgContainer.style.left = currX + "px";
+            var targetX = currX + imgWidth;
+            if (!isActive) {
+
+                moveImg(targetX);
+            }
+        }
+        // var nextTimer = setInterval(nextImg, moveInterval);
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].width = imgWidth;
+            imgs[i].height = imgHeight;
+            imgs[i].onmouseover = function() {
+                // clearInterval(nextTimer);
+            };
+            imgs[i].onmouseout = function() {
+                // nextTimer = setInterval(nextImg, moveInterval);
+            };
+        }
+        prevSpan.onclick = function() {
+            // clearInterval(nextTimer);
+            prevImg();
+            // nextTimer = setInterval(nextImg, moveInterval);
+        }
+        nextSpan.onclick = function() {
+            // clearInterval(nextTimer);
+            nextImg();
+            // nextTimer = setInterval(nextImg, moveInterval);
+        }
+    </script>
+</body>
+
+</html>

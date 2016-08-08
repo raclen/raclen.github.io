@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box {
+            width: 470px;
+            height: 150px;
+            margin: 40px auto;
+            position: relative;
+            border: #2a2a2a solid 1px;
+            overflow: hidden;
+        }
+
+        #box ul {
+            /*float: left;*/
+            position: absolute;
+            /*transition: left 1s;*/
+            left: 0;
+        }
+
+        #box li {
+            list-style: none;
+            float: left;
+            width: 470px;
+            height: 150px;
+        }
+
+        #box a {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border-radius: 30px;
+            position: absolute;
+            top: 60px;
+            z-index: 2;
+            text-align: center;
+            text-decoration: none;
+            line-height: 30px;
+        }
+
+        #btn_left {
+            left: 10px;
+        }
+
+        #btn_right {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="box">
+        <a href="javascript:;" class="btn" id="btn_left">
+            <</a>
+                <a href="javascript:;" class="btn" id="btn_right">></a>
+
+                <ul>
+                    <li><img alt="11111" src="http://www.codefans.net//jscss/demoimg/201108/1.jpg" /></li>
+                    <li><img alt="22222" src="http://www.codefans.net//jscss/demoimg/201108/2.jpg" /></li>
+                    <li><img alt="33333" src="http://www.codefans.net//jscss/demoimg/201108/3.jpg" /></li>
+                </ul>
+    </div>
+    <script type="text/javascript">
+        var obox = document.getElementById('box');
+        var oul = obox.getElementsByTagName('ul')[0];
+        var oli = oul.getElementsByTagName('li');
+        oul.innerHTML += oul.innerHTML;
+        oul.style.width = oli.length * oli[0].offsetWidth + 'px';
+        oul.style.left = -oul.offsetWidth / 2 + 'px';
+        var isSpeed = false; //是否在运动状态
+
+        var obtnRight = document.getElementById('btn_right');
+        obtnRight.onclick = function() {
+            console.log("oul的left==" + parseInt(oul.style.left))
+            console.log("oul的width==" + oul.offsetWidth)
+            if (Math.abs(parseInt(oul.style.left)) == oul.offsetWidth / 2) {
+                oul.style.left = 0 + 'px';
+            }
+            if (!isSpeed) {
+                move(oul, oul.offsetLeft - oli[0].offsetWidth);
+            }
+        }
+
+        var obtnLeft = document.getElementById('btn_left');
+        obtnLeft.onclick = function() {
+            console.log("oul的left==" + parseInt(oul.style.left))
+            console.log("oul的width==" + oul.offsetWidth)
+            if (Math.abs(parseInt(oul.style.left)) == 0) {
+                oul.style.left = -oul.offsetWidth / 2 + 'px';
+            }
+            if (!isSpeed) {
+                move(oul, oul.offsetLeft + oli[0].offsetWidth);
+            }
+        }
+
+        function move(ele, distance) {
+            if (!ele.style.left) {
+                ele.style.left = 0 + 'px';
+            }
+            var eleLeft = parseFloat(ele.style.left);
+            if (eleLeft == distance) {
+                isSpeed = false;
+            } else {
+                var moveX = (distance - eleLeft) / 10;
+                moveX = distance > eleLeft ? Math.ceil(moveX) : Math.floor(moveX);
+                ele.style.left = eleLeft + moveX + 'px';
+                setTimeout(function() {
+                    move(ele, distance)
+                }, 20)
+                isSpeed = true;
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
