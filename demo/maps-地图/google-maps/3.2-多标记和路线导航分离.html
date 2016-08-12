@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .map-box {
+            width: 1000px;
+            height: 600px;
+            position: fixed;
+            /*box-shadow: 4px 7px 4px #c1c1c1;*/
+            padding: 6px;
+            border: 1px solid #ededed;
+            display: none;
+            z-index: 667;
+            background-color: #fff;
+        }
+
+        .map-box .close {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 0px;
+            right: -40px;
+            font-size: 24px;
+            background-color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        #mainMapLayer {
+            flex: 1;
+        }
+
+        .solid {
+            width: 236px;
+            background-color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .solid .col {
+            padding: 10px 0;
+            text-align: center;
+            box-sizing: border-box;
+            height: 46px;
+        }
+
+        .route_way {
+            position: relative;
+            padding: 0px 0px 10px 22px !important;
+        }
+
+        .route_way:after {
+            clear: both;
+            display: block;
+            content: "";
+            height: 0;
+        }
+
+        .solid input[type="text"] {
+            height: 22px;
+        }
+
+        .route_way a {
+            position: relative;
+            float: left;
+            display: block;
+            width: 58px;
+            height: 28px;
+            line-height: 28px;
+            margin-right: 6px;
+            border: 1px solid #bbb;
+            border-radius: 2px;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+        }
+
+        .route_way a:active {
+            background-color: #2ba5f7;
+            border-color: #0076a0;
+            color: #fff;
+        }
+
+        .route_way a.current {
+            background-color: #2ba5f7;
+            border-color: #0076a0;
+            color: #fff;
+        }
+
+        .direction-panel {
+            overflow-y: scroll;
+            text-align: left !important;
+            flex: 1;
+        }
+
+        #content>div {
+            padding: 6px;
+        }
+
+        #siteNotice {
+            font-weight: bold;
+            border-bottom: 1px #ccc dashed;
+        }
+
+        #bodyContent {
+            text-align: center;
+        }
+
+        .travel {
+            display: inline-block;
+            height: 28px;
+            line-height: 28px;
+            margin-right: 6px;
+            border-radius: 2px;
+            background-color: #2ba5f7;
+            border: #0076a0 solid 1px;
+            color: #fff;
+            text-align: center;
+            padding: 0 6px;
+            margin-top: 10px;
+        }
+
+        .map-min {
+            margin: 20px;
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false&language=zh-CN"></script>
+</head>
+
+<body>
+
+    <div class="map-min">
+
+    </div>
+    <div class="map-box">
+        <a class="close" href="javascript:;">×</a>
+        <div class="" id="mainMapLayer"></div>
+        <div class="solid">
+            <div class="col">
+                起点：
+                <input type="text" id="start_point" name="name" value="">
+            </div>
+            <div class="col">
+                终点：
+                <input type="text" id="end_point" name="name" value="">
+            </div>
+            <div class="route_way col">
+                <a class="" href="javascript:;" data-way="transit">公交</a>
+                <a class="" href="javascript:;" data-way="driving">驾车</a>
+                <a class="" href="javascript:;" data-way="walking">步行</a>
+            </div>
+            <div class="direction-panel" id='direction-panel'>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function Gmap(map, neighborhoods, id) {
+            this.map = map;
+            this.id = id;
+            this.neighborhoods = neighborhoods;
+
+        }
+        Gmap.prototype = {
+            extend: function(a, b) {
+                for (var i in b) {
+                    a[i] = b[i];
+                }
+                return a;
+
+            },
+            fnTpl: function(tpl, data) {
+                return tpl.replace(/{{(\w+)}}/g, function() {
+                    return data[arguments[1]];
+                });
+            },
+            setMapOnAll: function(map) {
+                for (var i = 0; i < this.markers.length; i++) {
+                    this.markers[i].setMap(map);
+                }
+            },
+            markerAndInfoWindow: function(callback) {
+                var that = this;
+                that.markers = [];
+                for (var i = 0; i < that.neighborhoods.length; i++) {
+                    addMarkerWithTimeout(that.neighborhoods[i]);
+                }
+
+                function addMarkerWithTimeout(position) {
+                    that.markers.push(new google.maps.Marker({
+                        position: position,
+                        map: that.map
+                    }));
+
+                }
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">{{title}}</div>' +
+                    '<div id="bodyContent">' +
+                    '<p>{{content}} </p>' +
+                    '<a href="javascript:;" class="travel' + this.id + ' travel"  data-index="{{index}}">查看路线</a>' +
+                    '</div>' +
+                    '</div>';
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                var j = 0;
+                for (j = 0; j < that.markers.length; j++) {
+                    that.markers[j].index = j;
+                    google.maps.event.addListener(that.markers[j], 'click', function() {
+                        var _this = this;
+                        var data = that.extend(that.neighborhoods[_this.index], {
+                            index: _this.index
+                        });
+                        infowindow.setContent(that.fnTpl(contentString, data));
+                        infowindow.open(that.map, _this);
+                    });
+                }
+                //默认打开第一个
+                var data = that.extend(that.neighborhoods[0], {
+                    index: 0
+                });
+                infowindow.setContent(that.fnTpl(contentString, data));
+                infowindow.open(that.map, that.markers[0]);
+
+                var oBody = document.querySelectorAll('body')[0];
+                oBody.removeEventListener('click', addEventTravel);
+                oBody.addEventListener('click', addEventTravel);
+
+                function addEventTravel(e) {
+                    var oparent = e.target.parentNode;
+                    var op = oparent.querySelectorAll('p')[0];
+                    var index = e.target.dataset.index;
+                    if (e.target.className.match(/travel1/)) {
+                        var aTemp = [];
+                        aTemp.push(that.neighborhoods[index])
+                        callback&&callback(aTemp);
+                        //   document.querySelector('#end_point').value = op.innerText;
+                    } else if (e.target.className.match(/travel2/)) {
+                        document.querySelector('#end_point').value = that.neighborhoods[index].content;
+                    }
+
+                }
+
+
+
+            },
+            directions: function() {
+                var that = this;
+                var directionsService = new google.maps.DirectionsService(); //service用来请求导航数据
+
+                var directionsDisplay;
+                directionsDisplay = new google.maps.DirectionsRenderer(); //渲染导航数据
+                directionsDisplay.setMap(that.map);
+                directionsDisplay.setPanel(document.getElementById("direction-panel"));
+
+                //出行方式选择
+                var aRouteWay = document.querySelectorAll('.route_way')[0];
+                var aAWay = aRouteWay.querySelectorAll('a');
+                aAWay.forEach(function(item) {
+                    item.addEventListener('click', function() {
+                        aAWay.forEach(function(item2) {
+                            item2.className = "";
+                        })
+                        this.className = "current";
+                        var way = this.dataset.way.toUpperCase();
+                        calcRoute(way);
+                    })
+                })
+
+                function calcRoute(way) {
+                    var start = document.getElementById('start_point').value;
+                    var end = document.getElementById('end_point').value;
+                    var request = {
+                        origin: start,
+                        destination: end,
+                        travelMode: google.maps.DirectionsTravelMode[way]
+                    };
+                    directionsService.route(request, function(response, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(response);
+                            that.setMapOnAll(null);
+                        }
+                    });
+                }
+            }
+
+        };
+        var online = {
+
+            //设置地图位置，让它在屏幕中间
+            setPosition: function() {
+                var innerWidth = window.innerWidth || document.documentElement.clientWidth || document.body.offsetWidth;
+                var innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.offsetHeight;
+                var mapbox = document.querySelectorAll('.map-box')[0];
+                mapbox.style.width = innerWidth * 0.8 + 'px';
+                mapbox.style.height = innerHeight * 0.8 + 'px';
+                mapbox.style.left = (innerWidth - mapbox.offsetWidth) / 2 + 'px';
+                mapbox.style.top = (innerHeight - mapbox.offsetHeight) / 2 + 'px';
+            },
+
+            initMap: function() {
+                var that = this;
+                //我们先初始化一个地图
+                //然后我们来写点样式
+                var myOptions = {
+                    zoom: 11,
+                    center: new google.maps.LatLng(31.22171, 121.352856),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.querySelectorAll(".map-min")[0], myOptions);
+                //添加标记
+                var neighborhoods = [{
+                    lat: 31.22071,
+                    lng: 121.302800,
+                    title: "上海迪士尼",
+                    content: "中国上海市黄浦区方浜中路280号。"
+                }, {
+                    lat: 31.22111,
+                    lng: 121.352001,
+                    title: "东京迪士尼乐园",
+                    content: "日本千叶县浦安市舞浜1-1号。"
+                }, {
+                    lat: 31.22371,
+                    lng: 121.392100,
+                    title: "北京香山公园",
+                    content: "北京市海淀区买卖街40号。"
+                }, {
+                    lat: 31.22571,
+                    lng: 121.522856,
+                    title: "襄阳古隆中",
+                    content: "湖北省襄阳市襄城区001县道隆中路6号。"
+                }];
+                var minMap = new Gmap(map, neighborhoods, 1);
+                minMap.markerAndInfoWindow(function(ns) {
+                    that.initDialogMap(ns);
+                });
+
+            },
+            // initMap就是加载后的回调函数
+            // 注意和echart一样mainMapLayer需要给宽度和高度地图才能显示出来
+            initDialogMap: function(neighborhoods) {
+                var that = this;
+                console.log('common in initMap');
+                document.querySelectorAll(".map-box")[0].style.display = 'flex';
+                var aMask = document.querySelectorAll('.mask');
+                if (aMask.length > 0) {
+                    aMask[0].style.display = 'block';
+                } else {
+                    var omask = document.createElement('div');
+                    var sStye = [' position: fixed;',
+                        '    opacity: 0.5;',
+                        '    background-color: #000;',
+                        '    left: 0;',
+                        '    top: 0;',
+                        '    width: 100%;',
+                        '    height:100%;',
+                        '    z-index: 666;'
+                    ].join("");
+                    omask.style = sStye;
+                    document.body.appendChild(omask);
+
+                    var oclose = document.querySelectorAll('.close')[0];
+                    oclose.addEventListener('click', function() {
+                        omask.style.display = 'none';
+                        document.querySelectorAll(".map-box")[0].style.display = 'none';
+                    })
+                }
+
+
+                that.setPosition();
+                window.addEventListener('resize', that.setPositio);
+
+                //我们先初始化一个地图
+                //然后我们来写点样式
+                var myOptions = {
+                    zoom: 11,
+                    center: new google.maps.LatLng(31.22171, 121.352856),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("mainMapLayer"), myOptions);
+
+
+                //that.markerAndInfoWindow(neighborhoods);
+                var dialogMap = new Gmap(map, neighborhoods, 2);
+                dialogMap.markerAndInfoWindow();
+
+                document.querySelector('#end_point').value = neighborhoods[0].content;
+                dialogMap.directions();
+
+            },
+
+
+
+        }
+
+        online.initMap()
+    </script>
+
+</body>
+
+</html>

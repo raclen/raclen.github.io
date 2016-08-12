@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        #mainMapLayer {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="mainMapLayer">
+
+    </div>
+    <script type="text/javascript">
+        // initMap就是加载后的回调函数
+        // 注意和echart一样mainMapLayer需要给宽度和高度地图才能显示出来
+        function initMap() {
+            console.log('common in initMap');
+            var myCenter = new google.maps.LatLng(31.22171, 121.352856);
+
+            var myOptions = {
+                zoom: 11,
+                center: myCenter,
+                // mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("mainMapLayer"), myOptions);
+
+            var neighborhoods = [{
+                lat: 31.22071,
+                lng: 121.302800,
+                title:"上海迪士尼",
+                content :"中国上海市黄浦区方浜中路280号。"
+            }, {
+                lat: 31.22111,
+                lng: 121.352001,
+                title:"东京迪士尼乐园",
+                content :"日本千叶县浦安市舞浜1-1号。"
+            }, {
+                lat: 31.22371,
+                lng: 121.392100,
+                title:"北京香山公园",
+                content :"北京市海淀区买卖街40号。"
+            }, {
+                lat: 31.22571,
+                lng: 121.372856,
+                title:"襄阳古隆中",
+                content :"湖北省襄阳市襄城区001县道隆中路6号。"
+            } ];
+
+            for (var i = 0; i < neighborhoods.length; i++) {
+                addMarkerWithTimeout(neighborhoods[i]);
+            }
+
+            function addMarkerWithTimeout(position) {
+                markers.push(new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title:"hello google map"
+                }));
+
+            }
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">{{title}}</div>' +
+                '<div id="bodyContent">' +
+                '<p>{{content}} </p>' +
+                '<input type="button" value="查看路线">' +
+                '</div>' +
+                '</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var j = 0;
+            for (j = 0; j < markers.length; j++) {
+                markers[j].index = j;
+                google.maps.event.addListener(markers[j], 'click', function() {
+                    // var yourInfoWindow;
+                    // if (!yourInfoWindow) {
+                    //     yourInfoWindow = new google.maps.InfoWindow({});
+                    // }
+                    var that = this;
+                    infowindow.setContent(htmlTpl(contentString,neighborhoods[that.index]));
+                    infowindow.open(map, that);
+                });
+            }
+
+
+        }
+        function htmlTpl(tpl, data) {
+            return tpl.replace(/{{(\w+)}}/g, function() {
+                return data[arguments[1]];
+            });
+
+        }
+    </script>
+    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false&language=zh-CN&callback=initMap">
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        #mainMapLayer {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="mainMapLayer">
+
+    </div>
+    <script type="text/javascript">
+        // initMap就是加载后的回调函数
+        // 注意和echart一样mainMapLayer需要给宽度和高度地图才能显示出来
+        function initMap() {
+            console.log('common in initMap');
+            var myCenter = new google.maps.LatLng(31.22171, 121.352856);
+
+            var myOptions = {
+                zoom: 11,
+                center: myCenter,
+                // mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("mainMapLayer"), myOptions);
+            //地图的标记和地图中心不能太远，否则会看不到
+            // var marker = new google.maps.Marker({
+            //     position: new google.maps.LatLng(31.22171, 121.30),
+            //     map: map,
+            //     title: "Hello google Map!"
+            // });
+            var markers=[];
+            var neighborhoods = [{
+                lat: 31.22071,
+                lng: 121.302800
+            }, {
+                lat: 31.22111,
+                lng: 121.352001
+            }, {
+                lat: 31.22371,
+                lng: 121.392100
+            }, {
+                lat: 31.22571,
+                lng: 121.372856
+            }, ];
+
+            for (var i = 0; i < neighborhoods.length; i++) {
+                addMarkerWithTimeout(neighborhoods[i], i * 500);
+            }
+
+            function addMarkerWithTimeout(position, timeout) {
+                window.setTimeout(function() {
+                    markers.push(new google.maps.Marker({
+                        position: position,
+                        map: map,
+                        animation: google.maps.Animation.DROP
+                    }));
+                }, timeout);
+            }
+
+        }
+    </script>
+    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false&language=zh-CN&callback=initMap">
+    </script>
+</body>
+
+</html>

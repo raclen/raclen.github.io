@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        #mainMapLayer {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="mainMapLayer">
+
+    </div>
+    <script type="text/javascript">
+        // initMap就是加载后的回调函数
+        // 注意和echart一样mainMapLayer需要给宽度和高度地图才能显示出来
+        function initMap() {
+            console.log('common in initMap');
+            var myCenter=new google.maps.LatLng(31.22171, 121.352856);
+
+            var myOptions = {
+                zoom: 11,
+                center: myCenter,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("mainMapLayer"), myOptions);
+
+            var marker=new google.maps.Marker({
+                position: new google.maps.LatLng(31.22171, 121.30),
+                map: map,
+                title:"Hello google Map!"
+              });
+
+        }
+    </script>
+    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false&language=zh-CN&callback=initMap" >
+    </script>
+</body>
+
+</html>

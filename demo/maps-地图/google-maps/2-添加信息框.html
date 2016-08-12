@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        #mainMapLayer {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="mainMapLayer">
+
+    </div>
+    <script type="text/javascript">
+        // initMap就是加载后的回调函数
+        // 注意和echart一样mainMapLayer需要给宽度和高度地图才能显示出来
+        function initMap() {
+            console.log('common in initMap');
+            var myCenter = new google.maps.LatLng(31.22171, 121.352856);
+
+            var myOptions = {
+                zoom: 11,
+                center: myCenter,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("mainMapLayer"), myOptions);
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(31.22171, 121.30),
+                map: map,
+                title: "Hello google Map!"
+            });
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<div id="bodyContent">' +
+                '<p>我是支持HTML的提示框 </p>' +
+                '<input type="button" value="查看路线">' +
+                '</div>' +
+                '</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+              });
+
+        }
+    </script>
+    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false&language=zh-CN&callback=initMap">
+    </script>
+</body>
+
+</html>
