@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" name="name" value="" list="nums">
+    <datalist class="" id="nums">
+    <option>1111</option>
+    <option>2222</option>
+    <option>3333</option>
+    </datalist>
+    <script type="text/javascript">
+
+    var i=0;
+    var oInput = document.querySelector('input')
+    oInput.onclick = function(){
+      ++i;
+      oInput.value = i;
+      history.pushState(i,"");
+    }
+    window.onpopstate = function(ev){
+      oInput.value = ev.state;
+    }
+
+    //hash实现
+    // 存下来一个对象{'name':"value"}
+    //设置hash值 hash  就是http://muxu.pw#home  中德#home
+    // onhashchange事件的时候取出hash hash为key  去数组里面找值，做相应处理
+
+
+    </script>
+  </body>
+</html>

@@ -18,7 +18,6 @@ function ScrollPic(scrollContId,arrLeftId,arrRightId,dotListId,listType){
   this.speed = 10; //移动速度(单位毫秒，越小越快)
   this.space = 10; //每次移动像素(单位px，越大越快)
   this.scrollWidth = 5; //横向滚动宽度
-
   this.upright = false; //垂直的滚动
 
   this.pageIndex = 0;

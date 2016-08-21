@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #canvas{background-color: #f1f1f1;}
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="600">
+
+    </canvas>
+<script type="text/javascript">
+  var canvas = document.querySelector('canvas');
+  var ctx = canvas.getContext('2d');
+  ctx.strokeStyle = 'red';
+  // ctx.strokeRect(100,100,100,100);
+  // ctx.lineTo(100,200);
+  // ctx.moveTo(200, 200);
+  // ctx.lineTo(200,200);
+  // ctx.closePath();
+  // ctx.stroke()
+
+  canvas.addEventListener('mousedown',function(e){
+    ctx.beginPath();
+    console.log('mousedown')
+     ctx.moveTo(e.pageX, e.pageY);
+
+  //  ctx.moveTo(100, 200);
+    //ctx.lineTo(200,200);
+    //ctx.closePath();
+    //ctx.stroke()
+    canvas.addEventListener('mousemove',fun2);
+    function fun2(e){
+      console.log('mousemove')
+      ctx.lineTo(e.pageX, e.pageY);
+      ctx.stroke()
+    }
+
+    canvas.addEventListener('mouseup',function(e){
+        console.log('mouseup')
+        canvas.removeEventListener('mousemove',fun2)
+
+    })
+  })
+
+
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #canvas{background-color: #f1f1f1;}
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="600">
+
+    </canvas>
+<script type="text/javascript">
+  var canvas = document.querySelector('canvas');
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'red';
+  //画圆的参数  arc(x,y,半径,起始弧度，结束弧度,旋转方向)
+  //弧度= 角度*Math.PI/180
+  // ctx.beginPath()
+  // // ctx.moveTo(200,200)
+  // ctx.arc(200,200,100,0*Math.PI/180,360*Math.PI/180,true);
+  // // ctx.closePath()
+  // ctx.stroke();
+
+var dx = 200,dy=580,num =30;
+  function drow(){
+    // console.log(canvas.width)
+    // console.log(canvas.height)
+    //ctx.clearRect(20,20,600,600);
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+    ctx.beginPath()
+    ctx.arc(dx,dy,12,0*Math.PI/180,360*Math.PI/180,true);
+    ctx.fill();
+  //初始位置在最下面，当小球碰到下面边界，就往会移动到纵坐标300的时候再往回运动
+    if(dy+num>=600){
+      num = -num;
+    }
+    // if(dy+num<=0){
+    //   num = -num;
+    // }
+    if(dy+num<=300){
+      num = -num;
+    }
+    dy = dy+num;
+
+  }
+
+    setInterval(function(){
+      drow()
+    },30)
+
+
+
+</script>
+  </body>
+</html>

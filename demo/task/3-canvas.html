@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #canvas{background-color: #f1f1f1;}
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="600">
+
+    </canvas>
+<script type="text/javascript">
+  var canvas = document.querySelector('canvas');
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'red';
+
+var dx = 200,dy=580,numx =30,numy =20;
+  function drow(){
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+    ctx.beginPath()
+    ctx.arc(dx,dy,12,0*Math.PI/180,360*Math.PI/180,true);
+    ctx.fill();
+  //初始位置在最下面，当小球碰到下面边界，就往会移动到纵坐标300的时候再往回运动
+    if(dy+numx>600||dy+numx<0){
+      numx = -numx;
+    }
+    if(dx+numy>600||dx+numy<0){
+      numy = -numy;
+    }
+    dy = dy+numx;
+    dx = dx+numy;
+
+  }
+
+    setInterval(function(){
+      drow()
+    },30)
+
+
+
+</script>
+  </body>
+</html>
