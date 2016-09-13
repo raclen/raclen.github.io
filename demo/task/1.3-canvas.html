@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    *{margin: 0;padding: 0}
+        canvas {
+            background-color: rgba(19, 67, 71, 0.8);
+            /*position: fixed;;*/
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="hitcanvas" >
+
+    </canvas>
+    <canvas id="canvas" width="124" height="124">
+
+    </canvas>
+    <script type="text/javascript">
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        var img = new Image();
+        img.onload = function() {
+            fnDrawImg(this)
+        }
+        img.src = 'enso.svg';
+        var iScale = 1,
+            step = 1,
+            dx = 0,
+            dy = 0,
+            num = 0,
+            numx = 60,
+            numy = 40;;
+
+        function fnDrawImg(obj) {
+            num++;
+            ctx.save();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (iScale == 0) {
+                step = 1;
+            }
+            if (iScale == 62) {
+                step = -1;
+            }
+            iScale = iScale + step;
+            ctx.translate(62, 62);
+            ctx.scale(iScale * 1 / 62, iScale * 1 / 62);
+            ctx.rotate(num * Math.PI / 180);
+            ctx.translate(-62, -62);
+            ctx.drawImage(obj, dx, dy, 124, 124);
+            ctx.restore();
+            if (num > 100) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                clearInterval(timerfnDrawImg);
+                var hitCanvas = document.getElementById('hitcanvas')
+                hitCanvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.offsetWidth;
+                hitCanvas.height =window.innerHeight || document.documentElement.clientHeight || document.body.offsetHeight;
+                setInterval(function() {
+                    hitDrow(img,hitCanvas)
+                }, 20)
+            }
+
+
+        }
+
+        function hitDrow(obj,hitCanvas) {
+            var ctx = hitCanvas.getContext('2d')
+            ctx.clearRect(0, 0, hitCanvas.width, hitCanvas.height);
+            ctx.beginPath()
+            ctx.drawImage(obj, dx, dy, 124, 124);
+            ctx.fill();
+            //初始位置在最下面，当小球碰到下面边界，就往会移动到纵坐标300的时候再往回运动
+            if (dy +62+numx > hitCanvas.height || dy +62+ numx < 0) {
+                numx = -numx;
+            }
+            if (dx +62+ numy > hitCanvas.width || dx +62+ numy < 0) {
+                numy = -numy;
+            }
+            dy = dy + numx;
+            dx = dx + numy;
+
+        }
+        timerfnDrawImg = setInterval(function() {
+            fnDrawImg(img)
+        }, 20)
+    </script>
+</body>
+
+</html>

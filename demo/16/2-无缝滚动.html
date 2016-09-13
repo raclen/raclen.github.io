@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .bigpic {
+            width: 470px;
+            height: 150px;
+            position: relative;
+            border: #2a2a2a solid 1px;
+            overflow: hidden;
+        }
+
+        .bigpic ul {
+            /*float: left;*/
+            position: absolute;
+            /*transition: left 1s;*/
+            left: 0;
+        }
+
+        .bigpic li {
+            list-style: none;
+            float: left;
+            width: 470px;
+            height: 150px;
+        }
+
+        .bigpic a {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border-radius: 30px;
+            position: absolute;
+            top: 60px;
+            z-index: 2;
+            text-align: center;
+            text-decoration: none;
+            line-height: 30px;
+        }
+
+        .btn_left {
+            left: 10px;
+        }
+
+        .btn_right {
+            right: 10px;
+        }
+
+        .picImg {
+            width: 470px;
+            margin: 40px auto;
+        }
+
+        .minpic {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .minpic ul li {
+            display: inline-block;
+            width: 85px;
+        }
+
+        .minpic ul li.active {
+            border: 1px solid #0076a0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="picImg" id="box">
+        <div class="bigpic" >
+            <a href="javascript:;" class="btn btn_left" >
+                <</a>
+                    <a href="javascript:;" class="btn btn_right" >></a>
+                    <ul>
+                        <li><img alt="11111" src="../image/P_000.jpg" /></li>
+                        <li><img alt="22222" src="../image/P_001.jpg" /></li>
+                        <li><img alt="33333" src="../image/P_002.jpg" /></li>
+                        <li><img alt="44444" src="../image/P_003.jpg" /></li>
+                        <li><img alt="5555" src="../image/P_004.jpg" /></li>
+                    </ul>
+        </div>
+        <div class="minpic">
+            <ul>
+                <li class="active"><img alt="11111" src="../image/P_000.jpg" /></li>
+                <li><img alt="22222" src="../image/P_001.jpg" /></li>
+                <li><img alt="33333" src="../image/P_002.jpg" /></li>
+                <li><img alt="44444" src="../image/P_003.jpg" /></li>
+                <li><img alt="5555" src="../image/P_004.jpg" /></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var slide = (function(){
+        var init = function(id){
+            this.box = document.querySelector('#'+id);
+
+            this.oBigPic = this.box.querySelector('.bigpic');
+            this.OBigUl = this.oBigPic.querySelector('ul');
+            this.oMinPic = this.box.querySelector('.minpic');
+            this.aMinLi = this.oMinPic.querySelectorAll('li');
+
+            this.OBigUl.innerHTML += this.OBigUl.innerHTML;
+            this.aBigLi  = this.OBigUl.querySelectorAll('li');
+
+            this.OBigUl.style.width = this.aBigLi.length*parseInt(this.getStyle(this.aBigLi[0],'width'))+'px';
+            this.OBigUl.style.left = -parseInt(this.getStyle(this.OBigUl,'width'))/2+"px";
+            this.isSpeed = false; //是否在运动状态
+
+            var oBtnRight = this.box.querySelector('.btn_right');
+            var oBtnLeft = this.box.querySelector('.btn_left');
+            var that = this;
+            oBtnRight.addEventListener('click',function(){
+                that.btnEvent(1);
+            })
+            oBtnLeft.addEventListener('click',function(){
+                that.btnEvent(-1);
+            })
+            this.aMinLi.forEach(function(item,i){
+                item.index = i;
+                item.addEventListener('click',function(){
+                    that.liEvent(this);
+                })
+
+            })
+
+        };
+        init.prototype = {
+            liEvent:function(el){
+                if (this.isSpeed) {
+                    return;
+                }
+                var index = el.index;
+                this.aMinLi.forEach(function(item,i){
+                    if(i==index){
+                        item.classList.add('active');
+                    }else{
+                        item.classList.remove('active');
+                    }
+                })
+                var picIndex = Math.abs(parseInt(this.OBigUl.style.left)) / this.aBigLi[0].offsetWidth;
+                if (picIndex == this.aBigLi.length / 2) {
+                    picIndex = 0;
+                }
+                if (picIndex < index) {
+                    if (Math.abs(parseInt(this.OBigUl.style.left)) == this.OBigUl.offsetWidth / 2) {
+                        this.OBigUl.style.left = 0 + 'px';
+                    }
+                    this.move(this.OBigUl, this.OBigUl.offsetLeft - this.aBigLi[0].offsetWidth * (index - picIndex));
+                } else if (picIndex > index) {
+                    if (Math.abs(parseInt(this.OBigUl.style.left)) == 0) {
+                        this.OBigUl.style.left = -this.OBigUl.offsetWidth / 2 + 'px';
+                    }
+                    this.move(this.OBigUl, this.OBigUl.offsetLeft + this.aBigLi[0].offsetWidth * (picIndex - index));
+                }
+                // console.log(picIndex)
+
+            },
+            btnEvent:function(num){
+                if (this.isSpeed) {
+                    return;
+                }
+                console.log("oul的left==" + parseInt(this.OBigUl.style.left))
+                console.log("oul的width==" + this.OBigUl.offsetWidth)
+                if (Math.abs(parseInt(this.OBigUl.style.left)) == this.OBigUl.offsetWidth / 2&&num>0) {
+                    this.OBigUl.style.left = 0 + 'px';
+                }
+                if (Math.abs(parseInt(this.OBigUl.style.left)) == 0&&num<0) {
+                    this.OBigUl.style.left = -this.OBigUl.offsetWidth / 2 + 'px';
+                }
+                var picIndex = Math.abs(parseInt(this.OBigUl.style.left)) / this.aBigLi[0].offsetWidth + num;
+                if (picIndex == this.aBigLi.length / 2) {
+                    picIndex = 0;
+                }
+                this.aMinLi.forEach(function(item,i){
+                    if(i==picIndex){
+                        item.classList.add('active');
+                    }else{
+                        item.classList.remove('active');
+                    }
+                })
+
+                this.move(this.OBigUl, this.OBigUl.offsetLeft - this.aBigLi[0].offsetWidth*num);
+            },
+            move:function(ele, distance){
+                var that = this;
+                //缓冲运动
+                if (!ele.style.left) {
+                    ele.style.left = 0 + 'px';
+                }
+                var eleLeft = parseFloat(ele.style.left);
+                if (eleLeft == distance) {
+                    this.isSpeed = false;
+                } else {
+                    var moveX = (distance - eleLeft) / 10;
+                    moveX = distance > eleLeft ? Math.ceil(moveX) : Math.floor(moveX);
+                    ele.style.left = eleLeft + moveX + 'px';
+                    setTimeout(function() {
+                        that.move(ele, distance)
+                    }, 20)
+                    this.isSpeed = true;
+                }
+            },
+            getStyle:function(obj,attr){
+                return obj.currentStyle?obj.currentStyle[attr]:window.getComputedStyle(obj)[attr];
+
+            }
+
+        }
+        return init;
+    })()
+    new slide('box');
+
+
+//        //doMove函数封装
+//        function doMove ( obj, attr, dir, target, endFn ) {
+//            dir = parseInt(getStyle( obj, attr )) < target ? dir : -dir;
+//            clearInterval( obj.timer );
+//            obj.timer = setInterval(function () {
+//                var speed = parseInt(getStyle( obj, attr )) + dir;          // 步长
+//                if ( speed > target && dir > 0 ||  speed < target && dir < 0  ) {
+//                    speed = target;
+//                }
+//                obj.style[attr] = speed + 'px';
+//                if ( speed == target ) {
+//                    clearInterval( obj.timer );
+//                    /*
+//                     if ( endFn ) {
+//                     endFn();
+//                     }
+//                     */
+//                    endFn && endFn();
+//                }
+//            }, 30);
+//        }
+//        function getStyle ( obj, attr ) {
+//            return obj.currentStyle?obj.currentStyle[attr] : getComputedStyle( obj )[attr];
+//        }
+    </script>
+</body>
+
+</html>

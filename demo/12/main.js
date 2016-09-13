@@ -2,7 +2,7 @@
 (function(w) {
     var util = {
         /**
-         * 对象复制
+         * 对象继承
          */
         extend: function(destination, source) {
             for (var property in source) {

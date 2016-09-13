@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>move</title>
+<style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background-color: peru;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+    /**
+     * 运动函数
+     * @param obj 要移动的对象
+     * @param endPoi 移动到某个位置
+     * @param decoration 移动的方向
+     * @param step 每次移动多少距离
+     * @param callback  回调函数
+     */
+    function move(obj,endPoi,decoration,step,callback){
+        var currentPoi = parseInt(getStyle(obj,decoration));
+        step = endPoi > currentPoi ? step : -step;
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+            var stepMove = parseInt(getStyle(obj,decoration)) + step;
+            if(stepMove > endPoi&&step>0||stepMove<endPoi&&step<0){
+                stepMove = endPoi;
+            }
+            obj.style[decoration] = stepMove+ "px";
+            if(stepMove === endPoi){
+                obj.style[decoration] = endPoi+"px";
+                clearInterval(obj.timer);
+                callback&&callback()
+            }
+
+        },30)
+
+
+    }
+    function getStyle(obj,attr){
+        //window.getComputedStyle(obj)[attr]//标准浏览器
+        //obj.currentStyle[attr]//IE
+       return obj.currentStyle&&obj.currentStyle[attr]||window.getComputedStyle(obj)[attr]
+
+    }
+</script>
+<script>
+    var oBox = document.querySelector('#box');
+//    alert(getStyle(oBox,"height"));
+    oBox.addEventListener('click',function(){
+        var that = this;
+        move(that,300,'right',20,function(){
+
+            move(that,300,'bottom',20,null)
+        })
+    })
+</script>
+</body>
+</html>

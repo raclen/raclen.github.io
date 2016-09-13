@@ -18,7 +18,6 @@
         #box {
             width: 470px;
             height: 150px;
-            margin: 40px auto;
             position: relative;
             border: #2a2a2a solid 1px;
             overflow: hidden;
@@ -58,21 +57,53 @@
         #btn_right {
             right: 10px;
         }
+
+        .picImg {
+            width: 470px;
+            margin: 40px auto;
+        }
+
+        .minpic {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .minpic ul li {
+            display: inline-block;
+        }
+
+        .minpic ul li.active {
+            border: 1px solid #0076a0;
+        }
     </style>
 </head>
 
 <body>
-    <div class="" id="box">
-        <a href="javascript:;" class="btn" id="btn_left">
-            <</a>
-                <a href="javascript:;" class="btn" id="btn_right">></a>
-
-                <ul>
-                    <li><img alt="11111" src="http://www.codefans.net//jscss/demoimg/201108/1.jpg" /></li>
-                    <li><img alt="22222" src="http://www.codefans.net//jscss/demoimg/201108/2.jpg" /></li>
-                    <li><img alt="33333" src="http://www.codefans.net//jscss/demoimg/201108/3.jpg" /></li>
-                </ul>
+    <div class="picImg">
+        <div class="" id="box">
+            <a href="javascript:;" class="btn" id="btn_left">
+                <</a>
+                    <a href="javascript:;" class="btn" id="btn_right">></a>
+                    <ul>
+                        <li><img alt="11111" src="http://www.codefans.net//jscss/demoimg/201108/1.jpg" /></li>
+                        <li><img alt="22222" src="http://www.codefans.net//jscss/demoimg/201108/2.jpg" /></li>
+                        <li><img alt="33333" src="http://www.codefans.net//jscss/demoimg/201108/3.jpg" /></li>
+                        <li><img alt="44444" src="http://www.codefans.net//jscss/demoimg/201108/4.jpg" /></li>
+                        <li><img alt="5555" src="http://www.codefans.net//jscss/demoimg/201108/5.jpg" /></li>
+                    </ul>
+        </div>
+        <div class="minpic">
+            <ul>
+                <li class="active"><img alt="11111" src="http://www.codefans.net//jscss/demoimg/201108/1.jpg" /></li>
+                <li><img alt="22222" src="http://www.codefans.net//jscss/demoimg/201108/2.jpg" /></li>
+                <li><img alt="33333" src="http://www.codefans.net//jscss/demoimg/201108/3.jpg" /></li>
+                <li><img alt="44444" src="http://www.codefans.net//jscss/demoimg/201108/4.jpg" /></li>
+                <li><img alt="5555" src="http://www.codefans.net//jscss/demoimg/201108/5.jpg" /></li>
+            </ul>
+        </div>
     </div>
+    <script type="text/javascript" src="../jquery/jquery.min.js">
+    </script>
     <script type="text/javascript">
         var obox = document.getElementById('box');
         var oul = obox.getElementsByTagName('ul')[0];
@@ -82,29 +113,76 @@
         oul.style.left = -oul.offsetWidth / 2 + 'px';
         var isSpeed = false; //是否在运动状态
 
+        $('.minpic li').css("width", 470 / 5.5 + "px");
+
         var obtnRight = document.getElementById('btn_right');
         obtnRight.onclick = function() {
+            if (isSpeed) {
+                return;
+            }
             console.log("oul的left==" + parseInt(oul.style.left))
             console.log("oul的width==" + oul.offsetWidth)
             if (Math.abs(parseInt(oul.style.left)) == oul.offsetWidth / 2) {
                 oul.style.left = 0 + 'px';
             }
-            if (!isSpeed) {
-                move(oul, oul.offsetLeft - oli[0].offsetWidth);
+            var picIndex = Math.abs(parseInt(oul.style.left)) / oli[0].offsetWidth + 1;
+            if (picIndex == oli.length / 2) {
+                picIndex = 0;
             }
+            $('.minpic li').removeClass('active');
+            $('.minpic li').eq(picIndex).addClass('active');
+
+            move(oul, oul.offsetLeft - oli[0].offsetWidth);
+
         }
 
         var obtnLeft = document.getElementById('btn_left');
         obtnLeft.onclick = function() {
+            if (isSpeed) {
+                return;
+            }
             console.log("oul的left==" + parseInt(oul.style.left))
             console.log("oul的width==" + oul.offsetWidth)
             if (Math.abs(parseInt(oul.style.left)) == 0) {
                 oul.style.left = -oul.offsetWidth / 2 + 'px';
             }
-            if (!isSpeed) {
-                move(oul, oul.offsetLeft + oli[0].offsetWidth);
+            var picIndex = Math.abs(parseInt(oul.style.left)) / oli[0].offsetWidth - 1;
+            if (picIndex == oli.length / 2) {
+                picIndex = 0;
             }
+            $('.minpic li').removeClass('active');
+            $('.minpic li').eq(picIndex).addClass('active');
+
+            move(oul, oul.offsetLeft + oli[0].offsetWidth);
+
+
         }
+        $('.minpic li').on('click', function() {
+            if (isSpeed) {
+                return;
+            }
+            var index = $(this).index();
+            $('.minpic li').removeClass('active');
+            $(this).addClass('active');
+            var picIndex = Math.abs(parseInt(oul.style.left)) / oli[0].offsetWidth;
+            if (picIndex == oli.length / 2) {
+                picIndex = 0;
+            }
+            if (picIndex < index) {
+                if (Math.abs(parseInt(oul.style.left)) == oul.offsetWidth / 2) {
+                    oul.style.left = 0 + 'px';
+                }
+                move(oul, oul.offsetLeft - oli[0].offsetWidth * (index - picIndex));
+            } else if (picIndex > index) {
+                if (Math.abs(parseInt(oul.style.left)) == 0) {
+                    oul.style.left = -oul.offsetWidth / 2 + 'px';
+                }
+                move(oul, oul.offsetLeft + oli[0].offsetWidth * (picIndex - index));
+            }
+            console.log(picIndex)
+
+
+        })
 
         function move(ele, distance) {
             if (!ele.style.left) {
@@ -125,6 +203,32 @@
 
 
         }
+
+
+//        //doMove函数封装
+//        function doMove ( obj, attr, dir, target, endFn ) {
+//            dir = parseInt(getStyle( obj, attr )) < target ? dir : -dir;
+//            clearInterval( obj.timer );
+//            obj.timer = setInterval(function () {
+//                var speed = parseInt(getStyle( obj, attr )) + dir;          // 步长
+//                if ( speed > target && dir > 0 ||  speed < target && dir < 0  ) {
+//                    speed = target;
+//                }
+//                obj.style[attr] = speed + 'px';
+//                if ( speed == target ) {
+//                    clearInterval( obj.timer );
+//                    /*
+//                     if ( endFn ) {
+//                     endFn();
+//                     }
+//                     */
+//                    endFn && endFn();
+//                }
+//            }, 30);
+//        }
+//        function getStyle ( obj, attr ) {
+//            return obj.currentStyle?obj.currentStyle[attr] : getComputedStyle( obj )[attr];
+//        }
     </script>
 </body>
 

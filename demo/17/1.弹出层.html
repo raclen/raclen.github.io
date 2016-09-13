@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layer</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="src/layer.js"></script>
+</head>
+<body>
+<input type="button" id="btn" value="加载层">
+<input type="button" id="btn2" value="询问">
+<a href="http://sentsin.com/jquery/layer" style="float: right">更多示例</a>
+<script>
+
+    $('#btn').on('click',function(){
+        //加载层
+        var index = layer.load(0, {shade: 0.5}); //0代表加载的风格，支持0-2
+
+        setTimeout(function(){
+            layer.close(index)
+        },2000)
+
+    })
+
+    $('#btn2').on('click',function(){
+        layer.confirm('is not?', {icon: 3, title:'提示'}, function(index){
+            //do something
+            layer.msg("我点的是确认")
+
+            // layer.close(index);
+        },function(){
+            layer.alert('我点的是取消')
+
+        });
+
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script src="handlebars.js"></script>
+    <script>
+    // var tpl = '<ul class="list_top layoutfix">' +
+    //     '<li class="w_01">名称</li>' +
+    //     '<li class="w_02">原价</li>' +
+    //     '<li class="w_03">111</li>' +
+    //     '<li class="w_04">优惠</li>' +
+    //     '<li class="w_05">{{age}}</li>' +
+    //     '</ul>';
+    // var html = Handlebars.compile(tpl)({
+    //     'age': 12
+    // });
+    // document.body.innerHTML = html;
+    //
+    //
+    // var tpl2 = '\
+    // <ul class="list_top layoutfix">\
+    // <li class="w_01">名称</li>\
+    // <li class="w_02">原价</li>\
+    // <li class="w_03">111</li>\
+    // <li class="w_04">优惠</li>\
+    // <li class="w_05">{{age}}</li>\
+    // </ul>\
+    // ';
+    // var html = Handlebars.compile(tpl2)({
+    //     'age': 12
+    // });
+    // document.body.innerHTML = html;
+
+Handlebars.registerHelper('list', function(items, options) {
+      var out = "<ul>";
+      for(var i=0, l=items.length; i<l; i++) {
+        out = out + "<li>" + options.fn(items[i]) + "</li>";
+      }
+      return out + "</ul>";
+});
+
+var tpl3 = "{{#list people}}{{firstName}} {{lastName}}{{/list}}";
+var data3 ={
+  people: [
+    {firstName: "Yehuda", lastName: "Katz"},
+    {firstName: "Carl", lastName: "Lerche"},
+    {firstName: "Alan", lastName: "Johnson"}
+  ]
+}
+var html = Handlebars.compile(tpl3)(data3);
+document.body.innerHTML= html;
+    </script>
+</body>
+
+</html>

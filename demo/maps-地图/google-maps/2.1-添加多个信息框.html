@@ -29,7 +29,7 @@
                 // mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("mainMapLayer"), myOptions);
-
+            var markers=[];
             var neighborhoods = [{
                 lat: 31.22071,
                 lng: 121.302800,
@@ -75,7 +75,10 @@
                 content: contentString
             });
             var j = 0;
-            for (j = 0; j < markers.length; j++) {
+            var mapIcon = 'http://pic.c-ctrip.com/ticketonline/centerMark.png';
+            for (; j < markers.length; j++) {
+
+
                 markers[j].index = j;
                 google.maps.event.addListener(markers[j], 'click', function() {
                     // var yourInfoWindow;
@@ -83,9 +86,14 @@
                     //     yourInfoWindow = new google.maps.InfoWindow({});
                     // }
                     var that = this;
+                    that.setIcon(mapIcon);
                     infowindow.setContent(htmlTpl(contentString,neighborhoods[that.index]));
                     infowindow.open(map, that);
+
                 });
+
+
+
             }
 
 

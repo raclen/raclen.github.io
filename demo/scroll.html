@@ -54,9 +54,9 @@
 <script>
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
-        var scrollHeight = $(document).height();
+        var docHeight = $(document).height();
         var windowHeight = $(this).height();
-        if (scrollTop + windowHeight+20 >=scrollHeight) {
+        if (scrollTop + windowHeight+20 >=docHeight) {
             alert('滚动到底部了')
         }
 

@@ -23,6 +23,7 @@
 </head>
 
 <body>
+<a data-href="http://ctrip.com" target="_blank">测试</a>
     <ul class="sortablelist">
         <li class="sortableitem">
             <span>1</span><span class="moveup">up</span><span class="movedown">down</span>
@@ -47,6 +48,12 @@
         }
 
     });
+        $('a').on('click',function(){
+            alert(1);
+            var href= $(this).data('href');
+            $(this).attr('href',href);
+
+        })
     </script>
 </body>
 

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport">
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body,
+        .warpper {
+            height: 100%
+        }
+
+        .warpper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            line-height: 40px;
+            height: 40px;
+            top: 0;
+            border: 1px solid #0076a0;
+        }
+
+        section {
+            flex: 1;
+            border: 1px solid #0076a0;
+            position: relative;
+        }
+
+        section>div {
+            display: none;
+            height: 500px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        section>div.current {
+            display: block;
+        }
+
+        @-webkit-keyframes leftIn {
+            from {
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+            to {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+
+        @-webkit-keyframes leftOut {
+            from {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            to {
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes leftIn {
+            from {
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+            to {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes leftOut {
+            from {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            to {
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes rightIn {
+            from {
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+            to {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rightOut {
+            from {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            to {
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+        }
+
+        section>div.left.in {
+            -webkit-animation: leftIn 0.5s;
+            animation: leftIn 0.5s;
+        }
+
+        section>div.left.out {
+            -webkit-animation: leftOut 0.5s;
+            animation: leftOut 0.5s;
+        }
+
+        section>div.right.in {
+            -webkit-animation: rightIn 0.5s;
+            animation: rightIn 0.5s;
+        }
+
+        section>div.right.out {
+            -webkit-animation: rightOut 0.5s;
+            animation: rightOut 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warpper">
+        <header>
+            header
+        </header>
+        <section>
+            <div class="page current" id="page1" style="background-color:pink">page1page1page1page1</div>
+            <div class="page" id="page2" style="background-color:yellow">page2</div>
+            <div class="page" id="page3" style="background-color:blue">page3</div>
+            <div class="page" id="page4" style="background-color:red">page4</div>
+        </section>
+    </div>
+    <script src="../jquery/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $.fn.extend({
+            animateCss: function(animationName, callback) {
+                var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                $(this).addClass(animationName).one(animationEnd, function() {
+                    $(this).removeClass(animationName);
+                    callback && callback();
+                });
+            }
+        });
+
+        function animateRight(ele,last, current) {
+            ele.css('pointer-events','none');
+            last.animateCss('left out');
+            current.addClass('current').animateCss('left in', function() {
+                $('.page').removeClass('current');
+                current.addClass('current');
+                ele.css('pointer-events','auto');
+            });
+        }
+
+        function animateLeft(ele,last, current) {
+            ele.css('pointer-events','none');
+            last.animateCss('right out');
+            current.addClass('current').animateCss('right in', function() {
+                $('.page').removeClass('current');
+                current.addClass('current');
+                ele.css('pointer-events','auto');
+            });
+
+
+        }
+        $('.page').on('click', function() {
+            if ($(this).next().length > 0) {
+                animateRight($(this),$(this), $(this).next())
+            }
+
+        })
+        $('header').on('click', function() {
+            if ($('.page.current').prev().length > 0) {
+                animateLeft($(this),$('.page.current'), $('.page.current').prev());
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

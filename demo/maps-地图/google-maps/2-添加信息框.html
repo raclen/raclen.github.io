@@ -46,8 +46,11 @@
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
+            var mapIcon = 'http://pic.c-ctrip.com/ticketonline/centerMark.png';
             marker.addListener('click', function() {
+                marker.setIcon(mapIcon);
                 infowindow.open(map, marker);
+
               });
 
         }
