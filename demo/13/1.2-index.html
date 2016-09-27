@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>modal 弹框</title>
+    <style media="screen">
+        .modal {
+            position: fixed !important;
+            top: 50%;
+            left: 50%;
+            _position: absolute;
+            _top: 15%;
+            _margin-top: 0;
+            z-index: 102;
+            width: 660px;
+            margin-left: -330px;
+            margin-top: -300px;
+            background-color: #fff;
+            outline: none;
+            display: none;
+            text-align: center;
+
+        }
+
+
+        .modal-vote {
+            width: 676px;
+            height: 480px;
+            margin-left: -338px;
+            margin-top: -960px;
+            border-radius: 10px;
+            overflow: hidden;
+            _zoom: 1;
+            background: antiquewhite;
+        }
+
+
+
+        .modal-backdrop {
+            position: fixed !important;
+            _position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="modal  modal-vote  " id="modal">
+        <div style="display: table-cell; vertical-align: middle;">
+            <code>
+                .magic-checkbox + label {
+                position: relative;
+                display: block;
+                padding-left: 30px;
+                cursor: pointer;
+                vertical-align: middle;
+                }
+            </code>
+        </div>
+
+    </div>
+
+    <div class="modal-backdrop " id="mask"></div>
+
+    <input type="button" name="name" value="出来" id="btn"/>
+    <input type="number" onInput='this.value=this.value.replace(/\D/g,"")'  />
+
+    <script src="../jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        $('#btn').on('click',function(){
+            $('#modal').css('display','table').animate({
+                "margin-top": "-240px"
+            });
+            $('#mask').fadeIn('show')
+        })
+        $('input').on('click',function(){
+//            alert($(this).val())
+        })
+
+
+
+    </script>
+</body>
+
+</html>
