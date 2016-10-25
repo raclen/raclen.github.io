@@ -50,7 +50,16 @@
 
     </div>
 <script type="text/javascript">
+PubSub.subscribe(delectItem,function (evName,data){
+						var newArr = this.state.listArr.filter(function (item,index){
+							return item._id !== data
+						});
 
+						this.setState({listArr:newArr});
+
+					}.bind(this))
+
+    PubSub.publish(delectItem,this.props._id);
 </script>
 </body>
 

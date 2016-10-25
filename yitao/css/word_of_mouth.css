@@ -1,0 +1,24 @@
+.content{
+    margin: 0 auto;
+    width: 1088px;
+}
+.content .position{
+    margin: 20px 10px;
+}
+.content .title,
+.content .article-introduction{
+    text-align: center
+}
+.content .title{
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    border-bottom: 1px solid #333;
+}
+.content .article-introduction{
+    margin: 16px 0 40px 0;
+}
+.content .article-introduction span{
+    margin-right: 20px;
+    color: #b8b8b8;
+}
