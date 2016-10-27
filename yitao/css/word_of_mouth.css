@@ -3,26 +3,104 @@
     width: 1088px;
 }
 .content .position{
-    margin: 20px 10px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
-.content .title,
-.content .article-introduction{
+.word-of-mouth-detail.content .title,
+.word-of-mouth-detail .content .article-introduction{
     text-align: center
 }
-.content .title{
+.word-of-mouth-detail .content .title{
     height: 60px;
     line-height: 60px;
     font-size: 18px;
     border-bottom: 1px solid #333;
+    text-align: center;
 }
-.content .article-introduction{
+.word-of-mouth-detail .content .article{
+    margin-bottom: 50px; 
+}
+.word-of-mouth-detail .content .article-introduction{
     margin: 16px 0 40px 0;
 }
-.content .article-introduction span{
+.word-of-mouth-detail .content .article-introduction span{
     margin-right: 20px;
     color: #b8b8b8;
 }
-.content .list .link{
-    float:right;
+.word-of-mouth-list .content .list {
+    background: #f5f6f7;
+    margin-bottom: 130px;    
+}
+    
+.word-of-mouth-list .content .list .link{
+   text-align: right;
+   line-height: 44px;
+    height: 44px;
+    font-size: 20px;
+    border-bottom: 1px solid #333;
+    background: #fff;
 
+}
+.word-of-mouth-list .content .list .link a{
+    margin-left: 25px;
+}
+.word-of-mouth-list .content .list .link a.active{
+    color: #333;
+}
+.word-of-mouth-list .content .table {
+    width: 100%;
+    font-size: 16px;
+    text-indent: 0.5em;
+    border: none;
+    color: #000;
+
+}
+.word-of-mouth-list .content .table caption{
+    text-align: left;
+    font-weight: bold;
+    line-height: 40px;
+    height: 40px;
+    
+}
+.word-of-mouth-list .content .table tr,
+.word-of-mouth-list .content .table th{
+     line-height: 40px;
+    height: 40px;
+}
+.word-of-mouth-list .content .table th{
+    background: #999999;
+}
+.word-of-mouth-list .content .table td{
+    text-align: center;
+}
+.word-of-mouth-list .content .table td.tx-l{
+    text-align: left;
+}
+.word-of-mouth-list .content .table tr:nth-of-type(2n){
+  background: #cdcdcd;
+
+}
+.word-of-mouth-list .content .table tr:nth-of-type(2n+1){
+    
+      background: #fff;
+
+}
+.word-of-mouth-list .list-bottom{
+    text-align: center;
+    padding: 50px 0;
+}
+.word-of-mouth-list .list-bottom .page{
+    display: inline-block;
+}
+.word-of-mouth-list .list-bottom .page a{
+     float: left;
+    display: block;
+    margin-right: 10px;
+    border: 1px solid #cdcdcd;
+    color: #999999;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+.word-of-mouth-list .list-bottom .page a.active{
+    border: none;
 }

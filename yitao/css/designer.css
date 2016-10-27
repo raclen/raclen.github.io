@@ -8,31 +8,31 @@
     padding-bottom: 36px;
     
 }
-.designer-team .derigner-card_head h2{
+ .derigner-card_head h2{
     font-size: 24px;
 }
 
-.designer-team .derigner-card_head {
+.derigner-card_head {
     padding: 18px 10px;
     line-height: 24px;
 }
-.designer-team .derigner-card_head .r{
+ .derigner-card_head .r{
     font-size: 14px;
 }
 
-.designer-team .derigner-card_head a{
+ .derigner-card_head a{
     color: #999999;
     border-right: 1px solid #999999;
     padding: 0 8px;
     font-weight: bolder;
 }
-.designer-team .derigner-card_head a.last{
+.derigner-card_head a.last{
     border-right:none;
 }
-.designer-team .derigner-card_head a.active{
+ .derigner-card_head a.active{
     color: #4e8ba8;
 }
-.designer-team .derigner-card_head a:hover{
+ .derigner-card_head a:hover{
     color:#4e8ba8;
 }
 .designer-team .derigner-card_head a.btn{
@@ -73,7 +73,7 @@
 .designer-team .card-body_item .btn:hover{
     color: #fff;
 }
-.designer-team .derigner-gallery{
+.derigner-gallery{
     margin-top: 70px;
     background: #f5f6f8;
     margin-bottom: 140px;
@@ -99,15 +99,16 @@
    color: #4e8ba8;
 }
 .gallery-body_item{
-    width: 258px;
+    width: 256px;
     margin-top: 18px;
     margin-right: 18px;
     padding: 4px;
-    box-sizing: border-box;
     background: #fff;
     font-size: 14px;
     color: #333;
     position: relative;
+    box-sizing: border-box;
+    border: 1px solid #fff;
 
 }
 .gallery-body_item img{
@@ -164,10 +165,61 @@
     margin-left: 74px;
     margin-top: 84px;
 }
+.gallery-body_item:hover {
+    border: 1px solid #999;
+    
+}
 .gallery-body_item:hover .popup{
     display: block;
 
 }
 .derigner-gallery_body{
     margin-right: -16px;
+}
+.designer-detail .content .position {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.designer-detail .designer-photo h3{
+    height: 50px;
+    border-bottom: 1px solid #333;
+    font-size: 26px; 
+    line-height: 50px;
+    padding-left: 10px;
+}
+.designer-detail .photo-box{
+    width: 1088px;
+    height: 620px;
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px dashed #999;
+}
+.designer-detail .photo-box img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.designer-detail .photo-box .btn{
+    position: absolute;
+    width: 140px;
+    height: 40px;
+    top: 290px;
+    left: 480px;
+    display: block;
+    z-index: 2
+}
+.designer-detail .nth02{
+    margin: 10px 0;
+}
+.designer-detail .nth02 .l{
+    background: #999999;
+    width: 340px;
+    height: 230px;
+    margin-left: 18px;
+}
+.designer-detail .derigner-card_head{
+    border-bottom: 1px solid #999; 
+}
+.designer-detail  .derigner-gallery{
+    background: #fff;
 }
