@@ -14,8 +14,24 @@
     zoom: 1;
 }
 
+.clearfix > .l {
+    float: left;
+}
+
+.clearfix > .r {
+    float: right;
+}
+
 li {
     list-style: none;
+}
+
+.icon-point {
+    background: url(../img/yitao_sprite.png) no-repeat 0 -33px;
+    display: inline-block;
+    width: 12px;
+    height: 6px;
+    vertical-align: middle;
 }
 
 #header {

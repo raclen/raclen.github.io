@@ -1,0 +1,173 @@
+.content{
+    margin: 0 auto;
+    width: 1088px;
+}
+.designer-team .derigner-card{
+    background: #f5f6f8;
+    margin-top: 18px;
+    padding-bottom: 36px;
+    
+}
+.designer-team .derigner-card_head h2{
+    font-size: 24px;
+}
+
+.designer-team .derigner-card_head {
+    padding: 18px 10px;
+    line-height: 24px;
+}
+.designer-team .derigner-card_head .r{
+    font-size: 14px;
+}
+
+.designer-team .derigner-card_head a{
+    color: #999999;
+    border-right: 1px solid #999999;
+    padding: 0 8px;
+    font-weight: bolder;
+}
+.designer-team .derigner-card_head a.last{
+    border-right:none;
+}
+.designer-team .derigner-card_head a.active{
+    color: #4e8ba8;
+}
+.designer-team .derigner-card_head a:hover{
+    color:#4e8ba8;
+}
+.designer-team .derigner-card_head a.btn{
+   background: #4e8ba8;
+   color: #fff;
+   border: none;
+   font-weight: normal;
+}
+.designer-team .card-body_item{
+    width: 208px;
+    background: #c7c7c8;
+    color: #333;
+    box-shadow: 0 2px 2px #9c9d9e;
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 0 10px 8px;
+}
+.designer-team .card-body_item.last{
+    margin-right: 10px;
+}
+.designer-team .card-body_item .clearfix{
+    padding: 5px;
+}
+.designer-team .card-body_item img{
+    width: 206px;
+    height: 260px;
+}
+.designer-team .card-body_item .btn{
+    background: url(../img/yitao_sprite.png) no-repeat;
+    color: #333;
+    width: 62px;
+    height: 26px;
+    display: block;
+    text-align: center;
+    line-height: 24px;
+}
+.designer-team .card-body_item .btn:hover{
+    color: #fff;
+}
+.designer-team .derigner-gallery{
+    margin-top: 70px;
+    background: #f5f6f8;
+    margin-bottom: 140px;
+    padding-bottom: 60px;
+}
+.derigner-gallery .gallery-title{
+    background: #fff;
+    border-bottom: 1px solid #99999a;
+    box-shadow: 0px 1px 1px #ccc;
+    line-height: 34px;
+    height: 34px;
+}
+.derigner-gallery .gallery-title a{
+    color: #333;
+    border-right: 1px solid #999999;
+    padding: 0 8px;
+    /*font-weight: bolder;*/
+}
+.derigner-gallery .gallery-title a.active{
+   color: #4e8ba8;
+}
+.derigner-gallery .gallery-title a:hover{
+   color: #4e8ba8;
+}
+.gallery-body_item{
+    width: 258px;
+    margin-top: 18px;
+    margin-right: 18px;
+    padding: 4px;
+    box-sizing: border-box;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+    position: relative;
+
+}
+.gallery-body_item img{
+    width: 248px;
+    height: 198px;
+
+}
+.gallery-body_item .nth01{
+    font-weight: bold;
+}
+.gallery-body_item>div{
+    padding-top: 8px;
+    padding-left: 4px;
+}
+.gallery-body_item .nth01 span{
+    margin-right: 10px;
+}
+.gallery-body_item .nth02{
+    color: #999999;
+}
+.gallery-body_item .nth02 span{
+     margin-right: 4px;
+}
+.icon-img{
+    background: url(../img/yitao_sprite.png) no-repeat 0 -73px;
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    vertical-align: middle;
+}
+.icon-visite{
+    background: url(../img/yitao_sprite.png) no-repeat 0 -90px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.gallery-body_item .popup{
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlNm5DccCwAAAApJREFUCB1jYAAAAAIAAc/INeUAAAAASUVORK5CYII=) transparent;
+    position: absolute;
+    width: 244px;
+    height: 190px;
+    top: 4px;
+    left: 4px;
+    display: none
+   
+}
+.icon-detail{
+    background: url(../img/yitao_sprite.png) no-repeat 0 -49px;
+    display: inline-block;
+    width: 100px;
+    height: 22px;
+    vertical-align: middle;
+    margin-left: 74px;
+    margin-top: 84px;
+}
+.gallery-body_item:hover .popup{
+    display: block;
+
+}
+.derigner-gallery_body{
+    margin-right: -16px;
+}
