@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/slick.js"></script>
+</head>
+<body>
+<div class="wrapper case_detail">
+    <iframe id="headers" src="header.html" frameborder="0" scrolling="no" width="100%" height="130" ></iframe>
+    <div class="banner" style="background-image: url(../img/case_detail_banner.jpg)"></div>
+    <div class="location bg11">
+        <p>当前位置：案例中心<span>&gt;</span>东方丽都</p>
+    </div>
+    <div class="wrap_con bg11">
+        <h1 class="b_tit">案例标题</h1>
+        <div class="tab_case">
+            <div class="slider slider-for">
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+                <div class="con_slider"><img src="../img/case_part1_big_01.jpg" alt=""></div>
+            </div>
+            <div class="slider slider-nav">
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+                <div class="con_slider">
+                    <div class="con img">
+                        <img src="../img/case_part1_thumb_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情&gt;&gt;</a></div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                    $('.slider-for').slick({
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: true,
+                        fade: false,
+                        asNavFor: '.slider-nav'
+                    });
+                    $('.slider-nav').slick({
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                        asNavFor: '.slider-for',
+                        dots: false,
+                        arrows: true,
+                        centerMode: false,
+                        focusOnSelect: true
+                    });
+                })
+            </script>
+        </div>
+        <div class="case_desc">
+            <h1>案例详情：</h1>
+            <ul class="desc_01">
+                <li>装修总价：20W</li>
+                <li>楼盘：莲玉家园</li>
+                <li>户型：四居</li>
+                <li>风格：新中式风格</li>
+                <li>面积：138.00㎡</li>
+            </ul>
+            <p>本户型定位为中式风格。从原始户型来看区域规划较明显，但是没有完整的门厅且相对于四居来说餐厅较为狭窄，所以通过槛窗墙体拆改来合理的划分空间，在不影响美观的前提下，即有了单独的门厅（起到餐厅和客厅的一个融合）又让餐厅不在狭窄而又不影响书房空间的利用，随着主卫生间的扩大使空间利用。为了抛弃中式风格过于的沉闷，亚光地砖及顶面造型相呼应，后期家具、软装配饰结合，达到稳重大气的效果。</p>
+        </div>
+        <div class="recommend">
+            <h1>精选推荐案例：</h1>
+            <div class="case_detail_eg eg_list clearfix">
+                <div class="eg">
+                    <div class="img">
+                        <img src="../img/case_part2_img_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情>></a></div>
+                    </div>
+                    <div class="word">
+                        <p class="clearfix"><span class="fl">楼盘：东方丽都</span><span class="fr">户型：三居</span></p>
+                        <p class="clearfix"><span class="fl">面积：120㎡</span><span class="fr">风格：简约</span></p>
+                    </div>
+                </div>
+                <div class="eg">
+                    <div class="img">
+                        <img src="../img/case_part2_img_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情>></a></div>
+                    </div>
+                    <div class="word">
+                        <p class="clearfix"><span class="left">楼盘：东方丽都</span><span class="right">户型：三居</span></p>
+                        <p class="clearfix"><span class="left">面积：120㎡</span><span class="right">风格：简约</span></p>
+                    </div>
+                </div>
+                <div class="eg">
+                    <div class="img">
+                        <img src="../img/case_part2_img_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情>></a></div>
+                    </div>
+                    <div class="word">
+                        <p class="clearfix"><span class="left">楼盘：东方丽都</span><span class="right">户型：三居</span></p>
+                        <p class="clearfix"><span class="left">面积：120㎡</span><span class="right">风格：简约</span></p>
+                    </div>
+                </div>
+                <div class="eg">
+                    <div class="img">
+                        <img src="../img/case_part2_img_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情>></a></div>
+                    </div>
+                    <div class="word">
+                        <p class="clearfix"><span class="left">楼盘：东方丽都</span><span class="right">户型：三居</span></p>
+                        <p class="clearfix"><span class="left">面积：120㎡</span><span class="right">风格：简约</span></p>
+                    </div>
+                </div>
+                <div class="eg">
+                    <div class="img">
+                        <img src="../img/case_part2_img_01.jpg" alt="">
+                        <div class="mask"><a href="">点击详情>></a></div>
+                    </div>
+                    <div class="word">
+                        <p class="clearfix"><span class="left">楼盘：东方丽都</span><span class="right">户型：三居</span></p>
+                        <p class="clearfix"><span class="left">面积：120㎡</span><span class="right">风格：简约</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="footers" src="footer.html" frameborder="0" scrolling="no" width="100%" height="276" ></iframe>
+</div>
+</body>
+</html>

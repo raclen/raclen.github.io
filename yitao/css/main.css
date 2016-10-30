@@ -60,6 +60,7 @@ li {
 #header .header-01 .r a {
     border-right: 1px solid #8c8c8c;
     padding: 0 8px;
+    color:#8c8c8c;
 }
 
 #header .header-01 .r a.last {
@@ -73,7 +74,7 @@ li {
 
 #header .header-02 .l {
     float: left;
-    padding-left: 78px;
+    margin-left: 68px;
     position: relative;
     padding-top: 22px;
 }
@@ -84,8 +85,9 @@ li {
 
 #header .header-02 .logo {
     position: absolute;
-    left: 10px;;
+    left: -68px;
     bottom: -6px;
+    display: block;
 
 }
 
@@ -158,6 +160,7 @@ li {
 #footer {
     /*border: 1px pink solid;*/
     background: #f5f6f7;
+    color:#000;
 }
 
 #footer .footer-01 {
@@ -174,6 +177,7 @@ li {
 
 #footer .footer-01 h2 {
     font-size: 26px;
+    font-weight:normal;
 }
 
 #footer .footer-01 .detail {
@@ -191,6 +195,9 @@ li {
 
 #footer .footer-01 .nth02 .detail a {
     margin-right: 14px;
+     margin-bottom:5px;
+     display:inline-block;
+     color:#000;
 }
 
 #footer .footer-01 .nth03 img {
@@ -224,3 +231,53 @@ li {
     color: #fff;
 }
 
+@-moz-keyframes bounce {
+    0%,20%,50%,80%,100% {
+        -moz-transform: translateY(0)
+    }
+    40% {
+        -moz-transform: translateY(-10px)
+    }
+    60% {
+        -moz-transform: translateY(-6px)
+    }
+}
+@-ms-keyframes bounce {
+    0%,20%,50%,80%,100% {
+        -ms-transform: translateY(0)
+    }
+    40% {
+        -ms-transform: translateY(-10px)
+    }
+    60% {
+        -ms-transform: translateY(-6px)
+    }
+}
+@keyframes bounce {
+    0%,20%,50%,80%,100% {
+        transform: translateY(0)
+    }
+    40% {
+        transform: translateY(-10px)
+    }
+    60% {
+        transform: translateY(-6px)
+    }
+}
+.a-bounce:hover {
+    -webkit-animation: 1s ease;
+    -moz-animation: 1s ease;
+    -ms-animation: 1s ease;
+    animation: 1s ease;
+    -webkit-animation-name: bounce;
+    -moz-animation-name: bounce;
+    -ms-animation-name: bounce;
+    animation-name: bounce
+}
+.icon-next{
+        background: url(../img/yitao_sprite.png) no-repeat -113px 0;
+    display: inline-block;
+    width: 24px;
+    height: 16px;
+    vertical-align: middle;
+}
