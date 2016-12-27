@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <title>添加多个标记</title>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=e545f5c964f8a82d1c31b1e219baddee"></script>
+    <style>
+        #container {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+
+<script>
+    var neighborhoods = [
+        [121.302800, 31.22071],
+        [121.352001, 31.22111],
+        [121.392100, 31.22371],
+        [121.372856, 31.22571],
+    ];
+
+    //zooms缩放级别[3-18]
+    var mapIcon = 'http://pic.c-ctrip.com/ticketonline/centerMark.png';
+
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom: 6,
+        center: [121.352856, 31.22171]
+    });
+    var markers = [];
+    for(var i = 0,len = neighborhoods.length;i<len;i++){
+        var marker = new AMap.Marker({
+            icon: mapIcon,
+            position: neighborhoods[i],
+            offset: new AMap.Pixel(-12, -12),
+            zIndex: 101,
+            map: map
+        });
+        markers.push(marker);
+    }
+
+    map.setFitView();
+
+</script>
+</body>
+</html>

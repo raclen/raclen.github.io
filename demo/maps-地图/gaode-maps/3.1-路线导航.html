@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <title>路线导航</title>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=e545f5c964f8a82d1c31b1e219baddee"></script>
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .map-box {
+            width: 1000px;
+            height: 600px;
+            display: flex;
+            position: fixed;
+            box-shadow: 4px 7px 4px #c1c1c1;
+            padding: 6px;
+            border: 1px solid #ededed;
+        }
+
+        #mainMapLayer {
+            flex: 1;
+        }
+
+        .solid {
+            width: 236px;
+            background-color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .solid .col {
+            padding: 10px 0;
+            text-align: center;
+            box-sizing: border-box;
+            height: 46px;
+        }
+
+        .route_way {
+            position: relative;
+            padding: 0px 0px 10px 22px !important;
+        }
+
+        .route_way:after {
+            clear: both;
+            display: block;
+            content: "";
+            height: 0;
+        }
+
+        .solid input[type="text"] {
+            height: 22px;
+        }
+
+        .route_way a {
+            position: relative;
+            float: left;
+            display: block;
+            width: 58px;
+            height: 28px;
+            line-height: 28px;
+            margin-right: 6px;
+            border: 1px solid #bbb;
+            border-radius: 2px;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+        }
+
+        .route_way a:active {
+            background-color: #2ba5f7;
+            border-color: #0076a0;
+            color: #fff;
+        }
+
+        .route_way a.current {
+            background-color: #2ba5f7;
+            border-color: #0076a0;
+            color: #fff;
+        }
+
+        .direction-panel {
+            overflow-y: scroll;
+            text-align: left !important;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="map-box">
+    <div class="" id="mainMapLayer"></div>
+    <div class="solid">
+        <div class="col">
+            起点：
+            <input type="text" id="start_point" name="name" value=""/>
+        </div>
+        <div class="col">
+            终点：
+            <input type="text" id="end_point" name="name" value=""/>
+        </div>
+        <div class="route_way col">
+            <a class="" href="javascript:;" data-way="transit">公交</a>
+            <a class="" href="javascript:;" data-way="driving">驾车</a>
+            <a class="" href="javascript:;" data-way="walking">步行</a>
+        </div>
+        <div class="direction-panel" id='direction-panel'>
+
+        </div>
+    </div>
+
+    <script>
+        /*
+        路线导航有问题，官方的dome拉倒本地也执行不了，可能这个key对应的有安全域名
+         */
+        //dome见：http://lbs.amap.com/fn/jsdemo_loader/?url=http://webapi.amap.com/demos/transfer/defaultSkin.html
+        function setPosition() {
+            var innerWidth = window.innerWidth || document.documentElement.clientWidth || document.body.offsetWidth;
+            var innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.offsetHeight;
+            var mapbox = document.querySelector('.map-box');
+            mapbox.style.width = innerWidth * 0.8 + 'px';
+            mapbox.style.height = innerHeight * 0.8 + 'px';
+            mapbox.style.left = (innerWidth - mapbox.offsetWidth) / 2 + 'px';
+            mapbox.style.top = (innerHeight - mapbox.offsetHeight) / 2 + 'px';
+        }
+        setPosition();
+        window.addEventListener('resize', setPosition);
+        //zooms缩放级别[3-18]
+
+        var map = new AMap.Map('mainMapLayer', {
+            resizeEnable: true,
+            center: [116.397428, 39.90923],//地图中心点
+            zoom: 13 //地图显示的缩放级别
+        });
+
+        //出行方式选择
+        var aRouteWay = document.querySelector('.route_way');
+        var aAWay = aRouteWay.querySelectorAll('a');
+        aAWay.forEach(function (item) {
+            item.addEventListener('click', function () {
+                aAWay.forEach(function (item2) {
+                    item2.className = "";
+                });
+                this.className = "current";
+                var way = this.dataset.way.toUpperCase();
+                calcRoute(way);
+            })
+        });
+        function calcRoute(w) {
+            var start = document.getElementById('start_point').value;
+            var end = document.getElementById('end_point').value;
+
+            /*
+             * 调用公交换乘服务
+             */
+            //加载公交换乘插件
+            AMap.service(["AMap.Transfer"], function () {
+                var transOptions = {
+                    map: map,
+                    city: '上海市',
+                    panel: 'direction-panel',                            //公交城市
+                    //cityd:'乌鲁木齐',
+                    policy: AMap.TransferPolicy.LEAST_TIME //乘车策略
+                };
+                //构造公交换乘类
+                var trans = new AMap.Transfer(transOptions);
+                //根据起、终点坐标查询公交换乘路线
+                trans.search([{keyword: start}, {keyword: end}], function (status, result) {
+                });
+            });
+        }
+
+    </script>
+</div>
+</body>
+</html>

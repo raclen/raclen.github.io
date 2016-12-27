@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <title>添加多个信息框</title>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=e545f5c964f8a82d1c31b1e219baddee"></script>
+    <style>
+        #container {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+
+<script>
+
+    var neighborhoods = [
+        {
+            position: [121.302800, 31.22071],
+            content:'上海动物园'
+        },
+        {
+            position: [121.352001, 31.22111],
+            content:'东方明珠'
+        }
+        ,
+        {
+            position: [121.392100, 31.22371],
+            content:'迪士尼乐园'
+        }
+    ];
+    //zooms缩放级别[3-18]
+    var mapIcon = 'http://pic.c-ctrip.com/ticketonline/centerMark.png';
+
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom: 6,
+//        center: [121.352856, 31.22171]
+    });
+    var markers = [];
+    var infoWindow = new AMap.InfoWindow({
+        offset: {
+            x: 0,
+            y: -10
+        },//信息框的偏移
+
+    });
+    neighborhoods.forEach(function(item,i){
+        var marker = new AMap.Marker({
+            icon: mapIcon,
+            position: item.position,
+            offset: new AMap.Pixel(-12, -12),
+            zIndex: 101,
+            map: map
+        });
+
+        marker.content = item.content;
+        markers.push(marker);
+        marker.on('click',markerClick);
+        marker.emit('click',{target:marker});
+
+    });
+    function markerClick(e){
+        infoWindow.setContent(e.target.content);
+        infoWindow.open(map, e.target.getPosition());
+    }
+
+    map.setFitView();
+
+</script>
+</body>
+</html>
