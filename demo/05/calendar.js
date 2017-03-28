@@ -40,7 +40,7 @@
             '        <div class="basefix" id="bigCalendar">',
             '        </div>',
             '        <div class="calendar_loding">',
-            '        <img src="http://pic.c-ctrip.com/vacation_v1/loading_50-0816.gif" alt="">查询中，请稍后...',
+            '        <img src="http://xxx.com/vacation_v1/loading_50-0816.gif" alt="">查询中，请稍后...',
             '        </div>',
             '    </div>'].join("");
         this.init(o);
