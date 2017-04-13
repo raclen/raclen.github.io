@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <title>iframe里面如何显示缩略图</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        #wrapper{
+            width:820px;
+
+        }
+
+        #myframe{
+            width:1020px;
+            height:500px;
+            transform: scale(0.4);
+            transform-origin:0 0;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="" id="wrapper">
+    <iframe id="myframe" src="http://taobao.com" scrolling="no"></iframe>
+</div>
+</body>
+</html>
