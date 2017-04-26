@@ -1,0 +1,276 @@
+@import url("iconStyle.css")/*tpa=http://www.huabaoqsf.com/css/iconimgSkin/purple/iconStyle.css*/;
+@charset "gb2312";
+/* CSS Document */
+/*	Date:2012-12-14;
+	author:qwguo;
+	purpose:关于模版的基本颜色的设置;
+*/
+/*---------------关于模块圆角外观的样式，如果设计图是圆角设置------------------*/
+/*------一级栏目圆角的基本样式--------------*/
+.mapC{background:#fff;}
+.WebC_1{background:#fff;}/**一级级栏目模块**/
+  .WebC_1 .WebCT,.WebC_1 .WebCB{margin:0px 4px;}/**一级级栏目上下边**/
+	.WebC_1 .WebCTM,.WebC_1 .WebCBM{/*background-image:url(http://img3.ev123.com/others37/WebC_1_TB.png);*/ height:0px; overflow:hidden;display:none;}/**一级级栏目上下边线**/
+	.WebC_1 .WebCTM{background-position:0 0;}/**--上边线背景定位--**/
+	.WebC_1 .WebCBM{background-position:0 -15px; border-bottom:1px solid #91e2d9; height:3px; background-color:#fff;}/**--下边线背景定位--**/
+	.WebC_1 .WebCTL,.WebC_1 .WebCTR,.WebC_1 .WebCBL,.WebC_1 .WebCBR{/*background-image:url(http://img3.ev123.com/others37/WebC_1_R.png); background-repeat:no-repeat; */ height:4px; width:4px; margin-top:-4px;display:none;}/**一级级栏目四个角**/
+	  .WebC_1 .WebCTL{background-position:0 0;}/**--上左角背景定位--**/
+	  .WebC_1 .WebCTR{background-position:-4px 0px;}/**--上右角背景定位--**/
+	  .WebC_1 .WebCBL{background-position:0 -4px;}/**--下左角背景定位--**/
+	  .WebC_1 .WebCBR{background-position:-4px -4px;}/**--下右角背景定位--**/
+  .WebC_1 .WebCML,.WebC_1 .WebCMR{/*background-image:url(http://img3.ev123.com/others37/WebC_1_LR.png);*/ background-repeat:repeat-y; width:15px; display:none;}/**一级栏目左右边线**/
+	.WebC_1 .WebCML{background-position:0 0;}/**--左边线背景定位--**/
+	.WebC_1 .WebCMR{background-position:-15px 0;}/**--右边线背景定位--**/
+  .WebC_1 .WebCMM{margin:0px 0px;}/**一级级栏目内容区**/
+/*------二级栏目圆角的基本设置--------------*/
+.WebC_2{}/**二级栏目模块**/
+  .WebC_2 .WebCT,.WebC_2 .WebCB{margin:0px 3px; /*display:none;*/}/**二级栏目上下边**/
+	.WebC_2 .WebCTM,.WebC_2 .WebCBM{/*background-image:url(http://img3.ev123.com/others37/WebC_2_TB.png);*/ background-color:#fff; height:2px; overflow:hidden;display:none;}/**二级栏目上下边线**/
+	.WebC_2 .WebCTM{background-position:0 0; border-top:1px solid #A1E7DC;}/**--上边线背景定位--**/
+	.WebC_2 .WebCBM{background-position:0 -3px;border-bottom:1px solid #A1E7DC;}/**--下边线背景定位--**/
+	.WebC_2 .WebCTL,.WebC_2 .WebCTR,.WebC_2 .WebCBL,.WebC_2 .WebCBR{/*background-image:url(http://img3.ev123.com/others37/WebC_2_R.png);*/ background-repeat:no-repeat;  height:3px; width:3px; margin-top:-3px;display:none;}/**二级栏目四个角**/
+	  .WebC_2 .WebCTL{background-position:0 0;}/**--上左角背景定位--**/
+	  .WebC_2 .WebCTR{background-position:-3px 0px;}/**--上右角背景定位--**/
+	  .WebC_2 .WebCBL{background-position:0 -3px;}/**--下左角背景定位--**/
+	  .WebC_2 .WebCBR{background-position:-3px -3px;}/**--下右角背景定位--**/
+  .WebC_2 .WebCML,.WebC_2 .WebCMR{/*background-image:url(http://img3.ev123.com/others37/WebC_2_LR.png); background-repeat:repeat-y;*/ width:2px; background-color:#fff;display:none;}/**二级栏目左右边线**/
+	.WebC_2 .WebCML{background-position:0 0;border-left:1px solid #A1E7DC;}/**--左边线背景定位--**/
+	.WebC_2 .WebCMR{background-position:-4px 0;border-right:1px solid #A1E7DC;}/**--右边线背景定位--**/
+  .WebC_2 .WebCMM{ /*margin:0px 2px;*/ background-color:#fff; zoom:1;}/**二级栏目内容区**/
+
+/*---------------关于模块基本风格的设置------------------*/
+/*------一级栏目基本设置--------------*/
+  .WebC_1 .WebCMM{border:1px solid #E0DFDD;}/**--一级栏目--**/
+	.WebC_1_TitleArea,.WebC_1_Title{}/**--一级栏目标题--**/
+	.WebC_1_TitleArea{/*background:url(http://img3.ev123.com/others37/WebC_1_Title.png) repeat-x left bottom;*/ background-color:#FF1494; border-bottom:1px solid #efece7;}/**一级栏目模块标题**/
+	.WebC_1_Title{height:35px;}
+	.WebC_1_Con{color:#5a5a5a;}/**--一级栏目模块主体--**/
+	.WebC_1_Title .FC_Tit1{font:700 14px/35px "微软雅黑"; margin-left:10px;}
+	.WebC_1_Title .FC_Tit1_more{line-height:35px;}
+  /*--一级栏目标题文字--*/
+	.FC_Tit1,.FC_Tit1 a{color:#FFf;}/**一级栏目标题文字颜色**/
+	  .FC_Tit1 a:hover{color:#FF1494;}/**一级栏目标题文字鼠标经过颜色**/
+	.FC_Tit1_more{color:#FFf;}/**一级栏目标题更多颜色**/
+	  .FC_Tit1_more:hover{color:#FF1494; text-decoration:underline;}/**一级栏目标题更多文字鼠标经过颜色**/
+	.FC_Tit1_a{color:#444;}/**一级栏目标题链接文字颜色**/
+	  .FC_Tit1_a:hover{color:#FF1494; text-decoration:underline;}/**一级栏目标题连接文字鼠标经过颜色**/
+	.FC_Con1{color:#555555;}/**一级栏目下内容文字颜色**/
+	.FC_Con1_more{color:#FFf;}/**一级栏目下内容更多文字颜色**/
+	  .FC_Con1_more:hover{color:#FF1494;}/**一级栏目下内容更多文字鼠标经过颜色**/
+	  
+/*------二级栏目无圆角的基本设置--------------*/
+  .WebC_2 .WebCMM{border:1px solid #E0DFDD;}/**二级栏目模块**/
+	.WebC_2_TitleArea,.WebC_2_Title{/*height:32px;  background-image:url(http://img3.ev123.com/others37/title_bg.png);*/}
+	.WebC_2_TitleArea{color:#444; background-color:#FF1494; /*background-position:right -42px; background-repeat:no-repeat; margin-bottom:5px; padding-right:10px;*/}/**二级栏目模块标题**/
+	.WebC_2_Title{ /*background-position:0 left; background-repeat:no-repeat; */color:#5a5a5a; position:relative; height:35px;}
+	.WebC_2_Con{color:#555;/* border:1px solid #efefef; background-color:#FFEBDA*/}/**二级栏目模块**/
+	.WebC_2_Title{line-height:32px;}
+	.WebC_2_Title .FC_Tit2{font:700 14px/35px "微软雅黑"; margin-left:10px; float:left;}
+	.WebC_2_Title .FC_Tit2_more{ margin-right:10px;float:right;}
+  /*--二级栏目标题--*/
+	.FC_Tit2,.FC_Tit2 a{color:#FFf;}/**二级栏目标题文字颜色**/
+	.FC_Tit2 a:hover{color:#FFf;text-decoration:underline;}/**二级栏目标题文字鼠标经过颜色**/
+	.FC_Tit2_more{color:#FFf;}/**二级栏目标题更多颜色**/
+	  .FC_Tit2_more:hover{color:#FFf;}/**二级栏目标题更多文字鼠标经过颜色**/
+	.FC_Tit2_a{color:#FFf;}/**二级栏目标题文字颜色**/
+	  .FC_Tit2_a:hover{color:#FFf;}/**二级栏目标题鼠标经过文字颜色**/
+	.FC_Con2{color:#444;}/**二级栏目下文字内容颜色**/
+	  .FC_Con2_more{color:#FFf;}/**二级栏目下内容更多文字颜色**/
+		.FC_Con2_more:hover{color:#FFf;}/**二级栏目下内容更多文字鼠标经过颜色**/
+
+/*------三级栏目无圆角的基本设置--------------*/
+  .WebC_3{border:0px solid #d5d5d5;}/**三级栏目模块**/
+  .WebC_3_TitleArea,.WebC_3_Title{}
+	.WebC_3_Title{border-bottom:2px solid #ccc; height:32px; position:relative; line-height:32px;color:#444;}/**三级栏目模块标题**/
+	.WebC_3_Con{color:#555;}/**三级栏目模块**/
+	.WebC_3_Title .FC_Tit3{ position:absolute; left:0px; bottom:-2px; border-bottom:2px solid #FF1494; padding:0px 10px; font-size:14px;}
+  /*--三级栏目标题--*/
+  .FC_Tit3,.FC_Tit3 a{color:#FF1494;}/**三级栏目标题文字颜色**/
+  .FC_Tit3 a:hover{color:#FF1494;}/**三级栏目标题文字鼠标经过颜色**/
+  .FC_Tit3_more{color:#FF1494;}/**三级栏目标题更多颜色**/
+	.FC_Tit3_more:hover{color:#FF1494;}/**三级栏目标题更多文字鼠标经过颜色**/
+  .FC_Tit3_a{color:#555;}/**三级栏目标题文字颜色**/
+	.FC_Tit3_a:hover{color:#FF1494;}/**三级栏目标题鼠标经过文字颜色**/
+  .FC_Con3{color:#555;}/**三级栏目下文字内容颜色**/
+	.FC_Con3_more{color:#FF1494;}/**三级栏目下内容更多文字颜色**/
+	  .FC_Con3_more:hover{color:#FF1494;}/**三级栏目下内容更多文字鼠标经过颜色**/
+/*------四级栏目无圆角的基本设置--------------*/
+  .WebC_4{border:1px solid #E0DFDD;}/**四级栏目模块**/
+	.WebC_4_TitleArea{border-bottom:1px solid #E0DFDD; background-color:#FF1494;/*background:url(http://img3.ev123.com/others37/WebC_1_Title.png) repeat-x left bottom;*/}/**四级栏目模块标题**/
+	.WebC_4_Title{height:30px; line-height:30px; padding-left:10px;}
+	.WebC_4_Con{ color:#5a5a5a;}/**四级栏目模块**/
+	.WebC_4_Title .FC_Tit4{font-size:14px;}
+  /*--四级栏目标题--*/
+  .FC_Tit4,.FC_Tit4 a{color:#fff;}/**四级栏目标题文字颜色**/
+  .FC_Tit4 a:hover{color:#CB0A0A;}/**四级栏目标题文字鼠标经过颜色**/
+  .FC_Tit4_more{color:#5a5a5a;}/**四级栏目标题更多颜色**/
+	.FC_Tit4_more:hover{color:#A50409;}/**四级栏目标题更多文字鼠标经过颜色**/
+  .FC_Tit4_a{color:#666;}/**四级栏目标题文字颜色**/
+	.FC_Tit4_a:hover{color:#A50409;}/**四级栏目标题鼠标经过文字颜色**/
+  .FC_Con4{color:#5a5a5a;}/**四级栏目下文字内容颜色**/
+	.FC_Con4_more{color:#A50409;}/**四级栏目下内容更多文字颜色**/
+	  .FC_Con4_more:hover{color:#CB0A0A;}/**四级栏目下内容更多文字鼠标经过颜色**/
+	  
+/*-----------------内部tab样式--------------*/
+ .Inner_Tab{border:1px solid #E0DFDD;}/**内页tab的边框**/
+  .Inner_Tab .Inner_Tab_tit{background:#FF1494; color:#555; border-color:#FF1494;}/**内页tab标题**/
+  .Inner_Tab_tit .FC_tab_t{color:#FFf;}
+  .Inner_Tab_tit li{border-color:#FFf; border-width:0px 0px 0 0px;}/*--tab标签项--*/
+  .Inner_Tab_tit li.first{}
+  .Inner_Tab_tit li a{color:#FFf;}/*--tab标签项选中状态--*/
+	.Inner_Tab_tit li a:hover{text-decoration:underline; color:#FFf;}  
+	.Inner_Tab_tit li.cur{background-color:#fff; border-color:#FF1494;}/*--tab标签项选中状态--*/
+	  .Inner_Tab_tit li.cur a{font-weight:800; color:#FF1494;}/*--tab标签项选中状态文字--*/
+	.Inner_Tab_con{background-color:#fff;}/**tab内容区域**/
+	.Inner_Tab_con{color:#55555;}/**tab内容区文字默认颜色**/ 
+
+
+/*-------------表单元素涉及到的样式-----------------*/
+  .FC_label{color:#444;}/**输入框左边的文字**/
+  .FC_Star{color:#c00;}/**表单中必填星星提示**/
+  .FC_TxtInput{color:#000; border:1px solid #aaa; background-color:#fff;}/**输入域边框和背景色和文字颜色**/
+	.FC_TxtInputErr{border:1px solid #c00;}/**输入域错误提示边框和背景色**/
+	.FC_TxtInputRight{border:1px solid #00c;}/**输入域正确提示边框和背景色**/
+  .FC_TxtArea,textarea{color:#000;border-color:#aaa; background-color:#fff;}/**输入文本域边框和背景色和文字颜色**/
+  .FC_normal{color:#000;}
+  .FC_err{color:#c00;}/**输入错误文字提示**/
+  .FC_right{color:#00c;}/**输入正确文字提示**/
+  .FC_good{color:#008000;}/**好的提示文字颜色**/
+  .FC_bad{color:#c00;}/**坏的提示文字颜色**/
+
+/**------------------内页表格基本样式------------------**/
+.DetailTable table,.DetailTable th,.DetailTable td{border-color:#E0DFDD;}
+.DetailTable th{background-color:#FFFAF7;}
+.DetailTable td{background-color:#fff;}
+
+
+/*----------------关于列表的一些样式-----------------*/
+  /*-------列表外观样式-------*/
+ .P_ListItem_1{/*background-color:#fff;*/ color:#5a5a5a; border-color:#eee;}/**图文列表项样式-1**/
+  .P_ListItem_1:hover,.P_ListItem_1_hover{/*background-color:#fff;*/}/**图文列表项鼠标经过颜色-1**/
+ .P_ListItem_2{/*background-color:#fff;*/ color:#5a5a5a; border-color:#eee;}/**图文列表项样式-2**/
+  .P_ListItem_2:hover,.P_ListItem_2_hover{background-color:#FFFAF7; border-color:#FF1494;}/**图文列表项鼠标经过颜色-2**/
+ .T_ListItem_1{/*background-color:#fff;*/ border-color:#eee;}/**文字列表项样式-1**/
+  .T_ListItem_1:hover,.T_ListItem_1_hover{/*background-color:#fff;*/}/**文字列表项鼠标经过颜色-1**/
+ .T_ListItem_2{/*background-color:#fff;*/ border-color:#eee;}/**文字列表项样式-2**/
+  .T_ListItem_2:hover,.T_ListItem_2_hover{background-color:#FFFAF7; border-color:#FF1494;}/**文字列表项鼠标经过颜色-2**/
+  
+  /*-------列表内部样式--------*/
+  /*---文字列表---*/		
+  .Tlist_Icon{font-family:"宋体";}
+  .FC_LT,.FC_LT_a{color:#444;}/**列表a连接颜色**/
+	.FC_LT_a:hover{color:#FF1494;}/**列表a连接颜色**/
+  .FC_LT_time{color:#666;}/**列表右侧时间**/
+  
+  /*---图文列表---*/
+  .Pic_box{border:solid #ddd 1px;}/**-产品图片边线-**/
+  .Pic_box_cur{border-color:#FF1494;}
+  .FC_PicName,.FC_PicName a{color:#444; font-weight:bold;}/**图片名称文字颜色**/
+	.FC_PicName a:hover{color:#FF1494;}/**图片名称文字经过颜色**/
+  .FC_Piclabel{color:#999;}/**图片label文字颜色**/
+  .FC_PicPrice_n{color:#FF1F00;}/**图片新价格文字颜色**/
+  .FC_PicPrice_o{color:#ccc; text-decoration:line-through;}/**图片旧价格文字颜色**/
+  .FC_PicSummary{color:#666;}/**图片介绍文字颜色**/
+  .FC_PicMore_a{color:#FF1494;}/**图片更多文字颜色**/
+  .FC_PicMore_a:hover{color:#FF1494;}/**图片更多文字鼠标经过颜色**/
+  
+  /*---类别分类外观样式---*/		
+  .Class_list{border-color:#E0DFDD; /*background-color:#fff;*/}/**类别列表样式**/
+	.Class_list:hover,.Class_list_hover{background-color:#FFFAF7;}/**类别鼠标进过列表样式**/
+
+  /*-大类别文字颜色-*/
+  .FC_BigClass{border-color:#E0DFDD;}
+  .FC_BigClass,.FC_BigClass_a,.FC_BigClass a{color:#FF1494;}/**大类文字颜色**/
+		.FC_BigClass_a:hover,.FC_BigClass a:hover{color:#FF1494;text-decoration:underline;}/**大类文字鼠标经过颜色**/
+  .FC_BigClass a.more{color:#FF1494;}
+		.FC_BigClass a.more:hover{color:#FF1494;}
+  /*-小类别文字颜色-*/
+  .FC_SmallClass,.FC_SmallClass_a,.FC_SmallClass a{color:#444;}
+		.FC_SmallClass_a:hover,.FC_SmallClass a:hover,.FC_SmallClass_a_cur,.FC_SmallClass a.cur{color:#FF1494;}
+  .FC_SmallClass a.more{color:#666;}
+		.FC_SmallClass a.more:hover{color:#FF1494;}
+
+/*----------------文章最终页样式-----------------*/
+  /*-文章标题-*/
+  .FC_H1{color:#333;}/**文章标题文字颜色-1**/
+  .FC_H2{color:#333;}/**文章标题文字颜色-2**/
+  .FC_H3{color:#333;}/**文章标题文字颜色-3**/
+  .FC_H4{color:#333;}/**文章标题文字颜色-4**/
+  .FC_H5{color:#333;}/**文章标题文字颜色-5**/
+  .FC_H6{color:#333;}/**文章标题文字颜色-6**/
+  .articleAbstract{color:#ccc;}/*----文章摘要----*/
+  
+  
+  /*--------一些提示文字颜色--------*/
+  .FC_crumbs,.FC_crumbs a{color:#333;}/**面包屑的文字颜色**/
+  .FC_crumbs a:hover{color:#FF1494;}/**面包屑下的链接文字鼠标经过颜色**/
+  .FC_Prompt,.FC_Prompt_a{color:#888;}/**基本提示文字颜色**/
+	.FC_Prompt_a:hover{color:#c00; text-decoration:underline;}/**基本提示文字鼠标经过颜色**/
+  .FC_Number,.FC_Number_a{color:#999;}/**数字提示文字颜色**/
+	.FC_Number_a:hover{color:#c00;}/**数字提示文字鼠标经过颜色**/
+  .FC_Time,.FC_Time_a{color:#555;}/**时间提示文字颜色**/
+	  .FC_Time_a:hover{color:#333;}/**时间提示文字鼠标经过颜色**/
+  .FC_UserName,.FC_UserName a{color:#666;}/**会员名称**/
+	.FC_UserName a:hover{color:#c00;}/**会员名称鼠标经过**/
+  .FC_Cutline{color:#ccc;}/**文字竖线颜色**/
+  .FC_Tcaption{color:#000;}/**表格表头文字颜色**/
+  .FC_Tcaption a{color:#FF1494;}/**表格表头连接文字颜色**/
+/*----------------关于边线和底色的一些样式-----------------*/
+  .add_bd{border:1px solid #ddd;}/**广告边线颜色**/
+  .dashed_divide{ border-top:1px dashed #ddd;}/**分界虚线颜色**/
+  .solid_divide{border-top:solid #ddd 1px;}/**分界实线线颜色**/
+  .prompt_area{border:1px solid #E0DFDD; background-color:#FFf;}/**特殊提示区域样式**/
+  .bgColor_1{background-color:#fff;}/**提示文字区域背景-1**/
+  .bgColor_2{background-color:#eee;}/**提示文字区域背景-2**/   
+  .outBorderColor{border-color:#ddd;}/**外部边框颜色**/
+
+/*---站点功能菜单样式---*/
+.secondNavArea{/*background-image:url(http://img3.ev123.com/others37/site_fn_menu_bg.png);	background-position:0 0; background-repeat:repeat-x;background-image:none;*/ 
+	background-color:#FF1494;
+	border-color:#F20586;
+	}
+  .secondNav a{color:#fff; background-color:#; /*background-image:url();*/}
+  .secondNav li.cur a,.secondNav li a:hover{
+	 /* background-position:0 -51px;
+	  background-repeat:no-repeat;*/
+	  background-color:#F20586;
+	  color:#fff;
+	  }
+/*--站点功能搜索样式--*/
+.secondSearch form{border:1px solid #F20586;background-color:#fff;}
+  .secondSearch .keyword{background-color:#fff;border-width:0 1px 0 0;border-style:solid;border-color:#ccc;font:700 14px/24px "微软雅黑"; }
+  .secondSearch .submit{background-color:#F20586; border:0px;color:#fff;font:100 14px/20px "arial";}
+
+/*--左侧列表sidebar样式--*/
+.sidebar{margin:0px auto 10px; width:210px;}
+  .sidebarT,.sidebarB{display:none;}
+  .sidebarM{border:1px solid #E0DFDD;}
+  /*--左侧列表sidebar标题样式--*/
+  .sidebarTit,.sidebarTit strong{/*background-image:url(http://img3.ev123.com/others37/title_bg.png); background-repeat:no-repeat;*/}
+  .sidebarTit{/*background:url(http://img3.ev123.com/others37/sidebar.png) no-repeat;*/ height:35px;height:35px; white-space:nowrap; overflow:hidden; text-overflow:hidden; color:#FFf; font:700 14px/32px "微软雅黑"; border-bottom:1px solid #E0DFDD; background-color:#FF1494;}
+	.sidebarTit strong{padding-left:20px;}
+  /*--左侧列表内容样式--*/
+  .sidebarCon{background-color:#fff;}
+	.sidebarList{}
+	  .sidebarListT,.sidebarListB,.sidebarListM{/*background-image:url(http://img3.ev123.com/others37/sidebar.png);*/}
+		.sidebarListT,.sidebarListB{height:7px; overflow:hidden; display:none;}
+		.sidebarListT{}
+		.sidebarListB{background-position:0 -31px;}
+		.sidebarListM{background-position:-210px 0; width:200px; padding:0px 5px;}
+	.sidebarList dl{}
+	.sidebarList dt{border-bottom:1px dashed #edece7; height:32px; line-height:30px;font:700 12px/32px "宋体"; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width:100%;}
+	.sidebarList dl.first dt{border-top:0;}
+	.sidebarList dt a{color:#444; margin-left:10px;}
+	.sidebarList dt a strong{font-weight:bold;}
+	.sidebarList dt a:hover,.sidebarList .cur dt a{color:#FF1494;}
+	.sidebarList dd{display:none; border-bottom:1px dashed #edece7}
+	.sidebarList .cur dd{display:block;}
+	.sidebarList li{width:200px; margin:0px auto; line-height:24px;overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+	.sidebarList li a{color:#555; margin-left:20px;}
+	.sidebarList li a:hover,.sidebarList li.hover a{color:#FF1494;}
+/**----左侧下模块的样式-----**/
+	.WebLModule{border:1px solid #E0DFDD; margin-bottom:10px;}
+	  .WebLModule .TitleArea{/*background:url(http://img3.ev123.com/others37/WebC_1_Title.png) repeat-x left bottom;*/ height:30px; border-bottom:1px solid #E0DFDD; background-color:#FF1494;}
+		.WebLModule .TitleArea strong{color:#FFf; font:bold 14px/30px "微软雅黑"; margin-left:10px;}
+		.WebLModule .TitleArea strong a{color:#FFf;}
+	  .WebLModule .ConArea{background-color:#fff; padding:5px; line-height:1.5;}

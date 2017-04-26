@@ -1,0 +1,64 @@
+.bo_b_color{border-bottom: 1px solid #ddd;}
+.bo_r_color{border-right: 1px solid #ddd;}
+/*--------------------------*/
+.wap_margin{margin:0 auto; max-width: 640px; padding:10px;}
+.cp_img_show{border:1px solid #ddd;}
+.cp_content_tit{ height:30px; line-height: 30px; display: block; padding-left: 10px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.cp_tit_more{margin-right:10px;}
+.cp_img_list{overflow: hidden; position: relative; height: 152px;}
+.cp_img_list ul{padding:10px;}
+.cp_img_list ul li{float: left; text-align: center; margin-right: 10px;}
+.cp_img_list ul li span{width:100px; height:100px; display: block; border:1px solid #ddd; line-height: 100px; margin-bottom: 5px; overflow:hidden;}
+.cp_img_list ul li span a{ display: table-cell; text-align: center; vertical-align: middle; height: 100px; }
+.cp_img_list ul li span img{max-width: 100%; max-height: 100%; vertical-align: middle;}
+.cp_img_list ul li em{display: block; background:#F7F7F7; width: 100px; height:25px; line-height: 25px; overflow: hidden;}
+
+/*tab切换*/
+.article_nav_tab{border-bottom: 1px solid #ddd; height:39px;}
+.article_nav_tab ul{width:110%;}
+.article_nav_tab li{float:left; margin-right: 20px; height:45px; line-height: 45px; display: block;}
+.article_nav_tab li a{font-size: 16px; color:#676767; padding:5px 5px;}
+.article_nav_tab .cur a{border-style: solid; border-width: 0 0 2px;}
+
+/*文章栏目*/
+.article_column_select{ margin:0 10px;}
+.article_column_select dl{width:110%;}
+.article_column_select dd{display: block; float: left; margin:0 20px 10px 0; text-align: center;}
+.article_column_select dd a{padding:5px 10px; display: block;}
+.article_column_select .cur a{border-radius:5px; color:#fff;}
+/*文章*/
+.cp_article_list dl{}
+.cp_article_list dl dd{margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding:0 0 10px 100px; position: relative;}
+.cp_article_list dl dd .cp_article_tit_img{display: block; position: absolute; left: 10px; width:80px; height: 80px; border:1px solid #ddd; overflow: hidden;}
+.cp_article_list dl dd .cp_article_tit_img a{display: table-cell; text-align: center; vertical-align: middle; height: 80px;}
+.cp_article_list dl dd .cp_article_tit_img img{max-width: 80px; max-height: 80px; vertical-align: middle;}
+.cp_article_summary h2{margin-bottom: 3px;}
+.cp_article_summary p{ height:42px; line-height: 20px; margin-bottom: 3px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.cp_article_date{margin-right: 10px;}
+
+/*论坛*/
+.cp_forum_list dl dd{margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding:0 10px 10px;}
+.cp_forum_list dl .cp_forum_url{ position: relative; padding-right:75px;}
+.cp_forum_list dl .cp_forum_url a{position: absolute; right:10px; color:#469bb7; top:25%;}
+.cp_forum_list dl dd h2{margin-bottom: 10px;}
+.cp_forum_list dl dd h2 a{ font-size: 1.2em;}
+.cp_forum_list dl dd em{font-size: 0.8em;color:#9A9A9A;}
+.cp_forum_list dl dd .cp_forum_reply{padding-left: 20px; margin-left: 20px; background:url("message_icon.png")/*tpa=http://www.huabaoqsf.com/images/wap/bbs/message_icon.png*/ no-repeat left center; background-size:16px 16px;}
+.cp_forum_info .forum_info_summary{display: block; margin-bottom: 5px;}
+
+/*帖子表格*/
+.cp_table_c{border:1px solid #ddd; margin:10px;}
+.cp_table_c dt{background:#F5F5F5; height:30px;}
+.cp_table_c dt span{text-align: center; height:30px; line-height: 30px;}
+.cp_table_c dd span{padding:10px 0;}
+.cp_table_c dd .tie_tit{ text-indent: 5px;}
+.cp_table_c dd .tie_reply,.cp_table_c dd .tie_lastreply{ text-align: center;}
+.cp_table_c dd .tie_lastreply em{padding:0 5px;}
+.cp_table_c span{display:block; float:left;}
+.tie_tit{width:58%;}
+.tie_reply{width:22%;}
+.tie_lastreply{width:19%;}
+
+/*更多*/
+.docMore { text-align: center; margin:0 10px 10px; }
+.docMore a { display: block; height: 30px; line-height: 30px; text-align: center; border: 1px solid #ccc; background-color: #efefef; font-size: 14px; }

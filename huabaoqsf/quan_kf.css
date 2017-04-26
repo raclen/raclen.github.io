@@ -1,0 +1,195 @@
+html{background-image:url(about:blank);background-attachment:fixed;}
+.qq_onService_panel{position:fixed; width:252px; _position:absolute; right:-215px; top:0px;_position:absolute; _top:expression(eval(document.documentElement.scrollTop + document.documentElement.clientHeight -641)); z-index:10000; }
+.qq_onService_panel .onService_panel_s{ position:relative; width:252px;}
+.qq_onService_panel #onlineOpen{width:17px; position:absolute; left:0px; top:191px; overflow:hidden;cursor:pointer;color:#fff; font-size:20px;font-weight:bold;text-align:center;height:120px;padding:16px 10px 0 10px; word-break:break-all;} 
+	  
+
+.qq_onService_panel .people{width:55px; height:68px;background:url("kefu.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/kefu.png*/ no-repeat;_background:url("kefu_8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/kefu_8.png*/ no-repeat;position:absolute;left:0;top:123px;_top:123px; z-index:100;}	
+ 
+ .qq_onService_panel .box_m_m .but{position:absolute; width:24px; height:20px; right:10px; background-color:#666; z-index:4; opacity:0.4; filter:alpha(opacity=40); display:none; cursor:pointer;}
+			  .qq_onService_panel .box_m_m .but small{border-width:10px; border-style:solid; width:0px; height:0px; overflow:hidden;display:block; position:absolute; left:2px; cursor:pointer;}
+			  .qq_onService_panel .box_m_m .upBut{ top:5px;}
+				.qq_onService_panel .box_m_m .upBut small{border-color:transparent transparent #fff transparent; border-style:dashed dashed solid dashed; top:-5px;}
+			  .qq_onService_panel .box_m_m .downBut{ bottom:5px;}
+				.qq_onService_panel .box_m_m .downBut small{border-color:#fff transparent transparent transparent;  border-style:solid dashed dashed dashed; top:5px;}				  
+/*--在线公用盒子样式--*/
+.qq_onService_panel .online_boxs{ position:absolute; right:0; width:215px;}
+.qq_onService_panel .online_boxs .boxs_t_l,.qq_onService_panel .online_boxs .boxs_t_r,.qq_onService_panel .online_boxs .boxs_b_l,.qq_onService_panel .online_boxs .boxs_b_r{display:block;position:absolute;overflow:hidden;}
+.qq_onService_panel .boxs_t,.qq_onService_panel .boxs_b{width:215px;height:13px; overflow:hidden;}
+
+	.qq_onService_panel .online_boxs .boxs_m_l{padding:0 8px; }
+		.qq_onService_panel .online_boxs .box_m_m{background-color:#fff;  overflow:hidden; position:relative;}
+/*---在线客服内部样式---*/	
+  .qq_onService_panel #onlineList{ position:relative; z-index:1;}
+
+	 
+
+		
+		
+		
+  /*--在线客服tab--*/
+ .qq_onService_panel  #onlineList .online_tab{position:absolute; display:none;}
+	.qq_onService_panel #onlineList .online_tab_c{position:relative;}
+	.qq_onService_panel #onlineList .online_tab_c small{display:block; position:absolute; }
+	.qq_onService_panel #onlineList .online_tab_c small.sanjiao{width:36px; height:36px; right:-42px; background-position:-6px 0px; overflow:hidden;}
+	.qq_onService_panel #onlineList .online_tab_c small.tab_close{background-position:-68px 0px; right:-5px; top:-5px; width:16px; height:16px; cursor:pointer;}
+	  .qq_onService_panel #onlineList .online_tab_c small.tab_close:hover{background-position:-84px 0px;}
+  
+  .qq_onService_panel #onlineTelTab{right:100px; top:0px; width:240px;}
+  .qq_onService_panel #onlineTel small{top:30px;}
+  	.qq_onService_panel #onlineTel dt{font:700 14px/30px "微软雅黑";}
+	.qq_onService_panel #onlineTel dd{line-height:24px;}
+	
+  .qq_onService_panel #onlineQQTab{right:100px; top:100px; width:96px;}
+	.qq_onService_panel #onlineQQ{min-height:80px; _height:80px;}
+	.qq_onService_panel #onlineQQ small{top:30px;}
+	 .qq_onService_panel  #onlineQQ dt{font:700 14px/30px "微软雅黑"; text-align:center;}
+	  .qq_onService_panel #onlineQQ dd{line-height:24px;}
+	  
+  .qq_onService_panel #onlineMessageTab{right:100px; top:200px; width:340px;}
+	.qq_onService_panel #onlineMessage{min-height:80px; _height:80px;}
+	.qq_onService_panel #onlineMessage small{top:30px;}
+	  .qq_onService_panel #onlineMessage dl{padding-top:15px;}
+	  .qq_onService_panel #onlineMessage dt textarea{width:310px; height:70px; padding:4px; border:1px solid #bfbfbf;}
+	  .qq_onService_panel #onlineMessage dd{height:30px;}
+	 .qq_onService_panel  #onlineMessage dd.text_length{text-align:right; line-height:30px;}
+	 .qq_onService_panel  #onlineMessage label{display:block; width:60px; line-height:26px; float:left;}
+	 .qq_onService_panel  #onlineMessage .text_input{height:22px; border:1px solid #bfbfbf; width:158px; line-height:22px; margin-top:1px;}
+	 .qq_onService_panel  #onlineMessage .submitBut{width:84px; height:25px; background-position:0px -186px; border:0px; color:#383838; margin-left:10px;}
+	 .qq_onService_panel  #onlineMessage .submitBut:hover{ background-position:0px -212px;}
+
+	  
+	  
+	  
+.qq_onService_panel .zixun_color{color:#818181;}
+ 
+.qq_onService_panel .zixun{width:180px;margin:0 auto;font-size:21px;font-weight:bold; padding-top:10px; height:auto;float:none;}
+.qq_onService_panel .zixun_t{font-weight:bold;height:17px;font-size:12px;}
+.qq_onService_panel .zixun_c{ padding:0;padding-top:8px;width:180px;margin:0 auto; height:auto; border:none; }
+.qq_onService_panel .zixun_l,.qq_onService_panel .zixun_r{height:6px;width:180px;overflow:hidden;z-index:10;}
+.qq_onService_panel .zixun_l{background-position:top left; top:8px;}
+.qq_onService_panel .zixun_r{background-position:0 6px; bottom:0;}
+.qq_onService_panel .zixun_c_c{text-align:center;width:180px; text-align:Center;overflow:hidden;z-index:4;}	 
+
+
+
+
+
+.qq_onService_panel .shouqian{width:180px;margin:0 auto;padding-top:10px; overflow:hidden; clear:both;}
+.qq_onService_panel .shouqian  .zixun_c_c a{width:78px;height:24px;line-height:24px;float:left;padding-left:10px;text-align:center;overflow:hidden;margin-left:0px;margin-top:5px; margin-bottom:5px;}
+
+.qq_onService_panel .bor{border-bottom:1px solid #E6E5E4; width:180px; height:1px; overflow:hidden;}
+
+.qq_onService_panel .weibo{height:54px;overflow:hidden;width:137px;margin:0 auto;margin-top:18px;margin-bottom:4px;}
+.qq_onService_panel .weibo_l{width:54px;height:54px;overflow:hidden;float:left;}
+.qq_onService_panel .weibo_r{width:70px;float:right;}
+.qq_onService_panel .weibo_t{font-size:14px;font-weight:bold;display:block;overflow:hidden;height:24px;}
+.qq_onService_panel .weibo_b{background-color:#DBDBDB;width:70px;text-align:center;height:24px;line-height:24px;overflow:hidden;font-weight:bold;}
+.qq_onService_panel .weibo_b a{background:url("jia-1.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/jia.png*/ left center no-repeat;color:#fff;padding-left:15px;}	  
+	  
+	  
+.qq_onService_panel .weixin{width:138px;margin:0 auto; text-align:center;margin-top:20px;}  
+.qq_onService_panel .weixin_pic{width:138px;height:137px;overflow:hidden;}
+.qq_onService_panel .weixin_txt{height:20px;margin-top:10px;}	  
+
+	
+
+/*blue*/
+.blue_online{background:url("blue_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_kefu_l.png*/ no-repeat;}
+.blue_boxs_t{background:url("blue_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_box_top.png*/ no-repeat;_background:url("blue_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_box_top8.png*/ no-repeat;}
+.blue_boxs_b{background:url("blue_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_box_bottom.png*/ no-repeat;__background:url("blue_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_box_bottom8.png*/ no-repeat;}
+.blue_boxs_m_l{background-color:#0070B6;}
+.blue_zixun_c_c{background-color:#D5F2FC; color:#0070B6;}
+.blue_zixun_l,.blue_zixun_r{background-image:url("blue_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_phone_bg.jpg*/;}
+.blue_zixun_c{background:url("blue_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .blue_zixun_c_c a{background:url("blue_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_QQ.png*/ no-repeat none; color:#fff;}
+	
+
+/*black*/
+.black_online{background:url("black_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_kefu_l.png*/ no-repeat;_background:url("black_kefu_l8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_kefu_l8.png*/ no-repeat;}
+.black_boxs_t{background:url("black_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_box_top.png*/ no-repeat;_background:url("black_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_box_top8.png*/ no-repeat;}
+.black_boxs_b{background:url("black_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_box_bottom.png*/ no-repeat;__background:url("black_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_box_bottom8.png*/ no-repeat;}
+.black_boxs_m_l{background-color:#545454;}
+.black_zixun_c_c{background-color:#E5E5E5; color:#545454;}
+.black_zixun_l,.black_zixun_r{background-image:url("black_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_phone_bg.jpg*/;}
+.black_zixun_c{background:url("black_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .black_zixun_c_c a{background:url("black_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/black_QQ.png*/ no-repeat none; color:#fff;}
+
+/*green*/
+.green_online{background:url("green_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_kefu_l.png*/ no-repeat;_background:url("green_kefu_l8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_kefu_l8.png*/ no-repeat;}
+.green_boxs_t{background:url("green_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_box_top.png*/ no-repeat;_background:url("green_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_box_top8.png*/ no-repeat;}
+.green_boxs_b{background:url("green_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_box_bottom.png*/ no-repeat;__background:url("green_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_box_bottom8.png*/ no-repeat;}
+.green_boxs_m_l{background-color:#009933;}
+.green_zixun_c_c{background-color:#CDFFCC; color:#009933;}
+.green_zixun_l,.green_zixun_r{background-image:url("green_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_phone_bg.jpg*/;}
+.green_zixun_c{background:url("green_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .green_zixun_c_c a{background:url("green_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/green_QQ.png*/ no-repeat none; color:#fff;}
+
+/*red*/
+.red_online{background:url("red_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_kefu_l.png*/ no-repeat;_background:url("red_kefu_l8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_kefu_l8.png*/ no-repeat;}
+.red_boxs_t{background:url("red_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_box_top.png*/ no-repeat;_background:url("red_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_box_top8.png*/ no-repeat;}
+.red_boxs_b{background:url("red_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_box_bottom.png*/ no-repeat;__background:url("red_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_box_bottom8.png*/ no-repeat;}
+.red_boxs_m_l{background-color:#FF3333;}
+.red_zixun_c_c{background-color:#FFE5E6; color:#FF3333;}
+.red_zixun_l,.red_zixun_r{background-image:url("red_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_phone_bg.jpg*/;}
+.red_zixun_c{background:url("red_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .red_zixun_c_c a{background:url("red_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/red_QQ.png*/ no-repeat none; color:#fff;}
+
+
+
+/*yellow*/
+.yellow_online{background:url("yellow_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_kefu_l.png*/ no-repeat;_background:url("yellow_kefu_l8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_kefu_l8.png*/ no-repeat;}
+.yellow_boxs_t{background:url("yellow_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_box_top.png*/ no-repeat;_background:url("yellow_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_box_top8.png*/ no-repeat;}
+.yellow_boxs_b{background:url("yellow_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_box_bottom.png*/ no-repeat;__background:url("yellow_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_box_bottom8.png*/ no-repeat;}
+.yellow_boxs_m_l{background-color:#FF9D13;}
+.yellow_zixun_c_c{background-color:#FEF4D1; color:#FF9D13;}
+.yellow_zixun_l,.yellow_zixun_r{background-image:url("yellow_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_phone_bg.jpg*/;}
+.yellow_zixun_c{background:url("yellow_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .yellow_zixun_c_c a{background:url("yellow_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/yellow_QQ.png*/ no-repeat none; color:#fff;}
+
+/*purple*/
+.purple_online{background:url("purple_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_kefu_l.png*/ no-repeat;_background:url("purple_kefu_l8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_kefu_l8.png*/ no-repeat;}
+.purple_boxs_t{background:url("purple_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_box_top.png*/ no-repeat;_background:url("purple_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_box_top8.png*/ no-repeat;}
+.purple_boxs_b{background:url("purple_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_box_bottom.png*/ no-repeat;__background:url("purple_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_box_bottom8.png*/ no-repeat;}
+.purple_boxs_m_l{background-color:#9966CC;}
+.purple_zixun_c_c{background-color:#E5E5FF; color:#9966CC;}
+.purple_zixun_l,.purple_zixun_r{background-image:url("purple_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_phone_bg.jpg*/;}
+.purple_zixun_c{background:url("purple_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .purple_zixun_c_c a{background:url("purple_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/purple_QQ.png*/ no-repeat none; color:#fff;}
+
+/*pink*/
+.pink_online{background:url("pink_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_kefu_l.png*/ no-repeat;_background:url("pink_kefu_l8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_kefu_l8.png*/ no-repeat;}
+.pink_boxs_t{background:url("pink_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_box_top.png*/ no-repeat;_background:url("pink_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_box_top8.png*/ no-repeat;}
+.pink_boxs_b{background:url("pink_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_box_bottom.png*/ no-repeat;__background:url("pink_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_box_bottom8.png*/ no-repeat;}
+.pink_boxs_m_l{background-color:#FF6FFF;}
+.pink_zixun_c_c{background-color:#FFEEFE; color:#FF6FFF;}
+.pink_zixun_l,.pink_zixun_r{background-image:url("pink_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_phone_bg.jpg*/;}
+.pink_zixun_c{background:url("pink_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .pink_zixun_c_c a{background:url("pink_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/pink_QQ.png*/ no-repeat none; color:#fff;}
+
+/*gray*/
+.gray_online{background:url("gray_kefu_l.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_kefu_l.png*/ no-repeat;_background:url("gray_kefu_l8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_kefu_l8.png*/ no-repeat;color:#999999;}
+.gray_boxs_t{background:url("gray_box_top.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_box_top.png*/ no-repeat;_background:url("gray_box_top8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_box_top8.png*/ no-repeat;}
+.gray_boxs_b{background:url("gray_box_bottom.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_box_bottom.png*/ no-repeat;__background:url("gray_box_bottom8.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_box_bottom8.png*/ no-repeat;}
+.gray_boxs_m_l{background-color:#EAEAEA;}
+.gray_zixun_c_c{background-color:#F4F4F4; color:#999999;}
+.gray_zixun_l,.gray_zixun_r{background-image:url("gray_phone_bg.jpg")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_phone_bg.jpg*/;}
+.gray_zixun_c{background:url("gray_zixun_t.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/gray_zixun_t.png*/ 10px 0 no-repeat;}
+.shouqian .gray_zixun_c_c a{background:url("blue_QQ.png")/*tpa=http://www.huabaoqsf.com/images/quan_kf/blue_QQ.png*/ no-repeat none; color:#fff;}
+#onlineList .gray_online{color:#999999;}
+
+	  
+	  
+  
+	  
+	  
+	  
+	  
+
+
+
+
+
+
+	
+	  

@@ -1,0 +1,227 @@
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,legend,input,textarea,p,blockquote,th,td,article,aside,footer,header,menu,nav,section,time,audio,video{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+img{border:0;}
+ol,ul,dl,li{list-style:none;}
+body{font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;color:#000; min-height:100%;padding-bottom:1px;}
+a{text-decoration:none;}
+html{height:100%;}
+body{min-height:100%;}
+em{ font-style:normal}
+strong{ font-weight:normal}
+.member_menu_bg {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    filter: Alpha(opacity=50);
+    opacity: 0.5;
+    background: #000000;
+    display: none;
+    z-index: 999}
+.member_alert_bg {
+    width: 60%;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    bottom: 0;
+	right:0;
+    z-index: 99999;
+}
+.alert_con2 {
+	width:100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+    background: #FFF;
+    float: right;
+}
+.name_top{ width:100%; border-bottom:1px solid #e1e1e1;padding: 10px; overflow:hidden}
+.name_top .login_no{ display:block; border-radius:50%; overflow:hidden; color:#ccc; border:1px solid #ccc; text-align:center; margin:0 auto;}
+.name_top .login_ok_a{ display:block; border-radius:50%; overflow:hidden; color:#ccc; border:1px solid #ccc; text-align:center; float:left}
+.name_top .login_ok_a img{ width:100%}
+.name_top .login_no img{ width:100%;}
+.name_top .login_p_no{ display:table; margin:0 auto; overflow:hidden; margin-top:5px;}
+.name_top .login_p_no a{ display:block; float:left; text-align:center; border-radius:25px;}
+.name_top .login_p_no a:nth-child(1){ border:2px solid #ff9900; color:#ff9900; margin-right:10px;}
+.name_top .login_p_no a:nth-child(2){border:2px solid #ff9900;  background-color:#ff9900; color:#FFF;}
+.name_conter{ width:100%;}
+.a_icon_div{ display:block; overflow:hidden; border-bottom:1px solid #e1e1e1;}
+.a_icon_div i ,.a_icon_div font{ float:left; color:#666;}
+.a_icon_div em ,.a_icon_div strong{ float:right; color:#666;}
+.login_ok_p ,.name_top em ,.name_top strong{display: block;overflow: hidden;padding-left:5px;}
+.login_ok_p{color:#333;}
+.login_ok_p font{color:#646464;}
+.name_top strong{color:#888;}
+.name_top strong font{color:#ff9900;}
+.name_top em i{color:#ff9900;}
+@media screen and (max-width:320px){
+	.name_top .login_no ,.name_top .login_ok_a{ width:40px; height:40px; font-size:22px; line-height:38px;}
+	.name_top .login_p_no a{ font-size:12px;padding:3px 12px;}
+	.a_icon_div{padding:7px 5px 7px 10px;}
+	.a_icon_div font{ font-size:12px;line-height:26px; margin-left:5px;}
+	.a_icon_div em{ font-size:14px;line-height:26px;}
+	.a_icon_div .icon-haoyoutiezi{ font-size:20px;}
+	.a_icon_div .icon-woguanzhudequanzi{ font-size:20px;font-weight: 600;}
+	.a_icon_div .icon-yonghu{ font-size:20px;}
+	.a_icon_div .icon-qunzupx{ font-size:20px;}
+	.a_icon_div .icon-wodequanzi{ font-size:20px;}
+	.a_icon_div .icon-iconfont01{ font-size:20px;}
+	.a_icon_div .icon-fenxiao{ font-size:20px;}
+	.a_icon_div .icon-pintuan{ font-size:20px;}
+	.a_icon_div .icon-jifen{ font-size:20px;}
+	.a_icon_div .icon-zichanguanli{ font-size:20px;}
+	.a_icon_div .icon-huifu1{ font-size:20px;}
+	.a_icon_div .icon-qiandao{ font-size:20px;}
+	.a_icon_div .icon-xiangyou{ font-size:18px; margin-top:2px;}
+	/*--------2------*/
+	.a_icon_div .icon-qian{ font-size:20px;}
+	.a_icon_div .icon-haibao{ font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-mfenxiaodingdan2{ font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-weidian{ font-size:20px;}
+	.a_icon_div .icon-gouwuche{ font-size:20px;}
+	.a_icon_div .icon-faxian{ font-size:20px;}
+	/*--------3------*/
+	.a_icon_div .icon-zhangdan{font-size:20px; margin-top:2px; margin-left:-1px; margin-right:1px;}
+	.a_icon_div .icon-hongbao{font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-chongzhi{font-size:20px;}
+	.a_icon_div .icon-liquan{font-size:22px;}
+	.a_icon_div .icon-wodetequan{font-size:20px;}
+	/*--------4------*/
+	.a_icon_div .icon-pintuan1{font-size:18px;margin-top:2px;}
+	.a_icon_div .icon-dibudaohangpinhaohuo{font-size:22px;}
+	
+	.login_ok_p ,.name_top strong{ font-size:12px;margin-top: 7px;}
+	.name_top em{ margin:1px auto}
+	.name_top em .icon-taiyang{ font-size:16px;}
+	.wap_out{ font-size:14px;}
+	.a_icon_div .icon-areward{ font-size:20px; margin-top:2px;}
+}
+@media screen and (min-width:321px) and (max-width:360px){
+	.name_top .login_no ,.name_top .login_ok_a{ width:40px; height:40px; font-size:22px; line-height:38px}
+	.name_top .login_p_no a{ font-size:14px;padding:5px 15px;}
+	.a_icon_div{padding:9px 5px 9px 10px;}
+	.a_icon_div font{ font-size:14px;line-height:26px; margin-left:4px;}
+	.a_icon_div em{ font-size:14px;line-height:26px;}
+	.a_icon_div .icon-haoyoutiezi{ font-size:20px;}
+	.a_icon_div .icon-woguanzhudequanzi{ font-size:20px;font-weight: 600;}
+	.a_icon_div .icon-yonghu{ font-size:20px;}
+	.a_icon_div .icon-qunzupx{ font-size:20px;}
+	.a_icon_div .icon-wodequanzi{ font-size:20px;}
+	.a_icon_div .icon-iconfont01{ font-size:22px;}
+	.a_icon_div .icon-fenxiao{ font-size:20px;}
+	.a_icon_div .icon-pintuan{ font-size:21px;}
+	.a_icon_div .icon-jifen{ font-size:20px;}
+	.a_icon_div .icon-zichanguanli{ font-size:22px;}
+	.a_icon_div .icon-huifu1{ font-size:20px;}
+	.a_icon_div .icon-qiandao{ font-size:20px;}
+	.a_icon_div .icon-xiangyou{ font-size:18px; margin-top:2px;}
+	/*--------2------*/
+	.a_icon_div .icon-qian{ font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-haibao{ font-size:22px; margin-top:2px;}
+	.a_icon_div .icon-mfenxiaodingdan2{ font-size:22px; margin-top:2px;}
+	.a_icon_div .icon-weidian{ font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-gouwuche{ font-size:20px; margin-top:1px;}
+	.a_icon_div .icon-faxian{ font-size:20px; margin-top:2px;}
+	/*--------3------*/
+	.a_icon_div .icon-zhangdan{font-size:20px; margin-top:2px;margin-left:-1px; margin-right:1px;}
+	.a_icon_div .icon-hongbao{font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-chongzhi{font-size:20px;}
+	.a_icon_div .icon-liquan{font-size:22px;}
+	.a_icon_div .icon-wodetequan{font-size:20px;}
+	/*--------4------*/
+	.a_icon_div .icon-pintuan1{font-size:18px;margin-top:2px;}
+	.a_icon_div .icon-dibudaohangpinhaohuo{font-size:22px;}
+	
+	.login_ok_p ,.name_top strong{ font-size:12px;margin-top: 7px;}
+	.name_top em{ margin:1px auto}
+	.name_top em .icon-taiyang{ font-size:16px;}
+	.wap_out{ font-size:14px;}
+	.a_icon_div .icon-areward{ font-size:22px; margin-top:1px;}
+}
+@media screen and (min-width:361px) and (max-width:480px){
+	.name_top .login_no ,.name_top .login_ok_a{ width:50px; height:50px; font-size:26px; line-height:48px;}
+	.name_top .login_p_no a{ font-size:16px;padding:3px 20px;}
+	.a_icon_div{padding:10px 5px 10px 10px;}
+	.a_icon_div font{ font-size:16px;line-height:28px; margin-left:5px;}
+	.a_icon_div em{ font-size:16px;line-height:28px;}
+	.a_icon_div .icon-haoyoutiezi{ font-size:22px;}
+	.a_icon_div .icon-woguanzhudequanzi{ font-size:22px;font-weight: 600;}
+	.a_icon_div .icon-yonghu{ font-size:22px;}
+	.a_icon_div .icon-qunzupx{ font-size:22px; }
+	.a_icon_div .icon-wodequanzi{ font-size:22px;}
+	.a_icon_div .icon-iconfont01{ font-size:24px;}
+	.a_icon_div .icon-fenxiao{ font-size:22px;}
+	.a_icon_div .icon-pintuan{ font-size:24px;}
+	.a_icon_div .icon-jifen{ font-size:22px;}
+	.a_icon_div .icon-zichanguanli{ font-size:24px;}
+	.a_icon_div .icon-huifu1{ font-size:22px;}
+	.a_icon_div .icon-qiandao{ font-size:20px;}
+	.a_icon_div .icon-xiangyou{ font-size:18px; margin-top:2px;}
+	/*--------2------*/
+	.a_icon_div .icon-qian{ font-size:22px; margin-top:2px;}
+	.a_icon_div .icon-haibao{ font-size:24px; margin-top:2px;}
+	.a_icon_div .icon-mfenxiaodingdan2{ font-size:24px; margin-top:2px;}
+	.a_icon_div .icon-weidian{ font-size:22px; margin-top:2px;}
+	.a_icon_div .icon-gouwuche{ font-size:22px; margin-top:1px;}
+	.a_icon_div .icon-faxian{ font-size:22px; margin-top:2px;}
+	/*--------3------*/
+	.a_icon_div .icon-zhangdan{font-size:22px; margin-top:2px;margin-left: -1px;}
+	.a_icon_div .icon-hongbao{font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-chongzhi{font-size:22px;}
+	.a_icon_div .icon-liquan{font-size:24px;}
+	.a_icon_div .icon-wodetequan{font-size:22px;}
+	/*--------4------*/
+	.a_icon_div .icon-pintuan1{font-size:20px;margin-top:2px;}
+	.a_icon_div .icon-dibudaohangpinhaohuo{font-size:24px;}
+	
+	.login_ok_p ,.name_top strong{ font-size:14px; margin-top:10px;}
+	.name_top em{ margin:1px auto}
+	.name_top em .icon-taiyang{ font-size:18px;}
+	.wap_out{ font-size:16px;}
+	.a_icon_div .icon-areward{ font-size:24px;}
+}
+@media screen and (min-width:481px){
+	.name_top .login_no ,.name_top .login_ok_a{ width:50px; height:50px; font-size:26px; line-height:48px;}
+	.name_top .login_p_no a{ font-size:16px;padding:3px 20px;}
+	.a_icon_div{padding:10px 5px 10px 10px;}
+	.a_icon_div font{ font-size:16px;line-height:28px; margin-left:5px;}
+	.a_icon_div em{ font-size:16px;line-height:28px;}
+	.a_icon_div .icon-haoyoutiezi{ font-size:22px;}
+	.a_icon_div .icon-woguanzhudequanzi{ font-size:22px;font-weight: 600;}
+	.a_icon_div .icon-yonghu{ font-size:22px;}
+	.a_icon_div .icon-qunzupx{ font-size:22px;}
+	.a_icon_div .icon-wodequanzi{ font-size:22px;}
+	.a_icon_div .icon-iconfont01{ font-size:24px;}
+	.a_icon_div .icon-fenxiao{ font-size:22px;}
+	.a_icon_div .icon-pintuan{ font-size:24px;}
+	.a_icon_div .icon-jifen{ font-size:22px; margin-top:2px;}
+	.a_icon_div .icon-zichanguanli{ font-size:24px;}
+	.a_icon_div .icon-huifu1{ font-size:22px;}
+	.a_icon_div .icon-qiandao{ font-size:20px;}
+	.a_icon_div .icon-xiangyou{ font-size:18px; margin-top:2px;}
+	/*--------2------*/
+	.a_icon_div .icon-qian{ font-size:22px; margin-top:2px;}
+	.a_icon_div .icon-haibao{ font-size:24px; margin-top:2px;}
+	.a_icon_div .icon-mfenxiaodingdan2{ font-size:24px; margin-top:2px;}
+	.a_icon_div .icon-weidian{ font-size:22px; margin-top:2px;}
+	.a_icon_div .icon-gouwuche{ font-size:22px; margin-top:1px;}
+	.a_icon_div .icon-faxian{ font-size:22px; margin-top:2px;}
+	/*--------3------*/
+	.a_icon_div .icon-zhangdan{font-size:22px; margin-top:2px;margin-left: -1px;}
+	.a_icon_div .icon-hongbao{font-size:20px; margin-top:2px;}
+	.a_icon_div .icon-chongzhi{font-size:22px;}
+	.a_icon_div .icon-liquan{font-size:24px;}
+	.a_icon_div .icon-wodetequan{font-size:22px;}
+	/*--------4------*/
+	.a_icon_div .icon-pintuan1{font-size:20px;margin-top:2px;}
+	.a_icon_div .icon-dibudaohangpinhaohuo{font-size:24px;}
+	
+	.login_ok_p ,.name_top strong{ font-size:14px;margin-top:10px;}
+	.name_top em{ margin:1px auto}
+	.name_top em .icon-taiyang{ font-size:18px;}
+	.wap_out{ font-size:16px;}
+	.a_icon_div .icon-areward{ font-size:24px;}
+}
+.wap_out1{ display:block; padding:20px 0; text-align:center; color:#FF9900;}
