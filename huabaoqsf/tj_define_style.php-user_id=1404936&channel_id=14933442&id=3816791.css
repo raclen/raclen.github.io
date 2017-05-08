@@ -1,0 +1,1 @@
+@charset "gb2312";/* CSS Document */

@@ -1,0 +1,9 @@
+<html><head><meta http-equiv=Content-Type content='text/html; charset=gbk'></head>
+	function userDefineFromParam(form_id) {
+		var param = {};
+		return param[form_id] ? param[form_id] : '';
+	};
+
+	$(function(){
+		
+	});

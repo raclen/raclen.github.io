@@ -1,0 +1,83 @@
+.fixed_t{padding-top: 43px; overflow: hidden;}
+.fixed_b{margin-bottom: 50px; overflow: hidden;}
+.fixed_b em,.fixed_b i{font-style: normal;}
+
+/* footer */
+.shop_footer{background:#fff; overflow: hidden; padding-top:5px; height:45px; border-top:1px solid #CFCFCF;}
+.shop_footer li{width:25%; float:left; text-align: center;}
+.shop_footer li p{font-size: 14px; color:#555;}
+.shop_footer li em{display:block; margin:0 auto; background: url("footer_icon.png")/*tpa=http://www.huabaoqsf.com/css/images/footer_icon.png*/ no-repeat; width:25px; height:25px; background-size: 314px 25px;}
+.shop_footer li.cur p{color:#f60;}
+.shop_footer li em.shops_icon{background-position: -9px 0;}
+.shop_footer li.cur em.shops_icon{background-position: -46px 0;}
+.shop_footer li em.shop_icon{background-position: -84px 0;}
+.shop_footer li.cur em.shop_icon{background-position: -126px 0;}
+.shop_footer li em.news_icon{background-position: -168px 0; position: relative;}
+.shop_footer li em.news_icon i{position: absolute; top:-3px; right:-4px; font-size: 10px; font-style: normal; background:#FF4645; display: inline-block; border-radius: 5em; -moz-border-radius: 5em; -webkit-border-radius: 5em; -o-border-radius: 5em; color:#fff; width:18px; height:18px; line-height: 18px; text-align: center;}
+.shop_footer li.cur em.news_icon{background-position: -208px 0;}
+.shop_footer li em.user_icon{background-position: -248px 0;}
+.shop_footer li.cur em.user_icon{background-position: -284px 0;}
+
+/* classify_list */
+.classify_list{padding-top:40px;}
+.classify_list .tab_tit{height:40px; background: #fff; padding:0 40px; position: fixed; top:42px; left:0; right:0; margin:0 auto; z-index: 1; max-width: 560px; overflow: hidden;}
+.classify_list .tab_tit span{display: inline-block; width:40px; height:40px; position: absolute; top:0; text-align: center; line-height: 40px; cursor: pointer; background: #fff;}
+.classify_list .tab_tit span em{display: inline-block; width:0; height:0; border-top:6px solid transparent; border-bottom: 6px solid transparent;}
+.classify_list .left_btn{left:0;}
+.classify_list .left_btn em{border-right:8px solid #959595;}
+.classify_list .right_btn{right:0;}
+.classify_list .right_btn em{border-left:8px solid #959595;}
+.classify_list .tab_list{overflow-x: auto;}
+.classify_list .tab_list ul{display: inline-block;}
+.classify_list .tab_list li{display:block; margin:0 5px; float:left;}
+.classify_list .tab_list li a{display: block; padding:0 5px; font-size: 14px; height:38px; line-height: 38px;}
+.classify_list .tab_list li.cur a{display: block; padding:0 5px; border-style: solid; border-width: 0 0 2px 0;}
+.classify_list .tab_list .tab_list_bk{width:2000px;}
+.classify_list .classify_center{position: relative; padding:0 10px 0 85px; overflow: hidden; min-height: 360px;}
+.classify_list .tab_Llist{position: fixed; left:0; right:0; top:82px; bottom:0; max-width: 640px; margin:0 auto;}
+.classify_list .Llist_scroll{width:80px; height:100%; overflow: hidden;}
+.classify_list .scroll_w{background: #fff; overflow-x: hidden; overflow-y: auto; height:100%; width:100px;}
+.classify_list .tab_Llist ul{ overflow: hidden; display: inline-block;}
+/*.classify_list .tab_Llist ul{ background: #fff; height:100%; overflow-x: hidden; overflow-y: auto; display: inline-block;}*/
+.classify_list .tab_Llist li{width:78px; border:1px solid #CFCFCF; text-align: center;}
+.classify_list .tab_Llist li a{display: block; height:40px; line-height: 40px; font-size: 14px;}
+.classify_list .tab_Llist li .this_bo_color{border-style: solid; border-width: 0 0 0 2px; width:78px; background: #fff; margin-left: -1px;}
+.classify_list .tab_c{padding-top:5px; position: relative;}
+.classify_list .product_info{display: none;}
+.classify_list .cur{display: block;}
+.classify_list .banner_pic{display: block; margin:0 2px 10px; text-align: center;}
+.classify_list .banner_pic img{max-width: 100%;}
+.classify_list .product_tit{margin:0 5px; height:25px; line-height: 25px; font-size: 14px; font-weight: normal;}
+.classify_list .product_list{margin-bottom: 10px; overflow: hidden;}
+.classify_list .product_list li{width:33.3%; float: left; margin-bottom: 4px;}
+.classify_list .product_list_bk{margin:0 2px; background: #fff; padding:5px;}
+.classify_list .product_list_bk .list_pic{display: block; height:80px; line-height: 76px; text-align: center;}
+.classify_list .product_list_bk .list_pic img{max-width: 100%; max-height: 100%; vertical-align: middle;}
+.classify_list .product_list_bk p{text-align: center; font-size: 14px; height:20px; line-height: 20px;}
+
+/* classify_list2 */
+.classify_list2 .classify_bk{margin-bottom: 5px;}
+.classify_list2 .classify_tab{border-bottom: 1px solid #E2E2E2; overflow: hidden;}
+.classify_list2 .classify_name{border-bottom: 1px solid #CFCFCF; background: #fff; height:60px; position: relative; padding:10px 40px 10px 80px;}
+.classify_list2 .classify_name .pic{display: block; width:60px; height:60px; line-height: 46px; text-align: center; border:1px solid #EAEAEA; position: absolute; left:10px;}
+.classify_list2 .classify_name .pic img{max-width: 100%; max-height: 100%; vertical-align: middle;}
+.classify_list2 .classify_name .classify_tit{font-size: 16px; line-height: 22px; padding-top:8px;}
+.classify_list2 .classify_name .classify_summary{font-size: 14px; line-height: 22px; color:#888;}
+.classify_list2 .classify_name em,
+.classify_list2 .classify_name i{position: absolute; right:14px; width:0; height: 0; border-left:10px solid transparent; border-right:10px solid transparent;}
+.classify_list2 .classify_name em{ border-top:10px solid #888; top:35px; border-bottom: 0;}
+.classify_list2 .classify_name i{ border-top:10px solid #fff; top:33px; border-bottom: 0;}
+.classify_list2 .cur .classify_name em{ border-bottom:10px solid #888; top:33px; border-top: 0;}
+.classify_list2 .cur .classify_name i{ border-bottom:10px solid #fff; top:35px; border-top: 0;}
+.classify_list2 .list_info{padding:10px 5px; display: none;}
+.classify_list2 .cur .list_info{display: block;}
+.classify_list2 .list_info li{display: block; float:left; width:25%; margin-bottom: 10px;}
+.classify_list2 .list_info li .list_bk{margin:0 5px; text-align: center; background: #fff;}
+.classify_list2 .list_info li .pic{display: block; padding:5px;/*  border:1px solid #EAEAEA; */ text-align: center; height:80px; line-height: 76px;}
+.classify_list2 .list_info li .pic img{max-width: 100%; max-height: 100%; vertical-align: middle;}
+.classify_list2 .list_info li p{line-height: 22px; font-size: 14px;}
+
+
+
+
+

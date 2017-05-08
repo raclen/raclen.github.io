@@ -1,0 +1,37 @@
+/*.web_head { position: fixed; z-index: 999; max-width: 640px; border-bottom: 1px solid #ddd; left: 0; right: 0; margin: 0 auto; background: #fff; }
+.web_head_bk { position: relative; padding: 0 40px; height: 43px; }
+.head_tit { position: absolute; left: 0; right: 0; top: 0; text-align: center; line-height: 43px; font-size: 18px; font-weight: normal; }
+.web_head .return_btn,.web_head .search_btn { position: absolute; display: inline-block; width: 22px; top: 10px; z-index:1;}
+.web_head .return_btn { left: 15px; }
+.web_head .search_btn { right: 15px; }
+.web_head a img { width: 100%; }*/
+.classify_list{padding-top: 50px;}
+.classify_list .tab_tit{padding:0; max-width: 640px; height: 45px;}
+.classify_list .product_tit{line-height: 28px; height: 28px;}
+.classify_list .tab_Llist{position: relative; z-index: 1; float: left; background-color: #fff; top:0; border-top: 1px solid #EFEFF0;}
+.classify_list .tab_Llist ul{}
+.classify_list .tab_Llist li{width:74px; border-width: 0 1px 1px 0; border-style: solid; border-color: #EFEFF0;}
+.classify_list .tab_Llist li.cur{border-right:0;}
+.classify_list .tab_Llist li.cur a{color:#ff9000;}
+.classify_list .tab_Llist li a{font-size: 12px; overflow: hidden;}
+.classify_list .product_list{background-color: #fff;}
+.classify_list .product_list li{width:25%;}
+.classify_list .tab_list ul{padding:0 5px;}
+.classify_list2 .classify_name{border-bottom:0;}
+.classify_list2 .classify_tab{border-bottom: 10px solid #EFEFF0;}
+.classify_list2 .cur .list_info{background-color: #fff; overflow: hidden; border-top: 1px dashed #EFEFF0;}
+.classify_list2 .list_info li{width:20%;}
+.classify_list .tab_list li{margin:0 10px 0 0;}
+.classify_list .tab_list li a{height: 43px; line-height: 47px;}
+.classify_list .tab_list li.cur a{ color: #ff9000; border-bottom: 2px solid #ff9000;}
+.classify_list .tab_c{padding-top: 10px;}
+.classify_list .classify_center{background-color: #fff; padding:0 5px 0 0;}
+.classify_list .product_list_bk .list_pic{height:50px; line-height: 46px;}
+.classify_list .product_list_bk p{font-size: 12px; overflow: hidden;}
+.classify_list .product_list_bk p a{color:#383838;}
+.classify_list .scroll_w{overflow: hidden; width:75px;}
+.classify_list .Llist_scroll{width:76px;}
+.classify_list2 .list_info li p{height: 22px; overflow: hidden; font-size: 12px;}
+.classify_list2 .list_info li p a{color:#383838;}
+.classify_list2 .list_info li .pic{height:50px; line-height: 46px;}
+.classify_list2 .classify_name .pic{border:0; line-height:60px;}

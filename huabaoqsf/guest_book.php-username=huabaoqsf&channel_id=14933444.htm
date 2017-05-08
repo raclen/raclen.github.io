@@ -1,0 +1,854 @@
+﻿  <!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+<title>在线留言</title>
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,target-densitydpi=medium"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<link type="text/css" rel="stylesheet" href="index.css--ver42.css" tppabs="http://www.huabaoqsf.com/css/wap/new/index.css??ver42" >
+<link type="text/css" rel="stylesheet" href="base.css" tppabs="http://www.huabaoqsf.com/css/wap/base.css" />
+<link type="text/css" rel="stylesheet" href="iconfont.css" tppabs="http://www.huabaoqsf.com/css/imgFont/iconfont.css" />
+<script type="text/javascript">
+        var user_name = "huabaoqsf";
+    var aGlobalBannerHeight = {};
+</script>
+<script type="text/javascript" src="cookies.js" tppabs="http://www.huabaoqsf.com/include/cookies.js"></script>
+<script src="jquery-1.7.1.min.js" tppabs="http://www.huabaoqsf.com/include/jquery-1.7.1.min.js" language="JavaScript" ></script>
+<script type="text/javascript" src="nav.js-ver42" tppabs="http://www.huabaoqsf.com/js/wap/nav.js?ver42"></script>
+<script type="text/javascript" src="swipe.js-ver42" tppabs="http://www.huabaoqsf.com/js/wap/swipe.js?ver42"></script>
+<script type="text/javascript" src="ajax_info.js-ver42" tppabs="http://www.huabaoqsf.com/js/wap/ajax_info.js?ver42"></script>
+<script type="text/javascript" src="public.js-ver421" tppabs="http://www.huabaoqsf.com/js/wap/public.js?ver421"></script>
+<link type="text/css" rel="stylesheet" href="web_frame.css--ver42.css" tppabs="http://www.huabaoqsf.com/css/wap/web_frame.css??ver42" />
+<link type="text/css" rel="stylesheet" href="change_module.css-ver42.css" tppabs="http://www.huabaoqsf.com/css/wap/change_module.css?ver42" />
+<link id="webSkinCss" type="text/css" rel="stylesheet" href="webskin.css-ver42.css" tppabs="http://www.huabaoqsf.com/templates/wapother34/css/webskin.css?ver42" />
+<link id="webSkinCss" type="text/css" rel="stylesheet" href="style.css-ver42.css" tppabs="http://www.huabaoqsf.com/templates/wapother34/skin_34/style.css?ver42" />
+<link type="text/css" rel="stylesheet" href="icomoon_style.css-ver42.css" tppabs="http://www.huabaoqsf.com/css/wap/icomoon_style.css?ver42" />
+
+   <link rel="stylesheet" href="base.css" tppabs="http://www.huabaoqsf.com/css/wap/base.css">
+  <link rel="stylesheet" href="spectrum.css" tppabs="http://www.huabaoqsf.com/css/wap/spectrum.css">
+  <!-- 图标文字 -->
+  <link rel="stylesheet" type="text/css" href="iconfont-1.css" tppabs="http://www.huabaoqsf.com/css/tubiao/iconfont.css">
+  <!-- end -->
+    <link type="text/css" rel="stylesheet" href="Module_style.css-ver42.css" tppabs="http://www.huabaoqsf.com/images/wap/web_style/module_style/Module_style.css?ver42" />
+<link type="text/css" rel="stylesheet" href="HMo_style.css-ver42.css" tppabs="http://www.huabaoqsf.com/images/wap/web_style/hmo_style/HMo_style.css?ver42" />
+    <link type="text/css" rel="stylesheet" href="user_define_css.php-user_id=1404936&channel_id=14933444&timestamp=1492173664&style=.css" tppabs="http://www.huabaoqsf.com/wap/include/user_define_css.php?user_id=1404936&channel_id=14933444&timestamp=1492173664&style=" />
+<script src="model_banner.js-ver42" tppabs="http://www.huabaoqsf.com/js/tj/model_banner.js?ver42" type="text/javascript"></script>
+<script src="ueditor.parse.js" tppabs="http://admin.dlszywz.com/ueditor/ueditor.parse.js"></script>
+<style type="text/css">
+  .ev_list_data_input input{ width:100%; border:0;}
+  .ev_list_data_textfield textarea{ width:100%; border:0;}
+  .commentListItem dd > .pics span{height:28px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; width:100px;}
+</style>
+<script>
+  $(function(){
+    $(".ev_list_data_ddxk").click(function(){
+     $(this).addClass("ev_list_data_ddxkcur").siblings().removeClass("ev_list_data_ddxkcur");
+     $(this).find("input").attr("checked", true);
+    });
+    $(".ev_list_data_dfxk").click(function(){
+      if($(this).hasClass("ev_list_data_ddfkcur")){
+      $(this).removeClass("ev_list_data_ddfkcur");
+      $(this).find("input").attr("checked", false);
+    }else{
+      $(this).addClass("ev_list_data_ddfkcur");
+      $(this).find("input").attr("checked","checked");
+    }
+    });
+    $(".divSelect").each(function(){
+      var divSelect = $(this);
+      $(this).find(".selectObj").on("change",function(){
+        var v = $(this).find("option:selected").text();
+        divSelect.find("span").html(v);
+      })
+    });
+
+  })
+
+</script>
+</head>
+<body >
+<div class="wrapper" id="wrapper">
+    <div class="mainContainer">
+    <div class="onMessage showProInfo">
+      <div class="tit"><strong>在线留言</strong></div>
+      <div class="con">
+        <!--提交留言表单 start-->
+          <div class="MessageList">
+            <div class="leftLine"></div>
+                <h3 id="guestBook"><span>点击留言</span></h3>
+                <dl class="commentListItem" id="contents">
+                                                      <dd>
+                    <div class="pics"><small><img src="vf.jpg" tppabs="http://img.ev123.com/pic/vf.jpg" /></small><span><a href="###">Kamren</a></span></div>
+                    <div class="commentCon" times="2017-04-05 01:17">
+                      <h5 class="texttit"></h5>
+                      <div class="textcon"><p>That hits the target dead ceetnr! Great answer!</p></div>
+                        <div class="funBut">
+                          <a href="###" class="praiseAbut" rel="2368833" >赞(<font>0</font>)</a>
+                                                    <a href="###" class="returnAbut" title="回复" rel="2368833"><i></i><i></i><i></i></a>
+                                                  </div>
+                                             </div>
+                  </dd>
+                                    <dd>
+                    <div class="pics"><small><img src="vf.jpg" tppabs="http://img.ev123.com/pic/vf.jpg" /></small><span><a href="###">Rosalinda</a></span></div>
+                    <div class="commentCon" times="2017-04-05 01:14">
+                      <h5 class="texttit"></h5>
+                      <div class="textcon"><p>Good job maikng it appear easy.</p></div>
+                        <div class="funBut">
+                          <a href="###" class="praiseAbut" rel="2368829" >赞(<font>0</font>)</a>
+                                                    <a href="###" class="returnAbut" title="回复" rel="2368829"><i></i><i></i><i></i></a>
+                                                  </div>
+                                             </div>
+                  </dd>
+                                    <dd>
+                    <div class="pics"><small><img src="vf.jpg" tppabs="http://img.ev123.com/pic/vf.jpg" /></small><span><a href="###">luoqiu1539</a></span></div>
+                    <div class="commentCon" times="2017-03-20 11:53">
+                      <h5 class="texttit"></h5>
+                      <div class="textcon"><p>我想问下微商怎么加入</p></div>
+                        <div class="funBut">
+                          <a href="###" class="praiseAbut" rel="2348118" >赞(<font>0</font>)</a>
+                                                    <a href="###" class="returnAbut" title="回复" rel="2348118"><i></i><i></i><i></i></a>
+                                                  </div>
+                                                   <div class="returnarea">
+                            <ul class="returnList">
+                                                          <li>
+                                <div class="returnCon">你好，可以加我们的客服微信：wmkii53</div>
+                                <span>管理员&nbsp;&nbsp;&nbsp;2017-03-20 11:55</span>
+                              </li>
+                                                        </ul>
+                          </div>
+                                            </div>
+                  </dd>
+                                    <dd>
+                    <div class="pics"><small><img src="vf.jpg" tppabs="http://img.ev123.com/pic/vf.jpg" /></small><span><a href="###">luoqiu1539</a></span></div>
+                    <div class="commentCon" times="2017-03-20 11:52">
+                      <h5 class="texttit"></h5>
+                      <div class="textcon"><p>我有实体店，期待合作</p></div>
+                        <div class="funBut">
+                          <a href="###" class="praiseAbut" rel="2348116" >赞(<font>0</font>)</a>
+                                                    <a href="###" class="returnAbut" title="回复" rel="2348116"><i></i><i></i><i></i></a>
+                                                  </div>
+                                                   <div class="returnarea">
+                            <ul class="returnList">
+                                                          <li>
+                                <div class="returnCon">你好，可以加我们的客服微信：wmkii53</div>
+                                <span>管理员&nbsp;&nbsp;&nbsp;2017-03-20 11:55</span>
+                              </li>
+                                                        </ul>
+                          </div>
+                                            </div>
+                  </dd>
+                                    <dd>
+                    <div class="pics"><small><img src="vf.jpg" tppabs="http://img.ev123.com/pic/vf.jpg" /></small><span><a href="###">luoqiu1539</a></span></div>
+                    <div class="commentCon" times="2017-03-20 11:50">
+                      <h5 class="texttit"></h5>
+                      <div class="textcon"><p>了解代理事宜</p></div>
+                        <div class="funBut">
+                          <a href="###" class="praiseAbut" rel="2348112" >赞(<font>0</font>)</a>
+                                                    <a href="###" class="returnAbut" title="回复" rel="2348112"><i></i><i></i><i></i></a>
+                                                  </div>
+                                                   <div class="returnarea">
+                            <ul class="returnList">
+                                                          <li>
+                                <div class="returnCon">你好，可以加我们的客服微信：wmkii53</div>
+                                <span>管理员&nbsp;&nbsp;&nbsp;2017-03-20 11:55</span>
+                              </li>
+                                                        </ul>
+                          </div>
+                                            </div>
+                  </dd>
+                                    <dd>
+                    <div class="pics"><small><img src="vf.jpg" tppabs="http://img.ev123.com/pic/vf.jpg" /></small><span><a href="###">luoqiu1539</a></span></div>
+                    <div class="commentCon" times="2017-03-20 11:48">
+                      <h5 class="texttit"></h5>
+                      <div class="textcon"><p>请联系我!想做代理</p></div>
+                        <div class="funBut">
+                          <a href="###" class="praiseAbut" rel="2348111" >赞(<font>0</font>)</a>
+                                                    <a href="###" class="returnAbut" title="回复" rel="2348111"><i></i><i></i><i></i></a>
+                                                  </div>
+                                                   <div class="returnarea">
+                            <ul class="returnList">
+                                                          <li>
+                                <div class="returnCon">你好，可以加我们的客服微信：wmkii53</div>
+                                <span>管理员&nbsp;&nbsp;&nbsp;2017-03-20 11:55</span>
+                              </li>
+                                                        </ul>
+                          </div>
+                                            </div>
+                  </dd>
+                                    <dd>
+                    <div class="pics"><small><img src="vf.jpg" tppabs="http://img.ev123.com/pic/vf.jpg" /></small><span><a href="###">婷婷</a></span></div>
+                    <div class="commentCon" times="2017-03-19 18:47">
+                      <h5 class="texttit"></h5>
+                      <div class="textcon"><p>你好，请问怎么做代理？</p></div>
+                        <div class="funBut">
+                          <a href="###" class="praiseAbut" rel="2347197" >赞(<font>0</font>)</a>
+                                                    <a href="###" class="returnAbut" title="回复" rel="2347197"><i></i><i></i><i></i></a>
+                                                  </div>
+                                                   <div class="returnarea">
+                            <ul class="returnList">
+                                                          <li>
+                                <div class="returnCon">你好，可以加我们的客服微信：wmkii53</div>
+                                <span>管理员&nbsp;&nbsp;&nbsp;2017-03-20 09:42</span>
+                              </li>
+                                                        </ul>
+                          </div>
+                                            </div>
+                  </dd>
+                                                    </dl>
+                      </div>
+        <!--提交留言表单 end-->
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="myMeArea showProInfo" id="addGuestBook">
+  <div class="myMe">
+  <div class="myMeTit"><em class="back">返回</em><h3>发布留言</h3><em class="enter" id="queryMySubmit">确定</em></div>
+  <div class="myMeCon">
+    <form action="http://www.huabaoqsf.com/action/wap_guest_book.php?username=huabaoqsf&channel_id=14933444" method="post" name="myform" id="myform">
+    <ul class="inputMyMe">
+          <script type="text/javascript">
+				$(document).on("click","#mySubmit, #queryMySubmit", function(){
+			var name = $('#name').val();
+					var username_username = user_name_(name);
+					if(username_username && name){
+						$('#error_35641').find('.caution').html('正确');
+						$('#error_35641').parent().hide();
+					}else{
+						$('#error_35641').find('.caution').html('您的姓名不能为空');
+						$('#error_35641').parent().show();
+						return false;
+					}var field_35642 = $('#field_35642').val();if(field_35642){
+								$('#error_35642').find('.caution').html('正确');
+								$('#error_35642').parent().hide();
+							}else{
+								$('#error_35642').find('.caution').html('不能为空');
+								$('#error_35642').parent().show();
+								return false;
+							}var field_35644 = $('#field_35644').val();
+					var tel_tel = phonecheck(field_35644);
+					if(tel_tel && field_35644){
+						$('#error_35644').find('.caution').html('正确');
+						$('#error_35644').parent().hide();
+					}else{
+						$('#error_35644').find('.caution').html('请填写您的联系电话（分机号请在中间加 - ）');
+						$('#error_35644').parent().show();
+						return false;
+					}var content = $('#content').val();if(content){
+								$('#error_35646').find('.caution').html('正确');
+								$('#error_35646').parent().hide();
+							}else{
+								$('#error_35646').find('.caution').html('留言内容不能为空！');
+								$('#error_35646').parent().show();
+								return false;
+							}var validatecode= $("#yzm").val();
+				validatecode = trim(validatecode);
+				if(validatecode==""){
+					$("#yzmError").html("<span style='font-size:12px;color:red;'>请填写验证码！</span>");
+				    return false;
+				}else{
+				    $("#yzmError").html("<span style='font-size:12px;color:green;'> 正确</span>");
+				}
+					$("#add_tag").val(1);
+					$("#myform").submit();
+			});
+				//清除空格
+				function trim(str){
+				    return rtrim(ltrim(str));
+				}
+				function ltrim(s){
+				  return s.replace(/(^\s*)/g, "");
+				}
+				 //去右空格;
+				function rtrim(s){
+				  return s.replace(/(\s*$)/g, "");
+				}
+
+				//字符长度
+				function strLen(key){
+				  var l=escape(key),len
+				  len=l.length-(l.length-l.replace(/\%u/g,"u").length)*4
+				  l=l.replace(/\%u/g,"uu")
+				  len=len-(l.length-l.replace(/\%/g,"").length)*2
+				  return len;
+				}
+				//email 判断
+				function checkEmail(cEmail)
+				{
+				　 var arr=cEmail.split("@");
+				　 var c=true;
+				　 if(arr.length!=2)
+				　　c=false;
+				　 else if(!arr[0].length||!arr[1].length)
+				　　c=false;
+				　 else if(arr[1].split(".").length!=2)
+				　　c=false;
+				　 else if(!arr[1].split(".")[0].length||arr[1].split(".")[1].length<2||arr[1].split(".")[1].length>4)
+				　　c=false;
+				　 return c;
+				}
+
+				//电话
+				function phonecheck(s){
+				  var str=s;
+				  var reg = /((^(\+86|86)?[0]?1[3578]\d{9})|(^\d{3,4}\-\d{7,8})|(^\d{3,4}\-\d{7,8})\-\d{1,4})$/;
+				  if (reg.test(str)==false){
+				    return false;
+				  }else{
+				    return true;
+				  }
+				}
+				//字母下划线数字
+				function user_name_(str){
+				  var reg=/(^[0-9A-Za-z_]+$)/;
+				  if (!str){
+				    return false;
+				  }else{
+				    return true;
+				  }
+				}
+				//只能填数字
+				function number(str){
+				  var reg=/(^[0-9]+$)/;
+				  if (reg.test(str)==false){
+				    return false;
+				  }else{
+				    return true;
+				  }
+				}
+				//只能填字母
+				function onlyLetter(str){
+				  var reg=/(^[A-Za-z]+$)/;
+				  if (reg.test(str)==false){
+				    return false;
+				  }else{
+				    return true;
+				  }
+				}
+				//QQ号
+				function is_qq(str){
+				  var reg=/(^[0-9]{5,11}$)/;
+				  if (reg.test(str)==false){
+				    return false;
+				  }else{
+				    return true;
+				  }
+				}
+			</script><div class=" ev_list_data_label"><label class="text" for="text">您的姓名<span class="tips">*</span></label><div class="ev_list_data_input"><input type="text" name="name" data-id="35641" id="name" style="width:100%;border:0;" placeholder="" value=""></div><div class="ev_empy"><p id="error_35641" class="hint"><span class="caution"></span></p></div></div><div class=" ev_list_data_label"><label class="text" for="text">微信号<span class="tips">*</span></label><div class="ev_list_data_input"><input type="text" name="field_35642" data-id="35642" id="field_35642" style="width:100%;border:0;" placeholder="" value=""></div><div class="ev_empy"><p id="error_35642" class="hint"><span class="caution"></span></p></div></div><div class=" ev_list_data_label"><label class="text" for="text">手机号码<span class="tips">*</span></label><div class="ev_list_data_input"><input type="text" name="field_35644" data-id="35644" id="field_35644" style="width:100%;border:0;" placeholder="" value=""></div><div class="ev_empy"><p id="error_35644" class="hint"><span class="caution"></span></p></div></div><div class="ev_list_data_label"><label for="text">留言内容<span class="tips">*</span></label><div class="ev_list_data_textfield"><textarea id="content" placeholder="" rows="1" cols="0" name="content"></textarea></div><div class="ev_empy"><p id="error_35646" class="hint"><span class="caution"></span></p></div></div>
+          <li class="li-yzm q">
+        <input type="text" class="tInputObj" name="yzm" maxlength="4" id="yzm" placeholder="验证码" />
+        <span class="yzm"><img name="vcodesrc" id="vcodesrc" src="captcha.php.jpg" tppabs="http://www.huabaoqsf.com/include/captcha/captcha.php"></span>
+        <p class="hint" id="yzmError"></p>
+      </li>
+      <li class="li-b">
+        <input type="hidden" name="add_tag" id="add_tag" value="0" />
+        <input class="eButObj" type="button" id="mySubmit" value="提交" />
+      </li>
+    </ul>
+    </form>
+  </div>
+  </div>
+</div>
+<div class="myMeArea showProInfo" id="reGuestBook">
+  <div class="myMe">
+  <div class="myMeTit"><em class="back">返回</em><h3>回复留言</h3><em class="enter" id="queryReSubmit">确定</em></div>
+  <div class="myMeCon">
+    <form action="http://www.huabaoqsf.com/action/wap_guest_book.php?username=huabaoqsf&channel_id=14933444" method="post" name="myReForm" id="myReForm">
+    <ul class="inputMyMe">
+      <li>
+        <textarea class="tInputObj" name="re_con" maxlength="250"  id="re_con" placeholder="留言内容"></textarea>
+        <p class="hint" id="reConError"></p>
+      </li>
+      <li class="li-yzm q">
+        <input type="text" class="tInputObj" name="re_yzm" maxlength="4" id="re_yzm" placeholder="验证码" />
+        <span class="yzm"><img name="re_vcodesrc" id="reVcodesrc" src="captcha.php.jpg" tppabs="http://www.huabaoqsf.com/include/captcha/captcha.php"></span>
+        <p class="hint" id="reYzmError"></p>
+      </li>
+      <li class="li-b">
+        <input type="hidden" name="re_tag" id="re_tag" value="0" />
+        <input type="hidden" name="re_id" id="re_id" value="0" />
+        <input class="eButObj" type="button" id="myReSubmit" value="回复" />
+      </li>
+      <li class="li-b" style="display:none;">
+        <input type="text">
+      </li>
+    </ul>
+    </form>
+  </div>
+  </div>
+</div>
+ <center><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "hm.js-0c1d20b4d009bd4f0954c7822f6aebf5"/*tpa=https://hm.baidu.com/hm.js?0c1d20b4d009bd4f0954c7822f6aebf5*/;
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script></center>
+<script type="text/javascript" src="self_edit.js-ver42" tppabs="http://www.huabaoqsf.com/js/wap/self_edit.js?ver42"></script>
+
+      <!--文章详细页不显示底部-->
+        <div class="toolMenuBg" id="tool_menu_bg" ></div>
+    <div class="toolMenu" id="tool_menu" >
+      <menu class="toolBut q">
+                      <li id="toolHome" sorts="16" style=" width:20%;">
+                                    <a id="index_link" href="wap_huabaoqsf.html-showWelcome=1.htm" tppabs="http://www.huabaoqsf.com/wap_huabaoqsf.html?showWelcome=1"  >
+                          <b class="icon" id="icon_2531311">
+                                <img src="toolHome_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolHome_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313111">
+                <img src="/images/wap/toolHome_icon.png" />
+              </b> -->
+              <strong>首页</strong>
+                          </a>
+          </li>
+                <li id="toolTel" sorts="15" style="display: none; width:20%;">
+                                    <a  href="tel:15875268300"  >
+                          <b class="icon" id="icon_2531308">
+                                <img src="toolTel_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolTel_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313081">
+                <img src="/images/wap/toolTel_icon.png" />
+              </b> -->
+              <strong>电话</strong>
+                          </a>
+          </li>
+                <li id="toolTelMessage" sorts="14" style="display: none; width:20%;">
+                                    <a  href="sms:"  >
+                          <b class="icon" id="icon_2531309">
+                                <img src="toolMessage_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolMessage_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313091">
+                <img src="/images/wap/toolMessage_icon.png" />
+              </b> -->
+              <strong>信息</strong>
+                          </a>
+          </li>
+                <li id="toolQQ" sorts="13" style="display: none; width:20%;">
+                                    <a  href="javascript:if(confirm('http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes'" tppabs="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes"  >
+                          <b class="icon" id="icon_2531315">
+                                <img src="toolQQ_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolQQ_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313151">
+                <img src="/images/wap/toolQQ_icon.png" />
+              </b> -->
+              <strong>QQ</strong>
+                          </a>
+          </li>
+                <li id="toolOnlineCustom11" sorts="12" style=" width:20%;">
+                                    <a  href="14933442_0_0_1.html" tppabs="http://www.huabaoqsf.com/huabaoqsf/wap_doc/14933442_0_0_1.html"  >
+                          <b class="icon" id="icon_2534455">
+                                <img src="766_5513021484293071.png" tppabs="http://aimg8.dlszywz.com/wap/icon_new/1/766_5513021484293071.png" width="20" height="20"/>
+                              </b>
+              <!-- <b class="icon" id="icon_25344551">
+                <img src="http://aimg8.dlszywz.com/wap/icon_new/1/766_5513021484293071.png" width="20" height="20"/>
+              </b> -->
+              <strong>新闻</strong>
+                          </a>
+          </li>
+                <li id="toolMap" sorts="11" style="display: none; width:20%;">
+                                    <a  href="map.php-username=huabaoqsf.htm" tppabs="http://www.huabaoqsf.com/wap/map.php?username=huabaoqsf"  >
+                          <b class="icon" id="icon_2531310">
+                                <img src="toolMap_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolMap_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313101">
+                <img src="/images/wap/toolMap_icon.png" />
+              </b> -->
+              <strong>位置</strong>
+                          </a>
+          </li>
+                <li id="tootMessage" sorts="10" style=" width:20%;">
+                                    <a  href="guest_book.php-username=huabaoqsf&channel_id=14933444.htm" tppabs="http://www.huabaoqsf.com/wap/guest_book.php?username=huabaoqsf&channel_id=14933444"  >
+                          <b class="icon" id="icon_2531313">
+                                <img src="toolGuestbook_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolGuestbook_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313131">
+                <img src="/images/wap/toolGuestbook_icon.png" />
+              </b> -->
+              <strong>留言</strong>
+                          </a>
+          </li>
+                <li id="toolOnlineCustom10" sorts="9" style=" width:20%;">
+                                    <a  href="3819167.html" tppabs="http://www.huabaoqsf.com/huabaoqsf/wap_doc/3819167.html"  >
+                          <b class="icon" id="icon_2534192">
+                                <img src="349_2785681484278314.png-x-oss-process=image-resize,w_40,h_40.png" tppabs="http://aimg8.dlszywz.com/wap/icon_new/1/349_2785681484278314.png?x-oss-process=image/resize,w_40,h_40" width="20" height="20"/>
+                              </b>
+              <!-- <b class="icon" id="icon_25341921">
+                <img src="http://aimg8.dlszywz.com/wap/icon_new/1/349_2785681484278314.png?x-oss-process=image/resize,w_40,h_40" width="20" height="20"/>
+              </b> -->
+              <strong>联系我们</strong>
+                          </a>
+          </li>
+                <li id="toolShoppingCar" sorts="8" style="display: none; width:20%;">
+                                    <a  href="sc_shopcar_add.php-username=huabaoqsf&wap=1.htm" tppabs="http://www.huabaoqsf.com/dom/sc_shopcar_add.php?username=huabaoqsf&wap=1"  >
+                          <b class="icon" id="icon_2531314">
+                                <img src="toolShoppingCar_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolShoppingCar_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313141">
+                <img src="/images/wap/toolShoppingCar_icon.png" />
+              </b> -->
+              <strong>购物</strong>
+                          </a>
+          </li>
+                <li id="toolMember" sorts="7" style="display: none; width:20%;">
+                                                    <a href="denglu.php-username=huabaoqsf&wap=1.htm" tppabs="http://www.huabaoqsf.com/dom/denglu.php?username=huabaoqsf&wap=1" >
+                                        <b class="icon" id="icon_2531312">
+                                <img src="toolMember_icon.png" tppabs="http://www.huabaoqsf.com/images/wap/toolMember_icon.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25313121">
+                <img src="/images/wap/toolMember_icon.png" />
+              </b> -->
+              <strong>会员</strong>
+                          </a>
+          </li>
+                <li id="tooltoolDistributionXiaoD" sorts="6" style="display: none; width:20%;">
+                                    <a  href="check_distribution_status.php-username=huabaoqsf&wap=1.htm" tppabs="http://www.huabaoqsf.com/wap/distribution_shop/check_distribution_status.php?username=huabaoqsf&wap=1"  >
+                          <b class="icon" id="icon_2534127">
+                                <img src="tooltoolDistributionXiaoD.png" tppabs="http://www.huabaoqsf.com/images/wap/tooltoolDistributionXiaoD.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25341271">
+                <img src="/images/wap/tooltoolDistributionXiaoD.png" />
+              </b> -->
+              <strong>分销小店</strong>
+                          </a>
+          </li>
+                <li id="toolVoiceSearch" sorts="5" style="display: none; width:20%;">
+                                    <a  href="voicesearch.php-username=huabaoqsf&wap=1.htm" tppabs="http://www.huabaoqsf.com/wap/voicesearch.php?username=huabaoqsf&wap=1"   style = "display: none;" >
+                          <b class="icon" id="icon_2534126">
+                                <img src="toolVoiceSearch.png" tppabs="http://www.huabaoqsf.com/images/wap/toolVoiceSearch.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25341261">
+                <img src="/images/wap/toolVoiceSearch.png" />
+              </b> -->
+              <strong>语音</strong>
+                          </a>
+          </li>
+                <li id="toolOnlineCustom12" sorts="4" style=" width:20%;">
+                                    <a  href="javascript:if(confirm('http://qiaoshifu.dh.cx/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://qiaoshifu.dh.cx/'" tppabs="http://qiaoshifu.dh.cx/"  >
+                          <b class="icon" id="icon_2534469">
+                                <img src="507_5342341484287414.png-x-oss-process=image-resize,w_40,h_40.png" tppabs="http://aimg8.dlszywz.com/wap/icon_new/1/507_5342341484287414.png?x-oss-process=image/resize,w_40,h_40" width="20" height="20"/>
+                              </b>
+              <!-- <b class="icon" id="icon_25344691">
+                <img src="http://aimg8.dlszywz.com/wap/icon_new/1/507_5342341484287414.png?x-oss-process=image/resize,w_40,h_40" width="20" height="20"/>
+              </b> -->
+              <strong>物流查询</strong>
+                          </a>
+          </li>
+                <li id="toolProClass" sorts="3" style="display: none; width:20%;">
+                                    <a  href="proclass.php-username=huabaoqsf&wap=1.htm" tppabs="http://www.huabaoqsf.com/wap/proclass.php?username=huabaoqsf&wap=1"  >
+                          <b class="icon" id="icon_2534125">
+                                <img src="toolProductClass.png" tppabs="http://www.huabaoqsf.com/images/wap/toolProductClass.png" />
+                              </b>
+              <!-- <b class="icon" id="icon_25341251">
+                <img src="/images/wap/toolProductClass.png" />
+              </b> -->
+              <strong>分类</strong>
+                          </a>
+          </li>
+                  </menu>
+    </div>
+        <span class="backTop" id="back_top"><em></em></span>
+  <!--微名片详细页不显示导航-->
+    <div class="fixedNavBut" id="fixed_nav_but" style="display:block;">
+    <div class="navMoreBut_1">
+      <i class="i-1"></i>
+      <i class="i-2"></i>
+      <i class="i-3"></i>
+      <b class="b-1"></b>
+      <b class="b-2"></b>
+      <b class="b-3"></b>
+    </div>
+  </div>
+
+
+    <div id="NMore" class="NMore_1002" state="close">
+      <em class="NMTip"></em>
+      <ul>
+          <li >
+          <a id="foot_index_link"  href="wap_huabaoqsf.html-showWelcome=1.htm" tppabs="http://www.huabaoqsf.com/wap_huabaoqsf.html?showWelcome=1"><span>首页</span></a></li>
+                                                <li ><a   href="14933442_0_0_0.html" tppabs="http://www.huabaoqsf.com/huabaoqsf/wap_doc/14933442_0_0_0.html"><span>公司新闻</span></a></li>
+                          <li ><a   href="14933441_0_0_0.html" tppabs="http://www.huabaoqsf.com/huabaoqsf/wap_pro/14933441_0_0_0.html"><span>公司产品</span></a></li>
+                                                         <li ><a   href="3819167.html" tppabs="http://www.huabaoqsf.com/huabaoqsf/wap_doc/3819167.html"><span>我要代理</span></a></li>
+                       <li ><a   href="javascript:if(confirm('http://qiaoshifu.dh.cx/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://qiaoshifu.dh.cx/'" tppabs="http://qiaoshifu.dh.cx/"><span>物流查询</span></a></li>
+                                  </ul>
+    </div>
+         <div class="Nzz" id="Nzz"></div>
+  <script type="text/javascript">
+$(function(){
+  if (!$('.ev_t_top').length && !$('.ev_t_product_pj_tit').length) {
+    $('#wxAndAppShowHtml').removeClass('content_margin');
+  }
+  });
+$(".baiduEditorTxtModule img").each(function(){
+  var w = $(this).width();
+  if(w > 320){
+    $(this).css({'width':'100%','height':'auto'});
+}
+});
+//判断是否为微信
+function is_weixn(){
+  var ua = navigator.userAgent.toLowerCase();
+  if(ua.match(/MicroMessenger/i)=="micromessenger") {
+    $('#wxAndAppShowHtml').show();
+     return false;
+  } else {
+    $('#wxAndAppShowHtml').hide();
+    return true;
+  }
+}
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r   = window.location.search.substr(1).match(reg);
+     if(r!=null){
+       return  unescape(r[2]);
+     }
+    return '';
+}
+var is_weixn = is_weixn();
+if (is_weixn){
+  writeCookie('openid','',168);
+  var shareModule = $('#shareModule li');
+  if (shareModule.length > 0 ){
+    shareModule.find('.weixin').parent().remove();
+  }
+}else {
+  var openid = GetQueryString('openid');
+  if (!readCookie('openid')){
+    writeCookie('openid',openid);
+  }
+}
+
+</script>
+<script language="javascript">
+  var windowW = $(window).width(),windowH = $(window).height();
+  $(window).resize(function(){
+      })
+$(function(){
+  });
+  
+uParse('.ev_t_product_xq_con', {
+  rootPath: 'http://admin.ev123.com/ueditor/'
+});
+uParse('.ev_t_product_xq_new_div', {
+  rootPath: 'http://admin.ev123.com/ueditor/'
+});
+uParse('.articleC', {
+  rootPath: 'http://admin.ev123.com/ueditor/'
+});
+uParse('.baiduEditorTxtModule', {
+  rootPath: 'http://admin.ev123.com/ueditor/'
+});
+</script>
+</div>
+   
+<!--
+-->
+<link href="member_menu.css" tppabs="http://www.huabaoqsf.com/css/wap/member_menu.css" rel="stylesheet" type="text/css" />
+<link href="iconfont-2.css" tppabs="http://www.huabaoqsf.com/css/wap/iconfont_new/iconfont.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function(){
+    $(".member_menu_more").click(function(){
+        if($("#member_menu_bg").css("display") == "none"){
+            $("#member_menu_bg").css("display",'block');
+            $("#member_menu").css("display",'block');
+        }
+    });
+    $("#member_menu_bg").click(function(){
+        if($("#member_menu_bg").css("display") == "block"){
+            $("#member_menu_bg").css("display",'none');
+            $("#member_menu").css("display",'none');
+        }
+    });
+})
+</script>
+<div class="member_menu_bg" id="member_menu_bg" style="display: none;"></div>
+<div class="member_alert_bg" style="display: none;" id="member_menu">
+    <div class="alert_con2">
+        <div class="name_top">
+                        <span class="iconfont icon-wode login_no"></span>
+            <p class="login_p_no">
+                <a href="###" id="login_alert">登录</a>
+                <a href="zhuce.php-username=huabaoqsf&wap=1.htm" tppabs="http://www.huabaoqsf.com/dom/zhuce.php?username=huabaoqsf&wap=1">注册</a>
+            </p>
+                    </div>
+        <div class="name_conter" id="style_4">
+                <!-- 微圈类会员菜单 -->
+            <a href="bbs_my_threads.php-channel_id=14933444&wap=1&username=huabaoqsf&user_user_id=&is_check=.htm" tppabs="http://www.huabaoqsf.com/wap/bbs_my_threads.php?channel_id=14933444&wap=1&username=huabaoqsf&user_user_id=&is_check=" class="a_icon_div">
+                <i class="iconfont icon-haoyoutiezi"></i>
+                <font>我的帖子</font>
+                <strong class="iconfont icon-xiangyou"></strong>
+                <em>0</em>
+            </a>
+            <a href="user_collect_list.php-wap=1&username=huabaoqsf.htm" tppabs="http://www.huabaoqsf.com/dom/user_collect_list.php?wap=1&username=huabaoqsf" class="a_icon_div">
+                <i class="iconfont icon-woguanzhudequanzi"></i>
+                <font>我关注的帖子</font>
+                <strong class="iconfont icon-xiangyou"></strong>
+                <em>0</em>
+            </a>
+            <a href="bbs_find.php-username=huabaoqsf&channel_id=14933444.htm" tppabs="http://www.huabaoqsf.com/wap/bbs_find.php?username=huabaoqsf&channel_id=14933444" class="a_icon_div">
+                <i class="iconfont icon-qunzupx"></i>
+                <font>发现群组</font>
+                <strong class="iconfont icon-xiangyou"></strong>
+                <em>0</em>
+            </a>
+            <a href="bbs_my_circle.php-username=huabaoqsf&channel_id=14933444.htm" tppabs="http://www.huabaoqsf.com/wap/bbs_my_circle.php?username=huabaoqsf&channel_id=14933444" class="a_icon_div">
+                <i class="iconfont icon-wodequanzi"></i>
+                <font>我的圈子</font>
+                <strong class="iconfont icon-xiangyou"></strong>
+                <em>0</em>
+            </a>
+                        </div>
+                
+    </div>
+</div>
+<script type="text/javascript">
+    function login_exit(){
+        clear_cookies('zz_userid','wap_huabaoqsf.html-showWelcome=1.htm'/*tpa=http://www.huabaoqsf.com/wap_huabaoqsf.html?showWelcome=1*/);
+        clear_cookies('openid','wap_huabaoqsf.html-showWelcome=1.htm'/*tpa=http://www.huabaoqsf.com/wap_huabaoqsf.html?showWelcome=1*/);
+        clear_cookies('member_id','wap_huabaoqsf.html-showWelcome=1.htm'/*tpa=http://www.huabaoqsf.com/wap_huabaoqsf.html?showWelcome=1*/);
+    }
+</script><!--样式文件-->
+<link href="login_alert.css" tppabs="http://www.huabaoqsf.com/css/wap/login_alert.css" rel="stylesheet" type="text/css" />
+<script>
+    $(function(){
+        var H = parseInt($(".login_alert_con").height())/2; 
+        $(".login_alert_con").css("margin-top",-H);
+
+        $("#login_alert").click(function(){
+            if($("#member_menu_bg").css("display") == "block"){
+                $("#member_menu_bg").css("display",'none');
+                $("#member_menu").css("display",'none');
+                $("#ev_community_bg").css("display",'none');
+            }
+            if($(".login_alert").css("display") == "none"){
+                $(".login_alert").css("display",'block');
+                $(".login_alert_con").css("display",'block');
+            } 
+        })
+
+        $(".coles").click(function(){
+            $(".login_alert").css("display",'none');
+            $(".login_alert_con").css("display",'none');
+        })
+    })
+    function phone_login(type){
+        if (type == 'phone'){
+            if ($(".phone_lo").css("display") == 'none'){
+                $(".phone_lo").css("display","block");
+                $(".user_lo").css("display","none");
+                $("#loginType").val(1);
+            }
+        }
+        if (type == 'user'){
+            if ($(".user_lo").css("display") == 'none'){
+                $(".user_lo").css("display","block");
+                $(".phone_lo").css("display","none");
+                $("#loginType").val(0);
+            }
+        } 
+    }
+    function android_wx_login(url){
+        android.wxLogin(url);   
+    }
+    $(function(){
+        var iLoginErrorCount = 0;
+        $("#loginBut_1").on('click', function() {
+            var loginType = parseInt($.trim($('#loginType').val()));
+            remove_error_msg();
+            iLoginErrorCount = 0;
+            if (!loginType){
+                $('#login_name').trigger('blur');
+                $('#login_pwd').trigger('blur');
+            } else {
+                $('#mobile').trigger('blur');
+                $('#mobile_code').trigger('blur');
+                if (!isSendMsg && !iLoginErrorCount) {
+                    showAllzz('请获取手机验证码');
+                    return false;
+                }
+            }
+
+            if (parseInt(iLoginErrorCount) > 0 || $("#login_name_msg").html() || $("#login_pwd_msg").html()) {
+                return false;
+            } else {
+                var url="ajax_denglu.php-username=huabaoqsf.htm"/*tpa=http://www.huabaoqsf.com/dom/action/ajax_denglu.php?username=huabaoqsf*/;
+                var login_name  = $("#login_name").val();
+                var login_pwd   = $("#login_pwd").val();
+                var mobile      = $("#mobile").val();
+                var mobile_code = $("#mobile_code").val();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data:{"login_name":login_name, "login_pwd":login_pwd,"mobile":mobile,"mobile_code":mobile_code},
+                    dataType: 'json',
+                    cache: false,
+                    error: function(){
+                        alert('网络繁忙，请重试！');
+                        return false;
+                    },
+                    success:function(data){
+                        if (data['status'] == 1){
+                            alert(data['message']);
+                            return false;
+                        }else{
+                            location.reload();
+                        }
+                        
+                    }
+                })
+            }
+        });
+    })
+</script>
+
+<div class="login_alert" style="display: none;"></div>
+<div class="login_alert_con" style="display: none;">
+    <a href="###" class="coles">×</a>
+    <form action="http://www.huabaoqsf.com/dom/action/ajax_denglu.php?username=huabaoqsf"  method="post"  name="myfrom" id="myfrom">
+    <input type="hidden" name="wap" value="">
+    <input type="hidden" value="" name="trespass" id="trespass" />
+    <input type="hidden" id="loginType" name="login_type" value="0">
+        <div class="user_lo" >
+        <span class="login_tit">普通登录</span>
+        <div class="login_pwd">
+            <input name="login_name" id="login_name" type="text" style="width:100%" placeholder="请输入您的账号" />
+        </div>
+        <div class="ev_empy"><p id="login_name_msg" class="hint"></p></div>
+        <div class="login_pwd">
+            <input name="login_pwd" id="login_pwd" type="password" style="width:100%; border-right:0" placeholder="请输入密码" />
+        </div>
+        <div class="ev_empy"><p id="login_pwd_msg" class="hint"></p></div>
+    </div>
+
+    <a href="get_password.php-username=huabaoqsf&wap=1.htm" tppabs="http://www.huabaoqsf.com/dom/get_password.php?username=huabaoqsf&wap=1" class="no_pwd">忘记密码</a>
+    <a href="###" class="login_ok" id="loginBut_1">登录</a>
+    </form>
+    <div class="login_a" id="login_a">
+                                                                                    </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var span_len = $("#login_a").children("span").length;
+        if (span_len ==3){
+            $("#login_a span").css("width","33%");
+        }else if(span_len ==2){
+            $("#login_a span").css("width","50%");
+        }
+    })
+</script>
+ <script language="javascript">
+    var iUserUserId = 0;
+    var iGuestBook = 1
+    var iReGuestBook = 1
+    var form_str = 0;
+ </script>
+ <script type="text/javascript" src="guest_book.js" tppabs="http://www.huabaoqsf.com/js/wap/guest_book.js"></script>
+</body>
+</html>
