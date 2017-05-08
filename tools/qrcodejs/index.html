@@ -9,17 +9,15 @@
 </head>
 <body>
 链接地址：<input id="text" type="text" value="" /><br/>
-图片logo：<input id="image" type="text" value="只支持在线图片地址" /><br/>
+图片logo：<input id="image" type="text" placegolder="只支持在线图片地址" value="logo.png"/><br/>
 二维码尺寸：<input id="size" type="text" value="100" /><br/>
 容差[1-3]：<input id="correctLevel" type="text" value="3" /><br/>
 图片大小：<input id="imageSize" type="text" value="18" /><br/>
 <input type="button" value="生成" id="btn">
 
-<div id="qrcode" ></div>
+<div id="qrcode"  style="padding: 6px; border: 1px solid red; display: inline-block;margin: 20px;"></div>
 
 <script type="text/javascript">
-
-
 
 document.querySelector('#btn').addEventListener('click',function(){
     var qrcode = new AraleQRCode({
@@ -29,6 +27,7 @@ document.querySelector('#btn').addEventListener('click',function(){
         correctLevel:parseInt(document.querySelector('#correctLevel').value),
         imageSize: document.querySelector('#imageSize').value
     });
+    document.querySelector('#qrcode').innerHTML = '';
     document.querySelector('#qrcode').appendChild(qrcode);
 })
 </script>
