@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ideal</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<input class="test" type="text" name="asd" onkeyup ="handleChange()" v-model="hey">
+<input class="test" type="text" name="" onkeyup ="handleChange()" v-model="msg">
+<script>
+    var bindingMark = 'data-element-binding'
+    function Element (classa, initData) {
+        var self     = this,
+            el          = self.el = document.getElementsByClassName(classa),//多个input改为class
+            bindings = {};
+        data      = self.data = {};
+        for (var i = 0; i < el.length; i++) {
+            content  = el[i].outerHTML.replace(/v-model=\"(.*)\"/g, markToken);
+            el[i].outerHTML = content
+        }
+        for (var variable in bindings) {
+            bind(variable);
+        }
+        if (initData) {
+            for (var variable in initData) {
+                data[variable] = initData[variable]
+            }
+        }
+        function markToken (match, variable) {
+            bindings[variable] = {}
+            return  bindingMark + '="' + variable +'"' //内填一个span变为只改它的元素
+        }
+        function bind (variable) {
+
+            bindings[variable].els = document.querySelectorAll('[' + bindingMark + '="' + variable + '"]')//document获取binding元素
+            ;
+            Object.defineProperty(data, variable, {
+                set: function (newVal) {
+                    [].forEach.call(bindings[variable].els, function (e) {
+                        bindings[variable].value = e.value = newVal //=>textContent改为input的value
+                    })
+                },
+                get: function () {
+                    return bindings[variable].value
+                }
+            })
+        }
+    }
+
+    var app = new Element('test', {
+        msg: 'hello',
+        hey:'aaa'
+    })
+    function handleChange(e){ //增加v=>m的绑定
+        e = e || window.event
+        var key = e.target.outerHTML.match(/data-element-binding=\"(.*)\"/)[1];
+        data[key] = e.target.value
+        console.log(data.hey,data.msg);
+    }
+</script>
+</body>
+</html>
