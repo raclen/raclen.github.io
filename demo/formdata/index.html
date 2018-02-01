@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <title>fromdata</title>
+</head>
+<body>
+<form enctype="multipart/form-data" method="post" name="fileinfo">
+    <label>Your email address:</label>
+
+    <label>Custom file label:</label>
+    <input type="text" name="filelabel" size="12" maxlength="32"/><br/>
+    <label>File to stash:</label>
+    <input type="file" name="file" required/>
+    <input type="submit" value="Stash the file!"/>
+</form>
+<div></div>
+<script>
+    var form = document.forms.namedItem("fileinfo");
+    form.addEventListener('submit', function(ev) {
+
+        var oOutput = document.querySelector("div"),
+                oData = new FormData(form);
+
+        oData.append("CustomField", "This is some extra data");
+
+        var oReq = new XMLHttpRequest();
+        oReq.open("POST", "stash.php", true);
+        oReq.onload = function(oEvent) {
+            if (oReq.status == 200) {
+                oOutput.innerHTML = "Uploaded!";
+            } else {
+                oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
+            }
+        };
+
+        oReq.send(oData);
+        ev.preventDefault();
+    }, false);
+</script>
+</body>
+</html>
