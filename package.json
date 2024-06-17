@@ -1,0 +1,35 @@
+{
+  "name": "express-meiri",
+  "version": "1.0.0",
+  "description": "node express",
+  "engines": {
+    "node": "0.12.x"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "ww"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://git.coding.net/max001/raclen.git"
+  },
+  "keywords": [
+    "express",
+    "node"
+  ],
+  "author": "ralcen",
+  "license": "mm",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.1",
+    "cheerio": "^0.19.0",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.11",
+    "multiparty": "^4.1.2",
+    "socket.io": "^1.3.7",
+    "superagent": "^1.4.0",
+    "xss": "^0.2.7"
+  }
+}
