@@ -1,18 +1,25 @@
 #!/usr/bin/env ash
 set -e
 
-echo "=== NAT高位端口 sing-box 部署 (Alpine Linux) ==="
+export PATH=$PATH:/usr/local/bin
 
 REALITY_PORT=${1:-41000}
 HY2_PORT=${2:-42000}
 ANY_PORT=${3:-43000}
 
-# Alpine 使用 apk 包管理器
-apk update
+INPUT_DOMAIN=$4
+INPUT_IPV4=$5
+INPUT_IPV6=$6
+
+echo "=== sing-box 终极部署版 ==="
+
 apk add --no-cache curl openssl ca-certificates
 
 VERSION='1.13.11'
 
+cd /usr/local
+
+echo "下载 sing-box..."
 curl -LO https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}-linux-amd64-musl.tar.gz
 
 tar -xzf sing-box-${VERSION}-linux-amd64-musl.tar.gz
@@ -23,20 +30,47 @@ mkdir -p /etc/sing-box
 
 UUID=$(cat /proc/sys/kernel/random/uuid)
 HY_PASS=$(openssl rand -hex 8)
-ANY_PASS=$(openssl rand -hex 8)
 
-KEY_PAIR=$(sing-box generate reality-keypair)
+KEY_PAIR=$(/usr/local/bin/sing-box generate reality-keypair)
 PRIVATE_KEY=$(echo "$KEY_PAIR" | grep PrivateKey | awk '{print $2}')
 PUBLIC_KEY=$(echo "$KEY_PAIR" | grep PublicKey | awk '{print $2}')
 
+# ========= IP / 域名处理 =========
+
+# 自动获取 IP（fallback）
+[ -z "$INPUT_IPV4" ] && IPV4=$(curl -4 -s --max-time 5 ifconfig.me || true) || IPV4=$INPUT_IPV4
+[ -z "$INPUT_IPV6" ] && IPV6=$(curl -6 -s --max-time 5 ifconfig.me || true) || IPV6=$INPUT_IPV6
+
+DOMAIN=$INPUT_DOMAIN
+
+# host 格式化
+format_host() {
+  IP="$1"
+  echo "$IP" | grep -q ":" && echo "[$IP]" || echo "$IP"
+}
+
+HOST_V4=$(format_host "$IPV4")
+HOST_V6=$(format_host "$IPV6")
+
+# 优先使用域名
+if [ -n "$DOMAIN" ]; then
+  CONNECT_HOST="$DOMAIN"
+elif [ -n "$IPV4" ]; then
+  CONNECT_HOST="$HOST_V4"
+else
+  CONNECT_HOST="$HOST_V6"
+fi
+
+echo "使用连接地址: $CONNECT_HOST"
+
+# ========= 配置 =========
+
 cat > /etc/sing-box/config.json <<EOF
 {
-  "log": { "level": "info" },
+  "log": { "level": "error" },
   "inbounds": [
-
     {
       "type": "vless",
-      "tag": "reality",
       "listen": "::",
       "listen_port": $REALITY_PORT,
       "users": [{ "uuid": "$UUID" }],
@@ -49,95 +83,54 @@ cat > /etc/sing-box/config.json <<EOF
             "server_port": 443
           },
           "private_key": "$PRIVATE_KEY",
-          "short_id": ["a1b2"]
+          "short_id": ["a1b2","c3d4","e5f6"]
         }
       }
     },
-
     {
       "type": "hysteria2",
-      "tag": "hy2",
       "listen": "::",
       "listen_port": $HY2_PORT,
       "users": [{ "password": "$HY_PASS" }]
-    },
-
-    {
-      "type": "anytls",
-      "tag": "anytls",
-      "listen": "::",
-      "listen_port": $ANY_PORT,
-      "users": [{ "password": "$ANY_PASS" }]
     }
-
   ],
   "outbounds": [{ "type": "direct" }]
 }
 EOF
 
+# ========= 启动 =========
+
 cat > /etc/init.d/sing-box <<'INITEOF'
 #!/sbin/openrc-run
-
-description="sing-box proxy server"
 command="/usr/local/bin/sing-box"
 command_args="run -c /etc/sing-box/config.json"
-pidfile="/var/run/sing-box.pid"
 command_background=true
-
-depend() {
-    need net
-}
+depend() { need net; }
 INITEOF
 
 chmod +x /etc/init.d/sing-box
+rc-service sing-box start
+rc-update add sing-box
 
-# Alpine 默认使用 OpenRC，如果安装了 systemd 才使用 systemd
-if command -v systemctl &> /dev/null; then
-    mkdir -p /etc/systemd/system
-    cat > /etc/systemd/system/sing-box.service <<EOF
-[Unit]
-Description=sing-box
-After=network.target
-
-[Service]
-ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-    systemctl daemon-reload
-    systemctl enable sing-box
-    systemctl restart sing-box
-else
-    # 使用 OpenRC
-    rc-service sing-box start
-    rc-update add sing-box
-fi
-
-IP=$(curl -s ifconfig.me)
+# ========= 输出 =========
 
 echo ""
-echo "========= v2rayN 链接 ========="
+echo "========= 节点 ========="
 
 echo ""
 echo "[Reality]"
-echo "vless://$UUID@$IP:$REALITY_PORT?encryption=none&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=$PUBLIC_KEY&sid=a1b2&type=tcp#Reality"
+echo "vless://$UUID@$CONNECT_HOST:$REALITY_PORT?encryption=none&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=$PUBLIC_KEY&sid=a1b2&type=tcp#Reality"
 
 echo ""
 echo "[Hysteria2]"
-echo "hysteria2://$HY_PASS@$IP:$HY2_PORT?sni=www.bing.com#Hy2"
+echo "hysteria2://$HY_PASS@$CONNECT_HOST:$HY2_PORT?sni=www.bing.com&alpn=h3&insecure=1#Hy2"
 
 echo ""
-echo "[AnyTLS]"
-echo "anytls://$ANY_PASS@$IP:$ANY_PORT#AnyTLS"
-
-echo ""
-echo "Reality PublicKey: $PUBLIC_KEY"
 echo "UUID: $UUID"
+echo "PublicKey: $PUBLIC_KEY"
 
 # mkdir singbox
 # cd singbox
 # curl -O https://raw.githubusercontent.com/raclen/raclen.github.io/refs/heads/master/demo/singbox/install.sh
 # chmod +x install.sh
-# sudo ash install.sh 41000 42000 43000
+# sudo ash install.sh 41000 42000 43000 www.cloudflare.com "" 2a01:4f9:4b:f33b::a
