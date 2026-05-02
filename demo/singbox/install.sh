@@ -141,4 +141,7 @@ echo ""
 echo "Reality PublicKey: $PUBLIC_KEY"
 echo "UUID: $UUID"
 
-# 使用方式: ash install.sh 41000 42000 43000
+# cd /singbox
+# curl -O https://raw.githubusercontent.com/raclen/raclen.github.io/refs/heads/master/demo/singbox/install.sh
+# chmod +x install.sh
+# sudo ash install.sh 41000 42000 43000
