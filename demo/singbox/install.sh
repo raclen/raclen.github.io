@@ -3,9 +3,9 @@ set -e
 
 export PATH=$PATH:/usr/local/bin
 
-echo "=== sing-box 极简版（IPv6 + Reality）==="
+echo "=== sing-box 极简版（IPv6 + Hy2）==="
 
-REALITY_PORT=${1:-41000}
+HY2_PORT=${1:-42000}
 DOMAIN=$2
 INPUT_IPV6=$3
 
@@ -24,12 +24,14 @@ chmod +x /usr/local/bin/sing-box
 
 mkdir -p /etc/sing-box
 
-UUID=$(cat /proc/sys/kernel/random/uuid)
+HY_PASS=$(openssl rand -hex 8)
 
-echo "生成 Reality 密钥..."
-KEY_PAIR=$(/usr/local/bin/sing-box generate reality-keypair)
-PRIVATE_KEY=$(echo "$KEY_PAIR" | grep PrivateKey | awk '{print $2}')
-PUBLIC_KEY=$(echo "$KEY_PAIR" | grep PublicKey | awk '{print $2}')
+echo "生成自签证书..."
+openssl req -x509 -newkey rsa:2048 -nodes \
+-keyout /etc/sing-box/key.pem \
+-out /etc/sing-box/cert.pem \
+-days 3650 \
+-subj "/CN=www.bing.com"
 
 # ===== IPv6 获取 =====
 if [ -n "$INPUT_IPV6" ]; then
@@ -57,23 +59,16 @@ cat > /etc/sing-box/config.json <<EOF
 
   "inbounds": [
     {
-      "type": "vless",
+      "type": "hysteria2",
       "listen": "::",
-      "listen_port": $REALITY_PORT,
+      "listen_port": $HY2_PORT,
       "users": [
-        { "uuid": "$UUID" }
+        { "password": "$HY_PASS" }
       ],
       "tls": {
         "enabled": true,
-        "reality": {
-          "enabled": true,
-          "handshake": {
-            "server": "www.cloudflare.com",
-            "server_port": 443
-          },
-          "private_key": "$PRIVATE_KEY",
-          "short_id": ["a1b2"]
-        }
+        "certificate_path": "/etc/sing-box/cert.pem",
+        "key_path": "/etc/sing-box/key.pem"
       }
     }
   ],
@@ -105,16 +100,15 @@ rc-update add sing-box
 
 # ===== 输出 =====
 echo ""
-echo "========= Reality 节点 ========="
+echo "========= Hysteria2 节点 ========="
 
-echo "vless://$UUID@$HOST:$REALITY_PORT?encryption=none&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=$PUBLIC_KEY&sid=a1b2&type=tcp#Reality"
+echo "hysteria2://$HY_PASS@$HOST:$HY2_PORT?sni=www.bing.com&alpn=h3&insecure=1#Hy2"
 
 echo ""
-echo "UUID: $UUID"
-echo "PublicKey: $PUBLIC_KEY"
+echo "Password: $HY_PASS"
 
 # mkdir singbox
 # cd singbox
 # curl -O https://raw.githubusercontent.com/raclen/raclen.github.io/refs/heads/master/demo/singbox/install.sh
 # chmod +x install.sh
-# ash install.sh 41000 www.cloudflare.com 2a01:4f9:4b:f33b::a
+# ash install.sh 41000 "" 2a01:4f9:4b:f33b::a
