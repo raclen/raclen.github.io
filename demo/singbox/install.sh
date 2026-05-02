@@ -13,15 +13,10 @@ apk add --no-cache curl openssl ca-certificates
 
 VERSION='1.13.11'
 
-cd /usr/local
+curl -LO https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}-linux-amd64-musl.tar.gz
 
-# 尝试下载 musl 版本（Alpine 使用 musl libc）
-# 如果没有 musl 版本，退回到 amd64
-echo "下载 sing-box ${VERSION}..."
-curl -LO https://github.com/SagerNet/sing-box/releases/download/v1.13.11/sing-box-1.13.11-linux-amd64.tar.gz
-
-tar -xzf sing-box-*.tar.gz
-mv sing-box-*/sing-box /usr/local/bin/
+tar -xzf sing-box-${VERSION}-linux-amd64-musl.tar.gz
+mv sing-box-${VERSION}-linux-amd64-musl/sing-box /usr/local/bin/
 chmod +x /usr/local/bin/sing-box
 
 mkdir -p /etc/sing-box
@@ -141,6 +136,7 @@ echo ""
 echo "Reality PublicKey: $PUBLIC_KEY"
 echo "UUID: $UUID"
 
+# mkdir singbox
 # cd /singbox
 # curl -O https://raw.githubusercontent.com/raclen/raclen.github.io/refs/heads/master/demo/singbox/install.sh
 # chmod +x install.sh
